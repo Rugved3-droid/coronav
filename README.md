@@ -56,7 +56,7 @@ two pre-built Linux binaries (~338 MB) and installs everything automatically.
 ### Build the image (~5 min, downloaded layers are cached)
 
 ```bash
-git clone https://github.com/PLACEHOLDER/coronav.git
+git clone https://github.com/Rugved3-droid/coronav.git
 cd coronav
 docker build -t coronav:latest -f docker/Dockerfile .
 ```
