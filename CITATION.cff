@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use CoroNav, please cite the following."
+
+authors:
+  - family-names: Parmar
+    given-names: Rugved
+
+title: "CoroNav: Open Coronary VLM Navigation Benchmark"
+version: "1.0.0"
+date-released: "2026-01-01"
+url: "https://github.com/PLACEHOLDER/coronav"
+license: MIT
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Parmar
+      given-names: Rugved
+  title: >
+    VLM-guided coronary navigation: a benchmark for fluoroscopy-based
+    guidewire control
+  year: 2026
+  journal: "IEEE Transactions on Medical Robotics and Bionics"
+  doi: "PLACEHOLDER"
+
+references:
+  - type: software
+    authors:
+      - family-names: Karstensen
+        given-names: Lennart
+    title: "stEVE: Simulation framework for endovascular environments"
+    url: "https://github.com/lkarstensen/stEVE"
+
+  - type: article
+    authors:
+      - family-names: Wilson
+        given-names: Nathan
+    title: "The Vascular Model Repository: A Public Resource of Medical Imaging Data and Blood Flow Simulation Results"
+    year: 2013
+    journal: "Journal of Medical Devices"
+    doi: "10.1115/1.4025983"
+    notes: >
+      Required citation for VMR0066 anatomy data bundled with CoroNav.
+
+  - type: dataset
+    authors:
+      - family-names: Gharleghi
+        given-names: Ramtin
+    title: "ASOCA: Annotated Stenoses Coronary Arteries"
+    year: 2022
+    doi: "10.1016/j.dib.2022.108543"
+    notes: >
+      Required citation for ASOCA A2/A3 anatomy (optional extension, not bundled).

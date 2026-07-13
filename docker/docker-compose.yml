@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  coronav:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: coronav:latest
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ../runs:/coronav/runs
+      - ../data/anatomy:/coronav/data/anatomy
+    command: >
+      python3 benchmarks/run_benchmark.py
+        --operator claude
+        --anatomy a1
+    # Uncomment for GPU (requires nvidia-container-toolkit):
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  quickstart:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: coronav:latest
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ../runs:/coronav/runs
+    command: python3 examples/quickstart.py
+
+  check:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: coronav:latest
+    command: python3 scripts/check_install.py

@@ -1,0 +1,81 @@
+{
+  "_comment": "CoroNav frozen evaluation protocol. Do not modify — changes break comparability.",
+  "_paper": "Parmar et al. 2026 (IEEE T-MRB submission)",
+  "_version": "1.0",
+
+  "anatomies": {
+    "a1": {
+      "name": "VMR0066",
+      "source": "Vascular Model Repository (bundled — see data/anatomy/a1_vmr0066/LICENSE_VMR0066)",
+      "n_episodes": 25,
+      "step_budget": 60,
+      "seeds": [5001, 5012, 5023, 5034, 5045, 5056, 5067, 5078, 5089, 5100,
+                5111, 5122, 5133, 5144, 5155, 5166, 5177, 5188, 5199, 5210,
+                5221, 5232, 5243, 5254, 5265]
+    },
+    "a2": {
+      "name": "ASOCA Normal_12",
+      "source": "ASOCA challenge (NOT bundled — register at https://asoca.grand-challenge.org/)",
+      "n_episodes": 25,
+      "step_budget": 45,
+      "seeds": [3001, 3012, 3023, 3034, 3045, 3056, 3067, 3078, 3089, 3100,
+                3111, 3122, 3133, 3144, 3155, 3166, 3177, 3188, 3199, 3210,
+                3221, 3232, 3243, 3254, 3265]
+    },
+    "a3": {
+      "name": "ASOCA Normal_5 (synthetic tube from patient centerlines)",
+      "source": "ASOCA challenge (NOT bundled — register at https://asoca.grand-challenge.org/)",
+      "n_episodes": 25,
+      "step_budget": 150,
+      "seeds": [4001, 4012, 4023, 4034, 4045, 4056, 4067, 4078, 4089, 4100,
+                4111, 4122, 4133, 4144, 4155, 4166, 4177, 4188, 4199, 4210,
+                4221, 4232, 4243, 4254, 4265]
+    }
+  },
+
+  "imaging": {
+    "mode": "wire_only",
+    "image_rot_zx": [0, -40],
+    "image_size_px": [512, 512],
+    "wire_diameter_mm": 0.89,
+    "image_frequency_hz": 7.5
+  },
+
+  "simulation": {
+    "sofa_version": "23.06.00",
+    "dt_simulation_s": 0.006,
+    "contact_distance_mm": 0.3,
+    "alarm_distance_mm": 0.5,
+    "lcp_max_it": 2000,
+    "lcp_tolerance": 1e-4,
+    "friction": 0.001
+  },
+
+  "metrics": {
+    "primary": {
+      "name": "lm_rot_mm",
+      "description": "Fraction of wire-movement distance during LM phase that occurs on rotation steps. Dimensionless [0,1]. Lower = less rotation during LM traversal = more decisive navigation.",
+      "summary_statistic": "median per-episode, two-sided Mann-Whitney U",
+      "justification": "Per-episode distribution is right-skewed (skew=3.22 wire_only); median + rank-based test are pre-specified."
+    },
+    "secondary": [
+      {
+        "name": "steps_to_target",
+        "description": "Step count for successful episodes only.",
+        "summary_statistic": "median, seed-matched Wilcoxon signed-rank"
+      },
+      {
+        "name": "success_rate",
+        "description": "Fraction of episodes reaching mid-LAD target within step budget.",
+        "test": "Fisher two-sided"
+      },
+      {
+        "name": "wrong_branch_rate",
+        "description": "Fraction of advance steps where tip is in LCx.",
+        "note": "First-bifurcation wrong-branch rate preferred (less confounded by step count)."
+      }
+    ]
+  },
+
+  "exclusion_criteria": "Episodes where operator API fails (api_ok=False) for ALL steps are excluded from metric computation. Partial-failure episodes (some valid steps) are included with valid rows only."
+}
