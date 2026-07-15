@@ -21,8 +21,7 @@ fluoroscopy image (512×512 px)   state text: "Distance to target: 42.3 mm. Tren
           SOFA v23.06 coronary simulation
 ```
 
-**Paper:** Parmar et al. 2026, *VLM-guided coronary navigation: a benchmark for
-fluoroscopy-based guidewire control.* (IEEE T-MRB, under review)
+
 
 ---
 
