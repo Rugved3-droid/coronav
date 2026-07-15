@@ -1,28 +1,6 @@
 cff-version: 1.2.0
 message: "If you use CoroNav, please cite the following."
 
-authors:
-  - family-names: Parmar
-    given-names: Rugved
-
-title: "CoroNav: Open Coronary VLM Navigation Benchmark"
-version: "1.0.0"
-date-released: "2026-01-01"
-url: "https://github.com/PLACEHOLDER/coronav"
-license: MIT
-
-preferred-citation:
-  type: article
-  authors:
-    - family-names: Parmar
-      given-names: Rugved
-  title: >
-    VLM-guided coronary navigation: a benchmark for fluoroscopy-based
-    guidewire control
-  year: 2026
-  journal: "IEEE Transactions on Medical Robotics and Bionics"
-  doi: "PLACEHOLDER"
-
 references:
   - type: software
     authors:
