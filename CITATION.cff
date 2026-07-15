@@ -2,8 +2,7 @@ cff-version: 1.2.0
 message: "If you use CoroNav, please cite the following."
 
 authors:
-  - family-names: Parmar
-    given-names: Rugved
+  - name: "Anonymous"
 
 title: "CoroNav: Open Coronary VLM Navigation Benchmark"
 version: "1.0.0"
@@ -14,8 +13,7 @@ license: MIT
 preferred-citation:
   type: article
   authors:
-    - family-names: Parmar
-      given-names: Rugved
+    - name: "Anonymous"
   title: >
     VLM-guided coronary navigation: a benchmark for fluoroscopy-based
     guidewire control

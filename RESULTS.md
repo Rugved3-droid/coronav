@@ -13,7 +13,7 @@ container in this repo.** For the container's verification/reproduction
 status, see the "Reproducibility status" section in `README.md` — it is
 kept separate and does not appear here.
 
-**Reference:** Parmar et al. 2026.
+**Reference:** Anonymous, 2026.
 *VLM-guided coronary navigation: a benchmark for fluoroscopy-based guidewire
 control.* (IEEE T-MRB, under review)
 

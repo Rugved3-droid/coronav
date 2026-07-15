@@ -21,8 +21,8 @@ fluoroscopy image (512×512 px)   state text: "Distance to target: 42.3 mm. Tren
           SOFA v23.06 coronary simulation
 ```
 
-**Paper:** Parmar et al. 2026, *VLM-guided coronary navigation: a benchmark for
-fluoroscopy-based guidewire control.* (IEEE T-MRB, under review)
+**Paper:** Anonymous, 2026, *VLM-guided coronary navigation: a benchmark for
+fluoroscopy-based guidewire control.* (IEEE T-MRB, under review — anonymized for double-blind review)
 
 ---
 
@@ -56,7 +56,7 @@ two pre-built Linux binaries (~338 MB) and installs everything automatically.
 ### Build the image (~5 min, downloaded layers are cached)
 
 ```bash
-git clone https://github.com/Rugved3-droid/coronav.git
+git clone https://github.com/PLACEHOLDER/coronav.git
 cd coronav
 docker build -t coronav:latest -f docker/Dockerfile .
 ```
@@ -321,9 +321,9 @@ coronav/
 ## Citation
 
 ```bibtex
-@article{parmar2026coronav,
+@article{anonymous2026coronav,
   title   = {VLM-guided coronary navigation: a benchmark for fluoroscopy-based guidewire control},
-  author  = {Parmar, Rugved},
+  author  = {Anonymous},
   journal = {IEEE Transactions on Medical Robotics and Bionics},
   year    = {2026},
   note    = {under review}
