@@ -322,7 +322,7 @@ coronav/
 ```bibtex
 @article{parmar2026coronav,
   title   = {VLM-guided coronary navigation: a benchmark for fluoroscopy-based guidewire control},
-  author  = {Parmar, Rugved},
+  author  = {X,Y,Z},
   journal = {IEEE Transactions on Medical Robotics and Bionics},
   year    = {2026},
   note    = {under review}
