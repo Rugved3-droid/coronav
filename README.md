@@ -320,7 +320,7 @@ coronav/
 ## Citation
 
 ```bibtex
-@article{parmar2026coronav,
+@article{Xcoronav,
   title   = {VLM-guided coronary navigation: a benchmark for fluoroscopy-based guidewire control},
   author  = {X,Y,Z},
   journal = {IEEE Transactions on Medical Robotics and Bionics},
