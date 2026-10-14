@@ -1,8 +1,20 @@
 """ASOCA optional-anatomy installer for CoroNav.
 
 ASOCA data is NOT bundled because the license requires individual registration
-and prohibits redistribution.  This script guides you through the manual steps
-and organises the files into the layout CoroNav expects.
+and prohibits redistribution.  This script extracts one case from a
+registration-gated ASOCA archive and then CHECKS whether the result has the
+layout ``build_env()`` needs:
+
+    clipped_left.obj   collision surface, left-coronary system, mm
+    clipped_left.vtp   same surface, used for the overlay mask
+    paths/LAD*.pth, paths/LCX*.pth   ordered SimVascular-style centerlines
+
+IMPORTANT: the manuscript's A2 was produced by clipping the ASOCA Normal_12
+surface to the left-coronary system and pairing it with ordered centerlines.
+That preparation pipeline is NOT in this repository, and the layout of the
+ASOCA archive has not been verified against this script. If the check below
+fails, A2 cannot be built from this repository alone (see
+docs/MANUSCRIPT_CONCORDANCE.md, issue U6).
 
 ASOCA registration: https://asoca.grand-challenge.org/
 License:            Non-commercial research only; see asoca.grand-challenge.org/data
@@ -16,17 +28,18 @@ After registering and downloading the ASOCA zip(s):
         --out-dir data/anatomy
 
 The script will:
-  1. Verify the zip contents.
-  2. Extract and rename the two ASOCA cases used in the CoroNav paper:
-       Normal_12  -> a2_asoca_n12/
-       Normal_5   -> a3_asoca_n5/
-  3. Write a README.md in each subdirectory with the license reminder.
+  1. Extract the requested case(s):
+       Normal_12  -> a2_asoca_n12/   (A2, retained)
+       Normal_5   -> a3_asoca_n5/    (A3, EXCLUDED — only with --cases Normal_5)
+  2. Write a README.md in each subdirectory with the license reminder.
+  3. Report whether the files build_env() needs are present.
 
-Note on A3:
-  The patient surface in Normal_5 is too narrow for guidewire simulation.
-  This script extracts the centerlines and generates a synthetic tube mesh
-  (radius=2.5mm) to use as the vessel wall.  This is NOT the patient surface —
-  it is documented in the paper (§3.1) and in the A3 README.
+Note on A3 (excluded):
+  ASOCA Normal_5 is excluded from the manuscript on physical-validity grounds:
+  its surface is a constant-radius 2.5 mm tube generated along the patient
+  centerline, so no part of its wall is patient surface, and the contact
+  solver did not converge adequately on it. The tube generator is kept only so
+  archived A3 runs can be re-inspected. A3 supports no manuscript claim.
 """
 import argparse
 import shutil
@@ -43,15 +56,12 @@ CASE_MAP = {
 }
 
 A3_NOTE = """\
-NOTE (A3 synthetic surface)
----------------------------
-The patient vessel in ASOCA Normal_5 has a lumen radius below the guidewire
-diameter used in this simulation.  The .obj mesh in this directory is a
-SYNTHETIC TUBE (radius=2.5mm) generated from the patient centerlines, not
-the patient surface.  The centerlines themselves (.pth files) are extracted
-directly from the ASOCA data and are patient-derived.
-
-This is documented in the CoroNav paper, Section 3.1.
+NOTE (A3 — EXCLUDED, synthetic surface)
+---------------------------------------
+The .obj mesh in this directory is a SYNTHETIC TUBE (radius=2.5mm) generated
+along the patient centerlines, not the patient surface. A3 is excluded from
+the manuscript on physical-validity grounds (non-patient lumen; inadequate
+contact-solver convergence) and supports no claim. Archival use only.
 """
 
 
@@ -63,7 +73,8 @@ Source: ASOCA challenge ({case_name})
 License: Non-commercial research only.
          See https://asoca.grand-challenge.org/data for full terms.
          DO NOT redistribute this data.
-Required citation: Gharleghi et al. 2022, https://doi.org/10.1016/j.dib.2022.108543
+Required citation: Gharleghi R. et al., Sci Data 10, 128 (2023),
+                   https://doi.org/10.1038/s41597-023-02016-2
 
 {extra}
 This directory is gitignored. Re-run scripts/download_asoca.py to regenerate.
@@ -133,7 +144,7 @@ def _generate_a3_tube(a3_dir: Path):
     all_pts = np.vstack(list(raw.values()))
     center = all_pts.mean(axis=0)
 
-    TUBE_RADIUS = 2.5  # mm — documented in paper §3.1
+    TUBE_RADIUS = 2.5  # mm — the excluded A3 geometry (manuscript §2.2)
     N_SIDES = 8
 
     points = vtk.vtkPoints()
@@ -195,9 +206,17 @@ def _generate_a3_tube(a3_dir: Path):
     print(f"                     {vtp_path} ({vtp_path.stat().st_size//1024} KB)")
 
 
+def _missing_layout(adir: Path):
+    missing = [f for f in ("clipped_left.obj", "clipped_left.vtp") if not (adir / f).exists()]
+    paths = adir / "paths"
+    if not (paths.exists() and any(paths.glob("LAD*.pth")) and any(paths.glob("LCX*.pth"))):
+        missing.append("paths/LAD*.pth + paths/LCX*.pth")
+    return missing
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Install ASOCA anatomy for CoroNav (A2 + A3).",
+        description="Install ASOCA anatomy for CoroNav (A2; A3 is excluded).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -216,9 +235,10 @@ def main():
     parser.add_argument(
         "--cases",
         nargs="+",
-        default=list(CASE_MAP.keys()),
+        default=["Normal_12"],
         choices=list(CASE_MAP.keys()),
-        help="Which ASOCA cases to install. Default: both Normal_12 and Normal_5.",
+        help="Which ASOCA cases to install. Default: Normal_12 (A2). "
+             "Normal_5 (A3) is excluded from the manuscript; archival use only.",
     )
     args = parser.parse_args()
 
@@ -247,11 +267,16 @@ def main():
         if case_name == "Normal_5":
             _generate_a3_tube(out_dir)
 
-        print(f"  Done: {out_dir}\n")
+        missing = _missing_layout(out_dir)
+        if missing:
+            print(f"  NOT READY: {out_dir} lacks {', '.join(missing)}.")
+            print("  The extracted ASOCA files must be converted to this layout; the")
+            print("  conversion used for the manuscript is not in this repository.")
+        else:
+            print(f"  Done: {out_dir} has the layout build_env() needs.\n")
 
-    print("Installation complete.")
     print("Run smoke test:  python scripts/check_install.py")
-    print("Run benchmark:   python benchmarks/run_benchmark.py --operator claude --anatomy a1 a2 a3")
+    print("Run A2:          python benchmarks/run_benchmark.py --operator claude --anatomy a2 --mode wire_only overlay")
 
 
 if __name__ == "__main__":
