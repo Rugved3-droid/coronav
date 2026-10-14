@@ -8,19 +8,23 @@
 # Build (takes ~5 min on first run — downloads are cached in layers):
 #   docker build -t coronav:latest -f docker/Dockerfile .
 #
-# Run quickstart (A1, 3 episodes):
+# Run the image-free open-loop control (A1, no API key, no cost):
+#   docker run --rm -v $PWD/runs:/coronav/runs coronav:latest \
+#     python3 benchmarks/run_benchmark.py --operator open_loop --anatomy a1
+#
+# Run quickstart (A1, 3 episodes, paid API calls):
 #   docker run --rm -it \
 #     -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
 #     -v $PWD/runs:/coronav/runs \
 #     coronav:latest \
 #     python3 examples/quickstart.py
 #
-# Full benchmark:
+# Both observation conditions on A1 (paid API calls):
 #   docker run --rm -it \
 #     -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
 #     -v $PWD/runs:/coronav/runs \
 #     coronav:latest \
-#     python3 benchmarks/run_benchmark.py --operator claude --anatomy a1
+#     python3 benchmarks/run_benchmark.py --operator claude --anatomy a1 --mode wire_only overlay
 
 # SOFA v23.06.00's prebuilt SofaPython3 bindings are compiled against Python 3.8
 # specifically (see release notes) — python:3.8-slim-bullseye gives us that
@@ -33,8 +37,16 @@ LABEL beamadapter_version="23.06"
 ENV DEBIAN_FRONTEND=noninteractive
 
 # ── runtime libs SOFA needs on Linux ──────────────────────────────────────────
+# Debian 11 (bullseye) left LTS in Aug 2026 and its packages moved to
+# archive.debian.org; deb.debian.org / security.debian.org now return 404 for
+# the bullseye-security pool, which breaks `apt-get install`. Point apt at the
+# archive (no package versions change).
 # git: needed for `pip install git+https://...` (stEVE).
 # build-essential: needed to build any wheels without cp38 manylinux binaries.
+RUN sed -i \
+        -e 's|http://deb.debian.org/debian-security|http://archive.debian.org/debian-security|' \
+        -e 's|http://deb.debian.org/debian|http://archive.debian.org/debian|' \
+        /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
         wget unzip ca-certificates git build-essential \
         libgl1-mesa-glx libglu1-mesa \
@@ -71,10 +83,15 @@ ENV SOFA_PLUGIN_PATH="${SOFA_ROOT}/lib"
 RUN python3 -c "import Sofa; print('SOFA OK:', Sofa.__file__)"
 
 # ── Python packages ──────────────────────────────────────────────────────────
+# anthropic is pinned to the SDK version stated in the manuscript (v0.72.0).
+# stEVE is pinned to the commit this image was verified with (2026-10-14); the
+# stEVE commit used for the original research runs is not recorded in this
+# repository (docs/MANUSCRIPT_CONCORDANCE.md).
+ARG STEVE_COMMIT=f909e7122d846a3c2fec91eedddaa0ba88b6391d
 RUN pip3 install --no-cache-dir --upgrade pip \
     && pip3 install --no-cache-dir \
-        numpy scipy Pillow anthropic \
-        "git+https://github.com/lkarstensen/stEVE.git"
+        numpy scipy Pillow "anthropic==0.72.0" \
+        "git+https://github.com/lkarstensen/stEVE.git@${STEVE_COMMIT}"
 
 # Verify stEVE + BeamAdapter plugin import at build time
 RUN python3 -c "import eve; print('stEVE OK:', eve.__file__)" \
