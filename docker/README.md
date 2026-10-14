@@ -1,6 +1,14 @@
 # CoroNav Docker
 
-Containerised SOFA v23.06 + BeamAdapter + CoroNav for reproducible evaluation.
+Containerised SOFA v23.06 + BeamAdapter + CoroNav. The container gives a
+reproducible *environment*. It does not by itself reproduce the manuscript's
+results (see `docs/MANUSCRIPT_CONCORDANCE.md`).
+
+Last verified 2026-10-14: the image builds, `check_install.py` passes, and the
+open-loop control runs on A1. The image pins `anthropic==0.72.0` (manuscript
+SDK) and stEVE commit `f909e712`. Debian 11 (bullseye) packages are fetched
+from `archive.debian.org`, because bullseye left LTS in Aug 2026 and the
+regular mirrors now return 404 for it.
 
 ## What the build downloads
 
@@ -30,7 +38,11 @@ docker build -t coronav:latest -f docker/Dockerfile .
 # The build runs check_install.py as the last layer.
 # A passing build = SOFA, BeamAdapter, stEVE, CoroNav all working.
 
-# 2. Quickstart (3 episodes on A1, no ASOCA registration needed)
+# 2. Image-free open-loop control (A1, no API key, no cost)
+docker run --rm -v $PWD/runs:/coronav/runs coronav:latest \
+  python3 benchmarks/run_benchmark.py --operator open_loop --anatomy a1
+
+# 3. Quickstart (3 VLM episodes on A1, paid API calls, smoke test only)
 docker run --rm -it \
   -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
   -v $PWD/runs:/coronav/runs \
@@ -38,15 +50,19 @@ docker run --rm -it \
   python3 examples/quickstart.py
 ```
 
-## Full benchmark
+## Both observation conditions (manuscript design)
 
 ```bash
 docker run --rm -it \
   -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
   -v $PWD/runs:/coronav/runs \
   coronav:latest \
-  python3 benchmarks/run_benchmark.py --operator claude --anatomy a1
+  python3 benchmarks/run_benchmark.py --operator claude --anatomy a1 --mode wire_only overlay
 ```
+
+The runs use a 0.001 s timestep. At that setting one open-loop A1 episode
+(26 steps) took about 16 s of simulation on the verification machine; VLM
+episodes are dominated by API latency.
 
 ## docker-compose
 
@@ -56,17 +72,20 @@ cp .env.example .env && nano .env    # set ANTHROPIC_API_KEY
 # Quickstart
 docker-compose -f docker/docker-compose.yml run --rm quickstart
 
-# Full A1 benchmark
+# A1, wire_only arm (default service command)
 docker-compose -f docker/docker-compose.yml run --rm coronav
 
 # Smoke test (no API key needed)
 docker-compose -f docker/docker-compose.yml run --rm check
 ```
 
-## Mounting ASOCA data (A2/A3)
+## Mounting ASOCA data (A2)
 
-ASOCA data is not bundled (license-gated). After running `scripts/download_asoca.py`
-on the host, mount the anatomy directory:
+ASOCA data is not bundled (license-gated). After registering, preparing the
+A2 directory (`scripts/download_asoca.py` extracts the case and reports
+whether the required `clipped_left.obj/.vtp` + `paths/*.pth` layout is
+present; the original preparation pipeline is not in this repository), mount
+the anatomy directory:
 
 ```bash
 docker run --rm -it \
@@ -74,7 +93,7 @@ docker run --rm -it \
   -v $PWD/runs:/coronav/runs \
   -v $PWD/data/anatomy:/coronav/data/anatomy \
   coronav:latest \
-  python benchmarks/run_benchmark.py --operator claude --anatomy a1 a2 a3
+  python3 benchmarks/run_benchmark.py --operator claude --anatomy a1 a2 --mode wire_only overlay
 ```
 
 ## GPU

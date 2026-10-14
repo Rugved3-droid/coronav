@@ -31,9 +31,15 @@ The `.obj` and `.vtp` files were derived from the VMR0066 patient geometry by:
 The `.pth` centerline files are the original VMR SimVascular paths, re-exported at
 1 mm inter-point spacing and scaled to mm.
 
+Mesh topology (re-checked 2026-10-14 from `clipped_left.obj`): one connected
+open surface, 7990 vertices, 15897 triangles, 81 boundary edges, 0
+non-manifold edges — matching manuscript §2.2. `clipped_left.vtp` declares the
+same vertex and triangle counts.
+
 ## Simulation parameters
 
 - Wire diameter: 0.89 mm (floppy coronary guidewire)
 - Insertion point: LM ostium (proximal end of left_main trunk)
-- Step budget: 60 steps per episode
-- Fluoroscopy: AP Cranial 40 deg, 512 x 512 px, wire-only rendering
+- Step budget: 60 steps per episode (both observation conditions)
+- Simulation timestep: 0.001 s
+- Fluoroscopy: AP Cranial 40 deg, 512 x 512 px; `wire_only` or `overlay` rendering
