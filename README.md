@@ -75,7 +75,7 @@ Three separate questions, three separate answers:
 |---|---|
 | **Original-results traceability:** can the manuscript's statistics be regenerated from the original experimental records? | **No, not from this repository.** The original episode traces, analysis scripts, the number-to-artifact manifest and `CORRECTIONS.md` are not in this repository yet. The numbers above are transcribed from the manuscript. |
 | **Environment reproducibility:** can another investigator install and run the simulation and operator? | **Yes for A1**, via Docker. Verified on 2026-10-14: the image builds and `scripts/check_install.py` passes. The open-loop control ran in the container (see `docs/MANUSCRIPT_CONCORDANCE.md`). **A2 is not yet reproducible from this repository**, because the conversion of the ASOCA case into the required mesh and centerline layout is not included. |
-| **Independent result reproduction:** has this code reproduced the manuscript's quantitative results? | **Not for the VLM arms.** No full n = 25 operator run has been made with this repository. The open-loop control has been re-run on A1 only. See `docs/MANUSCRIPT_CONCORDANCE.md` for exactly what was run and what it showed. |
+| **Independent result reproduction:** has this code reproduced the manuscript's quantitative results? | **Partly.** The A1 open-loop control was re-run in the container at 0.001 s: 75/75 reached target, 26 steps each, final distance 4.582–4.707 mm, matching the manuscript (75/75, 26, 4.58–4.71 mm). **The VLM arms and everything on A2 have not been reproduced.** No n = 25 operator run has been made with this repository. Details: `docs/MANUSCRIPT_CONCORDANCE.md` §5. |
 
 Other points that affect reproduction:
 

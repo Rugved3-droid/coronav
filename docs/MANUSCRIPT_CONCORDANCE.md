@@ -203,7 +203,40 @@ experiment.*
 
 ### 5.3 Open-loop control, A1, executed in the container
 
-OPEN_LOOP_RESULTS_PLACEHOLDER
+Command (in the `coronav:audit` image built from this branch), run three
+times with different `--out-dir`:
+`python3 benchmarks/run_benchmark.py --operator open_loop --anatomy a1`
+
+| | Manuscript (§3.1, Table 1) | This repository, new run (2026-10-14) |
+|---|---|---|
+| Reached target | 75/75 | **75/75** |
+| Steps to target | 26 in every episode | **26 in every episode** |
+| Final distance to target | 4.58–4.71 mm | **4.582–4.707 mm** |
+| Timestep (from trace rows) | 0.001 s | 0.001 s |
+| Non-advance actions | none (policy definition) | 0 |
+
+Wall time was about 16–17 s per episode. The three repetitions gave identical
+traces (650 rows each): the simulator is deterministic for a fixed seed, and
+this operator has no stochastic component.
+
+**Interpretation.** This is the one manuscript result this repository has
+independently re-run, and it agrees at the precision reported. It shows that
+the ported environment, at 0.001 s, reproduces the open-loop solvability
+finding on A1. It says **nothing** about the VLM arms, A2, or any statistic
+that depends on the operator. The open-loop operator here is a
+re-implementation (`coronav/operator/open_loop.py`), not the original script.
+The traces are kept outside the repository: they are new runs, not the
+manuscript's artifacts.
+
+Additional integration checks in the same image (open-loop, so no cost):
+`--mode wire_only overlay` in one process (2 seeds each, both 26 steps, which
+exercises the overlay renderer and a second `build_env()`); `report.py
+--run-dir`, `--compare` and two-mode layouts; A3 refused without
+`--allow-excluded` (exit code 1); `--dry-run` with both modes.
+
+Small finding: inside Docker, `run_meta.json` records `git_commit:
+"unknown"` because the image contains no `.git`. Record the image tag or
+commit yourself when running in a container.
 
 ### 5.4 Not executed (and why)
 
