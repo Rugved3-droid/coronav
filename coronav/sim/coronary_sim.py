@@ -29,14 +29,16 @@ class CoronaryBeamAdapter(SofaBeamAdapter):
     Parameters
     ----------
     friction : float  — LCP friction coefficient (default 0.001)
-    dt_simulation : float  — SOFA timestep in seconds (default 0.006)
+    dt_simulation : float  — SOFA timestep in seconds (default 0.001, the
+        timestep of every retained manuscript result; 0.006 s is superseded —
+        see PROTOCOL.md, "Simulation timestep")
     max_it : int  — LCPConstraintSolver maxIt (default 2000)
     """
 
     def __init__(
         self,
         friction: float = 0.001,
-        dt_simulation: float = 0.006,
+        dt_simulation: float = 0.001,
         max_it: int = 2000,
     ) -> None:
         super().__init__(friction=friction, dt_simulation=dt_simulation)
