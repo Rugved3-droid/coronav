@@ -1,11 +1,13 @@
 {
-  "_comment": "CoroNav frozen evaluation protocol. Do not modify — changes break comparability.",
-  "_paper": "Parmar et al. 2026 (IEEE T-MRB submission)",
-  "_version": "1.0",
+  "_comment": "CoroNav evaluation protocol. Values match the final manuscript design (Methods 2.1-2.6). Changing them makes new runs non-comparable with the manuscript's design; it does not change any reported result.",
+  "_paper": "Vessel overlay slows vision-language-model guidewire navigation in simulated coronary anatomies (manuscript in submission)",
+  "_version": "2.0",
+  "_see_also": "PROTOCOL.md (human-readable protocol and change history); docs/MANUSCRIPT_CONCORDANCE.md (audit, open issues)",
 
   "anatomies": {
     "a1": {
       "name": "VMR0066",
+      "status": "retained",
       "source": "Vascular Model Repository (bundled — see data/anatomy/a1_vmr0066/LICENSE_VMR0066)",
       "n_episodes": 25,
       "step_budget": 60,
@@ -15,15 +17,19 @@
     },
     "a2": {
       "name": "ASOCA Normal_12",
+      "status": "retained",
       "source": "ASOCA challenge (NOT bundled — register at https://asoca.grand-challenge.org/)",
       "n_episodes": 25,
-      "step_budget": 45,
+      "step_budget": 120,
+      "_step_budget_note": "Manuscript 2.6: 120 steps in both A2 arms. Protocol v1.0 of this repository recorded 45 (wire-only) and 62 (overlay); that contradiction is unresolved — see docs/MANUSCRIPT_CONCORDANCE.md, issue U3.",
       "seeds": [3001, 3012, 3023, 3034, 3045, 3056, 3067, 3078, 3089, 3100,
                 3111, 3122, 3133, 3144, 3155, 3166, 3177, 3188, 3199, 3210,
                 3221, 3232, 3243, 3254, 3265]
     },
     "a3": {
-      "name": "ASOCA Normal_5 (synthetic tube from patient centerlines)",
+      "name": "ASOCA Normal_5 (constant-radius 2.5 mm tube along patient centerline)",
+      "status": "excluded",
+      "exclusion_reason": "Not a patient-derived lumen (every branch is a generated 2.5 mm tube) and contact-solver convergence was inadequate. Excluded on physical validity (manuscript 2.2); supports no manuscript claim. Kept only so archived runs can be re-inspected.",
       "source": "ASOCA challenge (NOT bundled — register at https://asoca.grand-challenge.org/)",
       "n_episodes": 25,
       "step_budget": 150,
@@ -34,7 +40,8 @@
   },
 
   "imaging": {
-    "mode": "wire_only",
+    "modes": ["wire_only", "overlay"],
+    "default_mode": "wire_only",
     "image_rot_zx": [0, -40],
     "image_size_px": [512, 512],
     "wire_diameter_mm": 0.89,
@@ -43,39 +50,59 @@
 
   "simulation": {
     "sofa_version": "23.06.00",
-    "dt_simulation_s": 0.006,
+    "dt_simulation_s": 0.001,
     "contact_distance_mm": 0.3,
     "alarm_distance_mm": 0.5,
     "lcp_max_it": 2000,
     "lcp_tolerance": 1e-4,
-    "friction": 0.001
+    "friction": 0.001,
+    "target_threshold_mm": 5.0
   },
 
-  "metrics": {
+  "operator": {
+    "reference_model": "claude-sonnet-4-6",
+    "anthropic_sdk": "0.72.0",
+    "decoding": "stochastic and unseeded; seeds fix the simulator reset only",
+    "proximity_gate_mm": 25.0,
+    "proximity_gate_advance_mm_s": 35.0,
+    "retraction_budget": 2,
+    "failed_call": "not retried or skipped; a null action is executed and consumes the step"
+  },
+
+  "open_loop_control": {
+    "advance_mm_s": 35.0,
+    "rotation": 0.0,
+    "repetitions_per_anatomy": 3,
+    "note": "Receives no image and no state. Establishes solvability; no hypothesis test against an operator arm."
+  },
+
+  "endpoints": {
     "primary": {
-      "name": "lm_rot_mm",
-      "description": "Fraction of wire-movement distance during LM phase that occurs on rotation steps. Dimensionless [0,1]. Lower = less rotation during LM traversal = more decisive navigation.",
-      "summary_statistic": "median per-episode, two-sided Mann-Whitney U",
-      "justification": "Per-episode distribution is right-skewed (skew=3.22 wire_only); median + rank-based test are pre-specified."
+      "name": "navigation_efficiency",
+      "description": "Steps to target (tip within 5 mm of target within the step limit), analysed over ALL episodes without conditioning on success.",
+      "analysis_a1": "worst-rank imputation + Wilcoxon signed-rank; Finkelstein-Schoenfeld win ratio with bootstrap CI; log-rank with failures censored at the step limit",
+      "analysis_a2": "paired Wilcoxon signed-rank with Hodges-Lehmann estimate (every episode succeeded)"
     },
-    "secondary": [
-      {
-        "name": "steps_to_target",
-        "description": "Step count for successful episodes only.",
-        "summary_statistic": "median, seed-matched Wilcoxon signed-rank"
-      },
-      {
-        "name": "success_rate",
-        "description": "Fraction of episodes reaching mid-LAD target within step budget.",
-        "test": "Fisher two-sided"
-      },
-      {
-        "name": "wrong_branch_rate",
-        "description": "Fraction of advance steps where tip is in LCx.",
-        "note": "First-bifurcation wrong-branch rate preferred (less confounded by step count)."
-      }
-    ]
+    "secondary": {
+      "name": "f_rot_LM",
+      "code_name": "lm_rot_mm",
+      "description": "Left-main-phase rotation-movement fraction: sum of |per-step change in tip-to-target distance| on rotate-intent steps, divided by the same sum over all steps, both restricted to valid steps whose post-step tip is classified as left_main. Dimensionless, in [0, 1]. Despite the code name, it is not in millimetres.",
+      "analysis": "paired Wilcoxon signed-rank (primary) with Holm correction over the {A1, A2} family; unpaired Mann-Whitney U as sensitivity",
+      "also_recorded": "left-main-phase rotate-intent count"
+    },
+    "hierarchy_note": "The endpoint hierarchy was revised after corrected results were known; this is disclosed as a post hoc decision in the manuscript."
   },
 
-  "exclusion_criteria": "Episodes where operator API fails (api_ok=False) for ALL steps are excluded from metric computation. Partial-failure episodes (some valid steps) are included with valid rows only."
+  "exclusion_criteria": "Episodes with zero valid operator actions are excluded as non-attempts. Partial-failure episodes are included.",
+
+  "superseded_v1": {
+    "_comment": "Protocol v1.0 values as originally released in this repository. Retained for the record only. Results generated under these values are not manuscript results.",
+    "dt_simulation_s": 0.006,
+    "a2_step_budget": 45,
+    "a2_overlay_step_budget_per_v1_PROTOCOL_md": 62,
+    "imaging_mode": "wire_only only",
+    "primary_metric": "lm_rot_mm, median per episode, two-sided Mann-Whitney U",
+    "secondary_metrics": ["steps_to_target (successful episodes only, seed-matched Wilcoxon)", "success_rate (Fisher)", "wrong_branch_rate"],
+    "anatomies_treated_as_supporting": ["a1", "a2", "a3"]
+  }
 }

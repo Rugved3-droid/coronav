@@ -106,14 +106,16 @@ def _centerlines_loadable():
 check("A1 centerlines are loadable (left_coronary_branches parses LAD/LCX)",
       _centerlines_loadable)
 
-print("\n[ Anatomy data (A2/A3 — optional, requires ASOCA registration) ]")
-for akey, dname in [("a2", "a2_asoca_n12"), ("a3", "a3_asoca_n5")]:
-    adir = ROOT / "data" / "anatomy" / dname
-    if adir.exists():
-        check(f"{akey.upper()} directory found", lambda d=adir: d.exists())
-    else:
-        warn(f"{akey.upper()} not installed",
-             "run scripts/download_asoca.py after registering at asoca.grand-challenge.org")
+print("\n[ Anatomy data (A2 — optional, requires ASOCA registration) ]")
+a2_dir = ROOT / "data" / "anatomy" / "a2_asoca_n12"
+if a2_dir.exists():
+    for rel in ("clipped_left.obj", "clipped_left.vtp", "paths/LAD.pth"):
+        check(f"A2 {rel}", lambda f=a2_dir / rel: f.exists())
+else:
+    warn("A2 not installed",
+         "register at asoca.grand-challenge.org and prepare it (see scripts/download_asoca.py)")
+if (ROOT / "data" / "anatomy" / "a3_asoca_n5").exists():
+    warn("A3 present", "ASOCA Normal_5 is EXCLUDED from the manuscript; archival use only")
 
 print("\n[ API key (optional here — required to run) ]")
 api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -134,6 +136,12 @@ if proto.exists():
     p = json.loads(proto.read_text(encoding="utf-8"))
     check("protocol.json has 'a1' anatomy block",
           lambda: "a1" in p.get("anatomies", {}))
+    check("protocol.json timestep is 0.001 s (manuscript)",
+          lambda: p.get("simulation", {}).get("dt_simulation_s") == 0.001)
+    def _env_dt_matches():
+        from coronav.env import DT_SIMULATION
+        return DT_SIMULATION == p["simulation"]["dt_simulation_s"]
+    check("coronav.env default timestep matches protocol.json", _env_dt_matches)
 
 print()
 if errors:

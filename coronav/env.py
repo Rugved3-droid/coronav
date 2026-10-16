@@ -32,6 +32,10 @@ TRANS_LIMIT  = 50.0
 ROT_LIMIT    = math.pi
 XTIP_HEALTHY = 10.0
 MAX_RESET    = 3
+# Every retained manuscript result ran at 0.001 s. Earlier 0.006 s runs are
+# superseded (PROTOCOL.md, "Simulation timestep"); do not change this to
+# match a historical number.
+DT_SIMULATION = 0.001
 
 VESSEL_FILL: Dict[str, int] = {"overlay": 90, "contrast": 108}
 WIRE_FILL:   Dict[str, int] = {"wire_only": 40, "overlay": 40, "contrast": 40}
@@ -95,23 +99,27 @@ def build_env(
     anatomy_dir: str,
     n_steps: int = 60,
     image_rot_zx: List[int] = IMAGE_ROT_ZX,
+    dt_simulation: float = DT_SIMULATION,
 ) -> Tuple:
-    """Build the stEVE environment for the A1 (VMR0066) coronary anatomy.
+    """Build the stEVE environment for a coronary anatomy.
 
     Parameters
     ----------
-    anatomy_dir : path to ``data/anatomy/a1_vmr0066`` (or equivalent for A2/A3)
+    anatomy_dir : path to ``data/anatomy/a1_vmr0066`` (or equivalent for A2)
     n_steps     : step budget per episode
     image_rot_zx : fluoroscopy projection angles [rot_z, rot_x] in degrees
+    dt_simulation : SOFA timestep in seconds (manuscript: 0.001)
 
     Returns
     -------
-    (env, sim, fluoro, branch_kds, mid_lad_world)
+    (env, sim, fluoro, branch_kds, mid_lad_world, binary_mask)
         env         : stEVE Env
         sim         : CoronaryBeamAdapter (for safe_reset and tip position)
         fluoro      : PillowTracking (for image retrieval)
         branch_kds  : {branch_name: cKDTree}  for tip-branch classification
         mid_lad_world : (3,) float64  SOFA world-space target coordinates
+        binary_mask : (H, W) uint8  projected lumen mask (0 = vessel) used
+                      for the overlay condition
     """
     adir = Path(anatomy_dir)
     paths_dir = adir / "paths"
@@ -135,7 +143,7 @@ def build_env(
     )
 
     device = eve.intervention.device.JShaped(tip_radius=1.5, tip_angle=0.2 * math.pi)
-    sim    = CoronaryBeamAdapter(friction=0.001, dt_simulation=0.006, max_it=2000)
+    sim    = CoronaryBeamAdapter(friction=0.001, dt_simulation=dt_simulation, max_it=2000)
     fluoro = PillowTracking(
         image_size=IMAGE_SIZE, simulation=sim, vessel_tree=vt,
         wire_diameter=0.89, image_frequency=7.5,
@@ -319,6 +327,7 @@ def run_episode(
             "step": step,
             "seed": seed,
             "mode": mode,
+            "dt_simulation": float(sim.dt_simulation),
             "api_ok": api_ok,
             "parse_ok": parse_ok,
             "intended_direction": intent,

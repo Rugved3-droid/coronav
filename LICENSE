@@ -32,7 +32,10 @@ A1 anatomy (VMR0066 — Vascular Model Repository):
     N.M. Wilson et al., "The Vascular Model Repository," J. Med. Devices 7(4), 2013.
     doi:10.1115/1.4025983
 
-A2/A3 anatomies (ASOCA):
+A2 anatomy (ASOCA Normal_12; also the excluded A3, ASOCA Normal_5):
   Not bundled. ASOCA data is distributed under a registration-gated research
   license that does not permit redistribution. Users must register (free) at
-  https://asoca.grand-challenge.org/ and run scripts/download_asoca.py.
+  https://asoca.grand-challenge.org/ and prepare the case themselves; see
+  scripts/download_asoca.py. When using ASOCA data, cite:
+    R. Gharleghi et al., Sci Data 10, 128 (2023).
+    doi:10.1038/s41597-023-02016-2

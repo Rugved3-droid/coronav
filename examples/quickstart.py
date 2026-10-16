@@ -1,5 +1,9 @@
 """CoroNav quickstart — A1 (VMR0066, bundled), 3 episodes, wire_only fluoroscopy.
 
+A 3-episode smoke run that shows the pipeline executes. It is not comparable
+with the manuscript's n=25 arms and is not a reproduction of any result.
+Runs at the protocol timestep (0.001 s) and makes ~60 paid API calls/episode.
+
 Prerequisites:
     pip install -e .
     export ANTHROPIC_API_KEY=...   # or set it in .env
@@ -18,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 ANATOMY_DIR = ROOT / "data" / "anatomy" / "a1_vmr0066"
 N_EPISODES = 3
 N_STEPS = 60
-SEEDS = [5001, 5012, 5023]  # first 3 of the paper's canonical A1 wire_only seeds
+SEEDS = [5001, 5012, 5023]  # first 3 of the A1 seeds in benchmarks/protocol.json
 
 
 def main():
@@ -39,7 +43,7 @@ def main():
     print()
 
     from coronav.env import build_env, run_episode
-    from coronav.metrics import episode_metrics_from_trace, lm_metrics, run_summary
+    from coronav.metrics import episode_outcome, lm_metrics, run_summary
     from coronav.operator.claude import ClaudeOperator
 
     print("Building environment (first run compiles SOFA — may take ~60s)...")
@@ -71,13 +75,14 @@ def main():
         )
         all_rows.extend(rows)
 
+        out = episode_outcome(rows) if rows else None
         ep_m = lm_metrics(rows)
+        if out:
+            print(f"  reached target = {out['success']}  |  steps = {out['steps']}")
         if ep_m:
-            print(f"  lm_rot_mm = {ep_m['lm_rot_mm']:.4f}  |  "
-                  f"success = {ep_m['success']}  |  "
-                  f"steps = {ep_m['steps']}")
+            print(f"  f_rot_LM (lm_rot_mm) = {ep_m['lm_rot_mm']:.4f}")
         else:
-            print("  (no valid LM data for this episode)")
+            print("  (no valid left-main-phase movement for this episode)")
 
     env.close()
 
@@ -95,13 +100,12 @@ def main():
 
     if ep_metrics:
         s = run_summary(ep_metrics)
-        print(f"  lm_rot_mm  median={s['lm_rot_mm_median']:.4f}  mean={s['lm_rot_mm_mean']:.4f}")
-        print(f"  success    {s['success_n']}/{s['n']} = {s['success_rate']:.1%}")
-        if s["steps_median"] == s["steps_median"]:
-            print(f"  steps      median={s['steps_median']:.0f}")
+        print(f"  f_rot_LM   median={s['lm_rot_mm_median']:.4f}  mean={s['lm_rot_mm_mean']:.4f}")
+    reached = sum(episode_outcome(rows_by_ep[e])["success"] for e in rows_by_ep)
+    print(f"  reached target  {reached}/{len(rows_by_ep)}")
     print()
-    print("Paper baseline (n=25): wire_only median=0.1452 | overlay median=0.1749 | p=0.0004")
-    print("See RESULTS.md for full numbers and benchmarks/run_benchmark.py for full eval.")
+    print("This 3-episode smoke run is not comparable with the manuscript (n=25 per arm).")
+    print("Final manuscript results and their provenance: RESULTS.md.")
 
 
 if __name__ == "__main__":

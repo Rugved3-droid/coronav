@@ -8,6 +8,14 @@ runs/
 outputs/
 results/
 *.jsonl
+# Original research artifacts (episode traces etc.) are meant to be committed
+# under artifacts/ — see docs/MANUSCRIPT_CONCORDANCE.md.
+!artifacts/**/*.jsonl
+
+# Registration-gated ASOCA anatomy (A2; excluded A3) — must never be
+# redistributed. Only the bundled A1 is committed.
+data/anatomy/a2_asoca_n12/
+data/anatomy/a3_asoca_n5/
 
 # Python
 __pycache__/
