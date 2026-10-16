@@ -5,6 +5,7 @@
 | Manuscript | *Vessel overlay slows vision-language-model guidewire navigation in simulated coronary anatomies* (final version as submitted to CMPB, manuscript CMPB-D-26-07590; being resubmitted to IJCARS) |
 | Repository audited | `Rugved3-droid/coronav`, `master` @ `b1886b5`, also branch `anonymous-review` @ `3964676` and tag `t-mrb-submitted` |
 | Audit date | 2026-10-14 |
+| Update | 2026-10-16: the original research records were recovered and added under `artifacts/` (§9). U1, U2, U3, U4, U5, U6, U7, U11 are resolved or answered; U9 is partly resolved. Three new discrepancies were found (U13–U15). |
 | Scope | Documentation accuracy, configuration fidelity, metric definitions, artifact availability, environment build and execution. **The manuscript's scientific content and reported numbers were not changed.** |
 
 ## 1. Summary
@@ -19,18 +20,21 @@
 2. **The code ran the superseded timestep.** `coronav/env.py` hard-coded
    `dt_simulation=0.006`. It now defaults to 0.001 s, matching the manuscript,
    and the value is read from `protocol.json` and logged in every trace row.
-3. **The promised research artifacts are missing.** The manuscript (Data and
-   code availability, §1, §2.8, §5) and the cover letter state that the
-   episode traces, analysis scripts, result artifacts and correction record
-   are released in this repository. **They are not here**, nor in any branch,
-   tag or commit, nor anywhere else accessible to this audit. As a result,
-   none of the manuscript's statistics can be regenerated from the
-   repository. This is the main publication-readiness blocker (§6, U1–U2).
+3. **The promised research artifacts were missing; they are now added
+   (2026-10-16 update, §9).** At the 2026-10-14 audit the episode traces,
+   analysis scripts, result artifacts and correction record were not in any
+   branch, tag or commit reachable on GitHub. They were later found on the
+   machine where the study ran, and are now in `artifacts/` and
+   `CORRECTIONS.md`. The original analysis scripts, re-run on them, reproduce
+   every manuscript statistic checked (§9.2). The ASOCA-derived traces are
+   committed as redacted copies (§9.1).
 4. **The environment works for A1.** The Docker image did not build as
    published (Debian 11 archive move). After a one-line apt-source fix it
    builds, passes `check_install.py`, and runs. In the container, the
    open-loop control on A1 at 0.001 s reproduced the manuscript's open-loop
-   A1 figures (§5.3). A2 cannot be prepared from the repository (U6).
+   A1 figures (§5.3). A2 could not be prepared from the repository (U6).
+   The original A2 preparation script is now in `artifacts/harness/pilot/`,
+   and, re-run on the ASOCA archive, it reproduces the A2 mesh exactly (§9.3).
 
 ## 2. Concordance table: manuscript claims vs repository
 
@@ -48,35 +52,38 @@ producing artifact is absent.
 | A3 (§2.2) | excluded: generated 2.5 mm tube, solver non-convergence, strongest raw result (paired p = 3.34e-06) | used as "cross-anatomy replication" (RESULTS.md); runnable by default | `status: excluded` in protocol.json; runner refuses without `--allow-excluded`; history kept in RESULTS.md Part 2/3 | match; tube radius 2.5 mm verified in `scripts/download_asoca.py` |
 | A1 mesh (§2.2) | single connected open surface, 81 boundary edges | — | stated in A1 README | **verified**: 1 component, 7990 vertices, 15897 triangles, 81 boundary edges, 0 non-manifold edges |
 | Overlay drawn from the collision mesh (§2.3) | yes | `.vtp` used for the mask, `.obj` for collision | unchanged | **verified**: the `.vtp` and `.obj` have identical vertices (max diff 0.0) and faces |
-| A2 mesh (§2.2) | 9 boundary edges, 6 non-manifold edges | — | — | unverifiable (A2 not distributable or preparable here) |
+| A2 mesh (§2.2) | 9 boundary edges, 6 non-manifold edges | — | — | **verified 2026-10-16** on the original A2 mesh: 1 component, 3350 vertices, 6689 faces, 9 boundary edges, 6 non-manifold edges (§9.3) |
 | SOFA / BeamAdapter (§2.1) | v23.06 | v23.06 | v23.06 | verified in Dockerfile and built image |
 | J-tip (§2.1) | radius 1.5 mm, angle 0.2π | same (`env.py`) | same | verified (code) |
 | LCP (§2.1) | Gauss–Seidel, ≤ 2000 it, tol 1e-4 | same (`coronary_sim.py`) | same | verified (code) |
 | Contact / alarm (§2.1) | 0.3 / 0.5 mm | same | same | verified (code) |
 | Friction (§2.1) | 0.001 | same | same | verified (code) |
-| **Timestep (§2.1)** | **0.001 s for every retained arm and result** | **0.006 s** in `env.py` (hard-coded), `coronary_sim.py` default, `protocol.json`, `PROTOCOL.md` | 0.001 s everywhere, single source `protocol.json`, logged per row | corrected; see U4 for the open question about the original harness |
+| **Timestep (§2.1)** | **0.001 s for every retained arm and result** | **0.006 s** in `env.py` (hard-coded), `coronary_sim.py` default, `protocol.json`, `PROTOCOL.md` | 0.001 s everywhere, single source `protocol.json`, logged per row | corrected; **U4 answered:** the original harness used 0.001 s (`artifacts/harness/pilot/run_ablation.py:628`, `run_asoca.py:431`, `run_coronary.py:419`) |
 | Image (§2.3) | 512 × 512 grayscale, AP cranial 40° | same | same | verified (code) |
 | Conditions (§2.3) | wire-only vs overlay, identical physics | renderer supported both, **runner ran `wire_only` only** | `run_benchmark.py --mode wire_only overlay` | corrected |
 | Operator (§2.3) | Claude Sonnet 4.6, SDK v0.72.0, stateless | `claude-sonnet-4-6`; SDK **unpinned** in Dockerfile, `>=0.72.0` in setup.py | Dockerfile pins `anthropic==0.72.0` | corrected; resolved version verified in the built image |
 | State string (§2.3) | distance, trend, retractions remaining, no-progress counter | same (`env.py`) | same | verified (code) |
-| Proximity gate (§2.3) | < 25 mm and closing: rotate → advance 35 mm/s | same (`env.py`, `prompts.py`) | same; tested against protocol.json | verified (code) |
+| Proximity gate (§2.3) | < 25 mm and closing: rotate → advance 35 mm/s | same (`env.py`, `prompts.py`) | same; tested against protocol.json | verified (code) for A1. **A2 used 15 mm** (U14, §9.4) |
 | Failed API call (§2.3) | null action, consumes one step, no retry | same (`env.py`) | same | verified (code) |
-| Open-loop control (§2.4) | 35 mm/s advance, never rotate/retract, 3 reps/anatomy, 0.001 s | **absent** | `--operator open_loop` (`coronav/operator/open_loop.py`), a re-implementation | added; executed (§5.3) |
+| Open-loop control (§2.4) | 35 mm/s advance, never rotate/retract, 3 reps/anatomy, 0.001 s | **absent** | `--operator open_loop` (`coronav/operator/open_loop.py`), a re-implementation | added; executed (§5.3). The original A2 open-loop run used a 45-step limit, not 120 (U15) |
 | Success (§2.5) | tip within 5 mm of target within the step limit | threshold 5.0 mm; but `success = terminal and not truncation` | `episode_outcome()` counts a target reached on the final step | threshold verified; see U5 |
-| Step limits (§2.6) | A1 60 both arms; **A2 120 both arms** | A1 60; **A2 45 (wire_only), overlay 62 per PROTOCOL.md** | A1 60; A2 120 | corrected to the manuscript; **contradiction unresolved, U3** |
-| Episodes (§2.6) | 25 seed-matched per arm | 25 seeds per anatomy | same | seeds cannot be verified against originals (U11) |
+| Step limits (§2.6) | A1 60 both arms; **A2 120 both arms** | A1 60; **A2 45 (wire_only), overlay 62 per PROTOCOL.md** | A1 60; A2 120 | corrected to the manuscript; **U3 answered:** the harness passes 120 to both A2 arms (`run_asoca.py:122`); 45/62 are the longest observed episodes (§9.4) |
+| Episodes (§2.6) | 25 seed-matched per arm | 25 seeds per anatomy | same | **verified** against the traces: A1 5001 + 11i, A2 3001 + 11i (U11) |
 | Seeds vs decoding (§2.6) | seeds fix reset only; decoding unseeded | not stated | stated in README, PROTOCOL, protocol.json, run_meta.json | match; verified that `ClaudeOperator` sets no temperature or seed |
 | Exclusion (§2.6) | zero valid actions = non-attempt | "all rows fail API/parse" (same rule); but `lm_metrics` also drops episodes with no LM movement | documented; `episode_outcome()` applies the manuscript rule | see §4 |
 | Primary endpoint (§2.5, §2.7) | navigation over all episodes; worst-rank, win ratio, log-rank (A1); paired Wilcoxon + HL (A2) | primary = `lm_rot_mm` MWU; steps for successes only | documented as manuscript; analysis code **absent** (U2) | match (docs); not regenerable |
 | Secondary endpoint (§2.5) | `f_rot_LM`, dimensionless [0,1]; paired Wilcoxon + Holm; MWU sensitivity | `lm_rot_mm` primary | `f_rot_LM` secondary, code name `lm_rot_mm` explained | match; definition verified (§4) |
 | Endpoint hierarchy post hoc; plan retrospective (§2.5, §2.7) | disclosed | called "pre-specified" | disclosed; "pre-specified" withdrawn | match |
-| Analysis plan frozen and released (§2.7) | released with the code | absent | absent | **missing (U2)** |
-| Number-to-artifact manifest, build check (§2.8) | exists | absent | absent | **missing (U2)** |
+| Analysis plan frozen and released (§2.7) | released with the code | absent | `artifacts/analysis/PRESPEC.md` | **added (U2)** |
+| Number-to-artifact manifest, build check (§2.8) | exists | absent | `artifacts/results/manifest.csv`, `artifacts/analysis/build_manuscript.py` | **added (U2)**; the check needs the manuscript sources, which are not released (§9.2) |
 
 ### 2.2 Results
 
 All values below are now stated in `RESULTS.md` Part 1 exactly as in the
 manuscript. "Before" shows what the repository said previously, if anything.
+The Status column records the 2026-10-14 audit. **Since the 2026-10-16
+update, every value marked "unverifiable" here has been regenerated from the
+original traces by the original scripts; see §9.2.**
 
 | Result (section) | Manuscript | Repository before | Status |
 |---|---|---|---|
@@ -148,10 +155,29 @@ Implementation (`coronav/metrics.py: lm_metrics`, arithmetic unchanged by this a
 | Undefined case | returns `None` if there are no valid rows **or** zero LM-phase distance change | stricter than the manuscript's non-attempt rule; see below |
 
 **Conclusion.** `lm_rot_mm` and `f_rot_LM` are the same mathematical
-quantity (same numerator, denominator, units, phase and interpretation). The
-name differs; the quantity does not. This could not be checked against the
-original `run_biplane.py:_lm_metrics()`, which `metrics.py` says it was
-ported from verbatim, because that file is not available (U5).
+quantity (same numerator, denominator, units and interpretation). The name
+differs; the quantity does not. On the original traces, `lm_metrics()` gives
+the same per-episode values as the manuscript's analysis
+(`artifacts/analysis/phase5_multiplicity.py:91`, `f_rot_lm`) to within the
+6-decimal rounding of `phase4_pairs_a1.csv`, and the same medians (§9.2).
+
+**Update 2026-10-16: the "verbatim port" description is not accurate**,
+although nothing published depends on the difference:
+
+- The original `run_biplane.py:_lm_metrics()`
+  (`artifacts/harness/pilot/run_biplane.py:378`) pools the sums over all
+  episodes of an arm and returns one ratio per arm. It scores success as
+  "last row terminal", with no truncation check. `lm_metrics()` works per
+  episode. The manuscript's statistics come from the per-episode `f_rot_lm`
+  in `phase5_multiplicity.py`, which `lm_metrics()` matches exactly.
+- **Phase boundary:** the original harness classifies `tip_branch_obs` from
+  the **pre-action** tip (`tip_obs`; `artifacts/harness/pilot/run_ablation.py:774`
+  for the A1 arms, `run_asoca.py:672` for A2, `run_coronary.py:663`), and the frozen plan locks that convention
+  (`artifacts/analysis/PRESPEC.md` §2.2). This repository's environment
+  classifies from the **post-step** tip (`coronav/env.py:322`). On the
+  released traces the two conventions cannot differ, because the field is
+  read, not recomputed. **New runs made with this repository use a slightly
+  different left-main phase from the manuscript** (U13).
 
 Two behaviours of the legacy code are documented and covered by tests, but
 deliberately **not** changed in `lm_metrics()`:
@@ -260,18 +286,21 @@ affect the claims.
 
 | ID | Severity | Issue | What resolves it |
 |---|---|---|---|
-| U1 | **Blocker** | Original **episode traces** are not in the repository. The manuscript states they are released here. | Add them under `artifacts/` (e.g. `artifacts/<anatomy>/<arm>/trace.jsonl`, plus open-loop traces). `.gitignore` now allows `artifacts/**/*.jsonl`. Large files: GitHub release asset or Zenodo deposit, linked here. Check that A2 traces contain no ASOCA-derived geometry beyond per-step scalars. |
-| U2 | **Blocker** | **Analysis scripts**, the **frozen analysis plan**, the **number-to-artifact manifest** with its build check, **result artifacts**, and **`CORRECTIONS.md`** (cited for C21–C22) are absent. | Add the original files unmodified, with a README stating how to run them against `artifacts/` to regenerate Table 1 and all §3 statistics. |
-| U3 | High | **A2 step limit.** The manuscript says 120 in both arms. This repository's v1.0 protocol recorded 45 (wire_only) and 62 (overlay). The manuscript's A2 step ranges (37–45 and 50–62) have maxima equal to exactly those values. The repository cannot tell which is right. If the arms ran at 45/62, the "common limit / nothing truncated / not censored" statements would need re-examination. | The original A2 run configs or trace headers. `protocol.json` now follows the manuscript (120) and flags this. |
-| U4 | High | **Timestep of the original operator arms.** This repository's harness, described as ported from the original `run_coronary.py`, hard-coded 0.006 s, while the manuscript says all retained arms used 0.001 s. Either the port diverged from the original or the original used 0.006 s. | The original `run_coronary.py` / run configuration (and the traces if they log dt). The code now uses 0.001 s per the manuscript. |
-| U5 | Medium | `lm_metrics()` is described as a verbatim port but cannot be checked. Its legacy success field mis-scores a target reached on the final step, and it is unknown whether the original analysis did the same or whether any retained episode is affected. | The original `run_biplane.py`/analysis code and traces: check for rows with `terminal` and `truncation` both true. |
-| U6 | High | **A2 is not reproducible from this repository.** `download_asoca.py` only extracts zip members. The clipping, centerline ordering and export to `clipped_left.obj/.vtp` + `paths/*.pth` used for the manuscript are absent, and the ASOCA archive layout was not verified (no registration available to this audit). The script now checks the layout and says "NOT READY". | Add the A2 preparation script (it can be redistributed even though the data cannot), with checksums of the expected outputs. |
-| U7 | Medium | The Supplementary Material (prompt-variant, contrast, biplane arms) is not in the repository. The archived prompt-ablation figures were not checked against it, and the biplane runner is absent. | Add the Supplementary Material or its source tables, and the biplane harness if it is to be described as released. |
+| U1 | ~~Blocker~~ **Resolved 2026-10-16** | Original **episode traces** were not in the repository. | Added under `artifacts/traces/` (19 arms + run summaries; §9.1). A1 and other VMR arms are byte-identical. A2/A3 are redacted copies without ASOCA coordinates; original hashes are in `artifacts/REDACTIONS.tsv`. |
+| U2 | ~~Blocker~~ **Resolved 2026-10-16** | Analysis scripts, frozen plan, manifest and build check, result artifacts, `CORRECTIONS.md` were absent. | Added: `artifacts/analysis/` (incl. `PRESPEC.md`, `build_manuscript.py`), `artifacts/results/` (incl. `manifest.csv`), `CORRECTIONS.md` (C1–C22). Regenerated with `python artifacts/reproduce.py --check` (§9.2). The build check needs the unreleased manuscript sources. |
+| U3 | High → **Answered** | A2 step limit: 120 or 45/62? | **120 in both arms.** `artifacts/harness/pilot/run_asoca.py:122` sets `n_steps = 120` for Normal_12, used for both modes; no A2 trace row has `truncation` true; 45 and 62 are the longest observed episodes (`CORRECTIONS.md` C20). Caveat: the harness never wrote the limit to its summary, so 120 is the configured default, not a recorded value. Consistent with the manuscript. |
+| U4 | High → **Answered** | Timestep of the original operator arms. | **0.001 s.** `run_ablation.py:628` (A1 confirmatory arms), `run_asoca.py:431` (A2), `run_coronary.py:419` all build `CoronaryBeamAdapter(..., dt_simulation=0.001, ...)`. Consistent with the manuscript; the 0.006 s value came from the port. |
+| U5 | Medium → **Answered** | Final-step success; verbatim-port claim. | No confirmatory episode has `terminal` and `truncation` both true. The original analysis used the same legacy rule as `lm_metrics()` (`phase3_selection_bias.py:66`, `phase5_multiplicity.py:125`, `phase6h_a2_steps.py:75`), so no confirmatory number is affected. **Three exploratory V2 episodes** reached target on their final step and are counted as failures in Supplementary Table S1 (§9.4). The port is not verbatim (§4). |
+| U6 | High → **Resolved for the original harness** | A2 not preparable. | `artifacts/harness/pilot/clip_asoca_left.py` + `asoca_adapter.py` reproduce the A2 mesh exactly from `ASOCADataAccess.zip` (§9.3; reference hashes in `artifacts/README.md`). Remaining gap: this repository's `coronav` package expects `paths/*.pth` centrelines, which A2 never used; a converter is still needed to run A2 through `run_benchmark.py`. |
+| U7 | Medium → **Resolved** | Supplementary Material absent. | `artifacts/supplementary/SupplementaryMaterial.docx` (metadata-redacted copy); its tables are generated by `artifacts/analysis/esm_tables.py` and regenerate exactly. Biplane harness: `artifacts/harness/pilot/run_biplane.py`. The archived prompt-ablation figures in `RESULTS.md` §3.2 differ from Table S1 in places; see §9.4. |
 | U8 | Low | Author metadata: `CITATION.cff` has no top-level `title`/`authors` (required by CFF 1.2.0), `LICENSE` has an empty copyright holder, and the README BibTeX author is `X,Y,Z`. These look deliberate (recent commits removed them), so they were left alone. | Author decision. Complete them after any double-blind phase. |
-| U9 | Medium | The exact original software environment (stEVE commit, numpy/scipy versions, OS) is not recorded. The verified image pins stEVE `f909e712` and anthropic 0.72.0, but nothing shows the original used these. | The original environment record (`pip freeze`, stEVE commit). |
+| U9 | Medium → **Partly resolved** | Original environment not recorded. | stEVE: upstream `f909e71` plus three local commits that only add `coronary_fixture/` (`artifacts/environment/steve_commit.txt`) — the same `eve/` as the Docker pin. The original conda env still exists; its `pip freeze` (taken 2026-10-16, not at run time) shows the same versions as the verified image (anthropic 0.72.0, numpy 1.24.4, scipy 1.10.1). No contemporaneous record exists. |
 | U10 | Low | The A1 clinical segmentation diameters (LM 4.89 mm, distal LAD 1.73 mm; §1) were not verified. | Optional: a script that measures them from the bundled mesh. |
-| U11 | Low | It cannot be confirmed that the seeds in `protocol.json` are the seeds of the original runs. | Traces (they record `seed`). |
+| U11 | Low → **Resolved** | Seeds. | The traces' seeds equal `protocol.json`: A1 5001 + 11i, A2 3001 + 11i, 25 each. |
 | U12 | Low | The manuscript says the materials are "archived". There is no archival snapshot (DOI). | Create a GitHub release and a Zenodo DOI once U1/U2 are resolved, and cite it in the manuscript. |
+| U13 | Medium (new) | **Left-main phase boundary differs between the original harness and this repository.** Original: pre-action tip (`run_ablation.py:774`, `run_asoca.py:672`); this repository: post-step tip (`coronav/env.py:322`). | Decide whether `coronav/env.py` should follow the original convention, as `PRESPEC.md` §2.2 locks it. Not changed here. Affects new runs only. |
+| U14 | Medium (new) | **A2 proximity gate was 15 mm, not 25 mm.** Manuscript §2.3 gives one value (< 25 mm). The A2 harness used 15 mm (`run_asoca.py:120`, pre-registered in `PREREGISTRATION.txt:110`; A2 `summary.txt`: "< 15mm"); A1 used 25 mm (`run_ablation.py:67`). `protocol.json` says 25 for A2. The gate never suppressed a rotation in either A2 arm, but the threshold appears in the A2 prompt text (`run_asoca.py:235`). | Author decision: correct manuscript §2.3 (e.g. "25 mm for A1, 15 mm for A2") and `protocol.json`. Not changed here. |
+| U15 | Low (new) | **A2 open-loop control ran with a 45-step limit**, not the operator arms' 120 (`artifacts/analysis/phase7j_floor_dt001.py:66`; `floor_dt001_a2.json` `"budget": 45`). Manuscript §2.4 says "the same step limits as the operator arms". Every open-loop episode reached target at step 11, so the result (75/75) is unaffected. | Author decision: adjust the §2.4 wording, or re-run at 120 (the outcome cannot change). Not changed here. |
 
 ## 7. Corrections made in this audit
 
@@ -303,17 +332,187 @@ affect the claims.
 licence), `coronav/prompts.py`, `coronav/operator/claude.py`, the
 control-loop logic in `run_episode()`, and the `lm_metrics()` arithmetic.
 
-## 8. How to regenerate the manuscript statistics (once U1–U2 are resolved)
+**Changes in the 2026-10-16 update** (branch `artifacts/original-research-records`):
 
-This cannot be done today. When the original artifacts are added, the
-expected procedure is:
+| File | Change |
+|---|---|
+| `artifacts/` (new) | original traces, analysis scripts, frozen plan, results, manifest, harness, Supplementary Material, environment record; `CHECKSUMS.sha256`, `PROVENANCE.tsv`, `REDACTIONS.tsv`, `ARMS.tsv`, `README.md`, `reproduce.py` (§9) |
+| `CORRECTIONS.md` (new) | the correction record, C1–C22, as last committed on `revision-cbm` |
+| `.gitattributes` (new) | `artifacts/` and `CORRECTIONS.md` stored without end-of-line conversion |
+| `.gitignore` | `!artifacts/results/` (the generic `results/` rule was hiding it) |
+| `README.md`, `RESULTS.md`, this document | reproducibility status, provenance notes, issue status |
 
-1. Place the original traces under `artifacts/` without modification, and
-   record their SHA-256 checksums in `artifacts/CHECKSUMS.sha256`.
-2. Run the original analysis scripts against them to regenerate Table 1 and
-   §3, and compare against `RESULTS.md` Part 1. Any difference is a finding
-   to report, not to adjust.
-3. As an independent cross-check, `coronav.metrics.lm_metrics()` and
-   `episode_outcome()` can be run on the same traces. Medians of `f_rot_LM`
-   should equal 0.1452 / 0.1749 (A1) and 0.0000 / 0.0454 (A2), and success
-   counts should equal 20/13 (A1) and 25/25 (A2).
+**Unchanged on purpose in this update:** all code under `coronav/`,
+`benchmarks/`, `scripts/` and `tests/`; `benchmarks/protocol.json` (U14 is
+an author decision); all numbers in `RESULTS.md` Part 1.
+
+## 8. How to regenerate the manuscript statistics
+
+From the repository root (Python ≥ 3.10 with numpy, scipy, statsmodels,
+matplotlib; no simulator, network or API key):
+
+    sha256sum -c artifacts/CHECKSUMS.sha256      # the records are intact
+    python artifacts/reproduce.py --check        # re-run the analyses, diff against committed outputs
+    git checkout -- artifacts/results            # restore the committed outputs
+
+`artifacts/README.md` maps each manuscript result to its script and output
+file. §9.2 gives the outcome of doing this on 2026-10-16.
+
+## 9. Recovery and verification of the original records (2026-10-16)
+
+### 9.1 What was found and added
+
+The records were on the machine where the study ran:
+
+- the run folders and harness in `D:\steve\pilot\` and
+  `D:\steve\stEVE\coronary_fixture\` (June–July 2026);
+- the analysis workspace, a local, never-pushed branch `revision-cbm` of this
+  repository (`20c872c`, 2026-09-18). It holds the analysis scripts, results,
+  manifest, `PRESPEC.md` and `CORRECTIONS.md`, and copies of the 19 trace
+  files. Those copies were LF-normalised by git, so the run folders were used
+  as the byte-for-byte source instead.
+
+The Supplementary Material is `CMPB_FINAL_SUBMISSION/SupplementaryMaterial.docx`
+(2026-09-18). The file name the manuscript workflow used,
+`Supplementary_Material_CMPB.docx`, no longer exists on disk.
+
+Everything added is listed with its original path and date in
+`artifacts/PROVENANCE.tsv`, with hashes in `artifacts/CHECKSUMS.sha256`.
+
+**Redacted copies (12 files, `artifacts/REDACTIONS.tsv`):**
+
+- **ASOCA licensing.** The A2/A3 traces and four A2/A3 baseline files carry
+  patient-space coordinates in every row: tip position before and after each
+  step, the target point, and the path of the rendered ASOCA frame. These
+  were removed. Each JSONL row was checked to be otherwise identical to the
+  original. The originals are kept off-repository, identified by SHA-256.
+- **Anonymous review.** An author name in `PREREGISTRATION.txt` and the
+  `lastModifiedBy` field of the Supplementary docx.
+- **Personal path.** A local user-home path in `phase7e_report.txt`.
+
+No API keys, tokens or e-mail addresses were found. The only names left are
+the repository URL (`Rugved3-droid/coronav`), which `README.md` already
+contains. No file exceeds 50 MB; `artifacts/` totals about 55 MB.
+
+Not added: the manuscript sources and reviewer correspondence (they carry
+author names), rendered frames, the ASOCA meshes, and pilot runs that no
+analysis reads.
+
+### 9.2 Regeneration from the original traces
+
+**Procedure.** The original analysis scripts, unedited, were run against the
+original (unredacted) traces in `D:\steve\pilot\runs`, in a checkout of
+`revision-cbm`. Python 3.12.10, numpy 2.4.2, scipy 1.17.1, statsmodels
+0.14.6.
+
+**Outcome.** All 17 trace-consuming scripts exit 0. **Every CSV and report
+they write is byte-identical to the committed artifact.** The two PDF figures
+differ only in their embedded `CreationDate`.
+
+`build_manuscript.py --check`, run against the unreleased manuscript sources,
+reports 0 hand-typed numerals, 0 HEAD mismatches, and "rendered/ is up to
+date". It exits non-zero only because of `{{repo.zenodo_doi}}`, which is
+unresolved by design until a DOI exists.
+
+The same run from this repository (`python artifacts/reproduce.py --check`,
+against the redacted release) reproduces every output except the A2/A3
+Euclidean-travel columns of `phase6c_*` and the A3 stall geometry of
+`phase6k_*`. Those are computed from the redacted coordinates. No value in
+`manifest.csv` depends on them.
+
+| Manuscript value (`RESULTS.md` Part 1) | Regenerated | Source | Match |
+|---|---|---|---|
+| A1 open-loop 75/75; 26 steps; 4.58–4.71 mm | 75/75; 26 in all; 4.582–4.707 mm | `baselines/floor_dt001_a1.json` | ✓ |
+| A2 open-loop 75/75; 11 steps; 1.76–1.91 mm | 75/75; 11 in all; 1.757–1.905 mm | `baselines/floor_dt001_a2.json` | ✓ |
+| Wilson 95% CI 95.1–100.0 | 95.13–100.0 | same | ✓ |
+| A1 success 20/25 vs 13/25, Fisher p = 0.0718 | 20/25, 13/25, p = 0.0718 | `phase3_tests.csv` | ✓ |
+| A1 worst-rank W = 47.5, p = 0.00206, r_rb +0.708 | W = 47.5, p = 0.00206, 0.708 | `phase3_tests.csv` | ✓ |
+| Win ratio 5.60 (2.43–17.97); 470/84/71 | 5.595 (2.431–17.970); wins 470, losses 84, ties 71 | `phase3_tests.csv`, `phase3_report.txt` | ✓ |
+| Log-rank χ² = 11.705, p = 0.000623 | 11.705, 0.000623 | `phase3_tests.csv` | ✓ |
+| A1 f_rot_LM medians 0.1452 vs 0.1749 | 0.1452, 0.1749 | `phase4_report.txt` | ✓ |
+| Paired W = 73.0, p = 0.0147, Holm 0.0147, r_rb +0.551 | 73.0, 0.0147, 0.0147, 0.551 | `phase4_tests.csv`, `multiplicity_table.csv` | ✓ |
+| HL +0.0285 (+0.0068 to +0.0440); overlay higher on 20/25 | +0.0285 (+0.0068, +0.0440); 20/25 | `phase4_report.txt` | ✓ |
+| Unpaired U = 496.0, p = 0.000384 | 496.0, 0.000384 | `phase4_tests.csv` | ✓ |
+| A2 25/25 both arms; medians 41 vs 56; ranges 37–45 vs 50–62 | same | `phase6h_report.txt` | ✓ |
+| A2 HL +14.5 (+13.0 to +16.5), p = 1.25e-05 | +14.50 (+13.00, +16.50), 1.25e-05 | `phase6h_tests.csv` | ✓ |
+| A2 f_rot_LM 0.0000 vs 0.0454 | 0.0000, 0.0454 | `phase5_report.txt` | ✓ |
+| A2 rotate intents 0 vs 37 (16 episodes) | LM phase 0 vs 37; overlay 16/25 episodes | `phase6c_lm_profile.csv`, `phase6h_report.txt` | ✓ |
+| A2 paired W = 0.0, p = 0.000482, Holm 0.000965 | 0.0, 0.000482, 0.000965 | `multiplicity_table.csv` | ✓ |
+| A2 unpaired p = 2.95e-06 | 2.95e-06 | `multiplicity_table.csv` | ✓ |
+| Within-pair r −0.072 (−0.455, +0.332); −0.074 (−0.456, +0.330) | −0.0725 (−0.4546, 0.3322); −0.0744 (−0.4561, 0.3305) | `phase7i_pairing.csv`, `phase7i_worstrank_corr.csv` | ✓ |
+| Transmission failures 1.33% vs 0.00%, p = 2.4e-06; A2 p = 0.268 | 17/1277 = 1.33%, 0; p = 2.39e-06; 0.268 | `phase6e_report.txt` | ✓ |
+| Log-rank after discounting failed calls p = 0.000157 | 0.000157 | `phase6i_report.txt` | ✓ |
+| Biplane p = 0.375 | 0.375 | `multiplicity_table.csv` | ✓ |
+| A3 (excluded) paired p = 3.34e-06 | 3.34e-06 | `multiplicity_table.csv` | ✓ |
+
+**Independent cross-check** with this repository's `coronav.metrics` on the
+same four confirmatory traces:
+
+- `episode_outcome()` gives 20/13 (A1) and 25/25 (A2) successes, 0
+  non-attempts.
+- `lm_metrics()` is defined for all 100 episodes and gives medians
+  0.1452/0.1749 (A1) and 0.0000/0.0454 (A2), with 0 vs 37 left-main rotate
+  intents in 0 vs 16 A2 episodes.
+- The per-seed A1 values agree with `phase4_pairs_a1.csv` to ≤ 5e-7 (that file
+  is rounded to 6 decimals). The A2 per-seed steps and rotate counts agree
+  with `phase6h_pairs_a2.csv` exactly.
+
+**No mismatch was found in any confirmatory number.**
+
+### 9.3 A2 preparation and the open-loop control, re-executed
+
+- **A2 mesh.** `artifacts/harness/pilot/clip_asoca_left.py` was edited on
+  2026-07-03, after the A2 mesh was written on 2026-07-01. It was re-run on
+  2026-10-16 (`clip_case(12)` only, output redirected to a scratch folder),
+  using `D:\ASOCADataAccess.zip` and the original conda env. The `.vtp` is
+  byte-identical. The `.obj` differs only in meshio's timestamp comment on
+  line 1. Both have 3350 vertices and 6689 faces, with a maximum vertex
+  difference of 0.0. The original mesh has 1 component, 9 boundary edges and
+  6 non-manifold edges, as the manuscript states. Reference hashes are in
+  `artifacts/README.md`.
+- **Open-loop control.** `artifacts/analysis/phase7j_floor_dt001.py` was
+  re-run, unedited, in the original SOFA environment
+  (`D:\conda\envs\steve`, SOFA v23.06, original `coronary_fixture`):
+  - **A1:** 75/75; 26 steps in every episode; final distance 4.582–4.707 mm.
+  - **A2:** 75/75; 11 steps in every episode; 1.756–1.906 mm.
+
+  This matches the manuscript (§3.1) and the committed
+  `floor_dt001_a{1,2}.json` in every aggregate. Per-seed final distances
+  differ from the committed run by up to 0.12 mm (A1) and 0.14 mm (A2). This
+  is consistent with the run-to-run simulator nondeterminism the study
+  measured itself (`artifacts/results/baselines/phase7g_report.txt`). It
+  differs from the container run in §5.3, where three repetitions were
+  identical. Within this rerun, all three repetitions agreed per seed
+  (25/25). The rerun used the A2 step limit of 45 that the script hard-codes
+  (U15).
+
+  Side effect, recorded for completeness: the script writes its outputs to
+  the absolute path `D:\coronav\results\baselines\`. The rerun overwrote
+  those three files in a local checkout; they were restored from git
+  afterwards, and nothing from the rerun is committed.
+
+### 9.4 Findings that the manuscript or the archived pages do not reflect
+
+These are reported, not corrected. Nothing in the manuscript, the code or the
+data was changed to resolve them.
+
+1. **A2 proximity gate 15 mm (U14).** It differs from manuscript §2.3 and
+   from `protocol.json`.
+2. **A2 open-loop step limit 45 (U15).** It differs from manuscript §2.4
+   ("same step limits as the operator arms"). The outcome is unaffected.
+3. **Final-step successes in the exploratory V2 arms.** Three episodes reached
+   target exactly at their 60th and last step:
+   `v2_neutral/wire_only` episode 7 (4.55 mm), `v2_neutral/overlay` episodes
+   7 (4.37 mm) and 8 (4.58 mm). The original analysis, using "terminal and
+   not truncated", scores them as failures. Supplementary Table S1 therefore
+   reports V2 success as 3/10 (wire-only) and 2/10 (overlay). Under the
+   manuscript's success definition (§2.5) they would be 4/10 and 4/10. No
+   confirmatory arm has such an episode.
+4. **Archived prompt-ablation table (`RESULTS.md` §3.2) versus Table S1.**
+   The V3 overlay median is 0.0428 in the archived table and 0.1050 in
+   Table S1. Table S1 excludes the 5 V3-overlay episodes with zero valid
+   actions (`denominators.csv`). The archived p-values (0.1681 / 0.1375 /
+   0.2413) come from a different, unpaired test than Table S1's paired
+   Wilcoxon (0.371 / 0.812 / 0.322). The archived table is superseded and
+   labelled as such.
+5. **Left-main phase convention of the port (U13).**

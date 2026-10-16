@@ -119,7 +119,9 @@ sources: 0 hand-typed numerals, 0 mismatches, and one unresolved placeholder,
 `phase7j` and `phase7_always_advance` drive SOFA v23.06 through the original
 `coronary_fixture`. They expect it at `D:\steve\stEVE`, and the A2 mesh in
 `D:\steve\pilot`. On 2026-10-16, `phase7j_floor_dt001.py` was re-run in the
-original environment; see `docs/MANUSCRIPT_CONCORDANCE.md` §5.4 for the result.
+original environment. It reproduced 75/75 for both anatomies, with 26 and 11 steps
+and the same final-distance ranges (`docs/MANUSCRIPT_CONCORDANCE.md` §9.3).
+Note that it writes to the absolute path `D:\coronav\results\baselines\`.
 
 ### A2 preparation
 
