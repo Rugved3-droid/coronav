@@ -1,0 +1,73 @@
+==========================================================================================
+PHASE 7e — SOLVER FIDELITY OF THE VLM ARMS (A1, A2)
+source: <local-temp-path>
+==========================================================================================
+
+Reference, the EXCLUDED geometry (Phase 7a): A3 non-convergence on 97.2% of steps,
+residual to 1.44. Stop-immediately threshold for a retained anatomy: 50%.
+
+arm                steps  nc steps   % steps  warnings   resid med   resid max
+------------------------------------------------------------------------------------------
+a1_overlay          1448       192   13.26%      2357    1.46e-02    1.31e+00
+a1_wire_only        1277        80    6.26%      1022    1.51e-02    7.11e-01
+a2_overlay          1400        32    2.29%        38    1.97e-03    6.14e-03
+a2_wire_only        1026        32    3.12%        44    1.83e-03    6.52e-03
+
+==========================================================================================
+STOP CONDITION CHECK
+==========================================================================================
+  a1_overlay        13.26%   ok
+  a1_wire_only       6.26%   ok
+  a2_overlay         2.29%   ok
+  a2_wire_only       3.12%   ok
+
+  No retained arm approaches A3's 97.2%. Worst is 13.26%.
+  -> Section V fidelity paragraph with the measured rates, rather than an
+     exclusion.
+
+==========================================================================================
+DOES NON-CONVERGENCE CORRELATE WITH EPISODE OUTCOME?
+==========================================================================================
+  a1_overlay       success n=13  median nc-steps=   2.0   failure n=12  median nc-steps=  13.0   Mann-Whitney p=0.0138
+  a1_wire_only     success n=20  median nc-steps=   1.0   failure n=5   median nc-steps=   1.0   Mann-Whitney p=0.498
+  a2_overlay       success n=25  median nc-steps=   1.0   failure n=0   median nc-steps=   nan   (one outcome class empty; not tested)
+  a2_wire_only     success n=25  median nc-steps=   1.0   failure n=0   median nc-steps=   nan   (one outcome class empty; not tested)
+
+  Descriptive. Non-convergence is a property of the contact state, which the episode's
+  own trajectory determines, so this is an association and not a causal claim.
+
+==========================================================================================
+REPLAY FIDELITY — did the wire move, and did it move as recorded?
+==========================================================================================
+arm               episodes    steps moved  delta corr mean |diff| mm  final-dist diverg mm
+----------------------------------------------------------------------------------------------------
+a1_overlay              25      1448/1448       0.148          0.904                 47.98
+    *** REPLAY DIVERGED 48.0 mm FROM THE ORIGINAL FINAL POSITION —
+        this arm's replay explored different contact states, so its rate
+        does NOT characterise the original episodes. Rate withheld.
+a1_wire_only            25      1277/1277       0.977          0.122                  0.90
+a2_overlay              25      1400/1400       0.951          0.121                  0.37
+a2_wire_only            25      1026/1026       0.911          0.149                  0.34
+
+  Correlation is against the per-step distance change recorded in the trace.
+  Exact agreement is NOT expected: parsed_action is what the model asked for,
+  the harness could override it via the retraction budget or proximity gate, and
+  Phase 7g showed the environment does not reproduce a seed. A high moved-step
+  fraction is the load-bearing check; the correlation is corroboration.
+
+==========================================================================================
+WHY BINARY OUTCOME AGREEMENT IS NOT REPORTED
+==========================================================================================
+  Every successful original episode crosses the 5 mm success threshold ON ITS FINAL
+  RECORDED ACTION, arriving from a median 5.6 mm and clearing the line by roughly
+  0.2 mm. The replay lands a median 0.3-0.9 mm from where the original finished. A
+  margin of 0.2 mm against a divergence of 0.3 mm means binary agreement records
+  which side of a knife edge the last step happened to fall on, not whether the
+  replay navigated the same way. On A2, 25/25 replays finish within 5.5 mm while
+  only 7/25 finish within 5.0 mm - they are terminating a fraction short, not
+  failing to navigate.
+
+  The metric is therefore WITHDRAWN rather than repaired, and replaced by the
+  continuous quantity reported above: replay-vs-original final-distance divergence.
+  Lengthening the replay to chase the threshold would manufacture agreement without
+  making the comparison more faithful.

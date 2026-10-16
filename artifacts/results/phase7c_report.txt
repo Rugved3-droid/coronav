@@ -1,0 +1,89 @@
+========================================================================================
+PHASE 7c — ADVANCE-SPEED SENSITIVITY CURVE (simulator only, no API calls)
+========================================================================================
+HEADLINE, PRE-COMMITTED IN PRESPEC BEFORE THIS RAN: 35.0 mm/s
+  Other speeds are a sensitivity curve, NOT candidate baselines. The reported
+  open-loop floor stays at the harness default whatever this shows.
+
+A between-speed difference counts ONLY if the pooled Wilson intervals separate.
+Phase 7g measured a run-to-run floor of 20.0 pp (A1) and 28.0 pp (A2) for a FIXED
+policy, so a single run per speed could not tell a speed effect from sampling noise.
+A3 is absent: excluded from Results on physical-validity grounds (C11).
+
+COMPLETENESS
+  A1 VMR0066               reps per speed -> 15:3, 35:1, 55:2
+  A2 ASOCA Normal_12       reps per speed -> 15:3, 35:1, 55:2
+  all cells populated
+
+========================================================================================
+A1 VMR0066   budget=60  seeds=25  floor from 7g = 20.0 pp
+========================================================================================
+   15.0 mm/s :  46/ 75 =  61.3%  95% CI [ 50.0,  71.5]  reps=3  per-rep ['56%', '64%', '64%']  median steps 59.0
+                29 failures: 29 hit the 60-step cap, 0 ended within 20 mm of target; final distance median 150.3 mm [21.7, 171.2]
+                -> these hit the cap far from target: they went the wrong way, they did not run out of budget.
+   35.0 mm/s :  13/ 25 =  52.0%  95% CI [ 33.5,  70.0]  reps=1  per-rep ['52%']  median steps 27.0  <-- HEADLINE (pre-committed)
+                12 failures: 12 hit the 60-step cap, 0 ended within 20 mm of target; final distance median 298.5 mm [135.5, 298.5]
+                -> these hit the cap far from target: they went the wrong way, they did not run out of budget.
+   55.0 mm/s :  10/ 50 =  20.0%  95% CI [ 11.2,  33.0]  reps=2  per-rep ['16%', '24%']  median steps 19.0
+                40 failures: 40 hit the 60-step cap, 0 ended within 20 mm of target; final distance median 209.7 mm [209.6, 431.8]
+                -> these hit the cap far from target: they went the wrong way, they did not run out of budget.
+
+  BUDGET-LIMITATION CHECK (steps scale roughly as 1/speed):
+     15.0 mm/s  expected ~ 63.0 steps vs budget 60  BUDGET-LIMITED BY CONSTRUCTION
+     35.0 mm/s  expected ~ 27.0 steps vs budget 60
+     55.0 mm/s  expected ~ 17.2 steps vs budget 60
+    A speed flagged above cannot reach target within its budget no matter how
+    well it navigates. Its rate measures the budget, not the geometry.
+
+  RESOLUTION: pooled n up to 75 per speed gives a Wilson interval 20 pp
+  wide at p = 0.7. Two speeds separate only if their rates differ by roughly that
+  much. A flat curve means FLAT WITHIN THIS RESOLUTION, not that speed has no
+  effect.
+
+  SEPARATION TEST — pairs whose pooled 95% intervals do not overlap:
+     15.0 vs  55.0 mm/s  SEPARATED
+     35.0 vs  55.0 mm/s  SEPARATED
+    -> speed measurably changes the open-loop floor on this anatomy.
+
+  HEADLINE 35.0 mm/s pooled over 1 rep(s): 13/25 = 52.0% [33.5, 70.0]
+  Best rate is 15 mm/s (61.3%), but it
+  does not separate from the headline at this resolution.
+
+========================================================================================
+A2 ASOCA Normal_12   budget=45  seeds=25  floor from 7g = 28.0 pp
+========================================================================================
+   15.0 mm/s :  75/ 75 = 100.0%  95% CI [ 95.1, 100.0]  reps=3  per-rep ['100%', '100%', '100%']  median steps 23.0
+   35.0 mm/s :  17/ 25 =  68.0%  95% CI [ 48.4,  82.8]  reps=1  per-rep ['68%']  median steps 11.0  <-- HEADLINE (pre-committed)
+                8 failures: 8 hit the 45-step cap, 0 ended within 20 mm of target; final distance median 66.7 mm [66.6, 66.7]
+                -> these hit the cap far from target: they went the wrong way, they did not run out of budget.
+   55.0 mm/s :  47/ 50 =  94.0%  95% CI [ 83.8,  97.9]  reps=2  per-rep ['96%', '92%']  median steps 8.0
+                3 failures: 3 hit the 45-step cap, 0 ended within 20 mm of target; final distance median 73.5 mm [73.4, 73.5]
+                -> these hit the cap far from target: they went the wrong way, they did not run out of budget.
+
+  BUDGET-LIMITATION CHECK (steps scale roughly as 1/speed):
+     15.0 mm/s  expected ~ 25.7 steps vs budget 45
+     35.0 mm/s  expected ~ 11.0 steps vs budget 45
+     55.0 mm/s  expected ~  7.0 steps vs budget 45
+    A speed flagged above cannot reach target within its budget no matter how
+    well it navigates. Its rate measures the budget, not the geometry.
+
+  RESOLUTION: pooled n up to 75 per speed gives a Wilson interval 20 pp
+  wide at p = 0.7. Two speeds separate only if their rates differ by roughly that
+  much. A flat curve means FLAT WITHIN THIS RESOLUTION, not that speed has no
+  effect.
+
+  SEPARATION TEST — pairs whose pooled 95% intervals do not overlap:
+     15.0 vs  35.0 mm/s  SEPARATED
+     35.0 vs  55.0 mm/s  SEPARATED
+    -> speed measurably changes the open-loop floor on this anatomy.
+
+  HEADLINE 35.0 mm/s pooled over 1 rep(s): 17/25 = 68.0% [48.4, 82.8]
+
+  *** THE PRE-COMMITTED HEADLINE SPEED IS NOT THE BEST PERFORMER ***
+       15.0 mm/s reaches 100.0% [95.1, 100.0] and SEPARATES from the headline's 68.0%
+       55.0 mm/s reaches 94.0% [83.8, 97.9] and SEPARATES from the headline's 68.0%
+      Best in sweep: 15 mm/s at 100.0%.
+      The open-loop floor for this anatomy is therefore HIGHER than the
+      headline implies, and the manuscript must say so. The headline still
+      stays at the harness default per the PRESPEC pre-commitment: that
+      rule exists precisely for the case where honouring it costs us.

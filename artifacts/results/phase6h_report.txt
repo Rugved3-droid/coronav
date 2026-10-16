@@ -1,0 +1,55 @@
+================================================================================
+PHASE 6h — STEPS-TO-TARGET ON A2 (ASOCA Normal_12), patient-derived
+seed=20260911  bootstrap=10000  alpha=0.05
+================================================================================
+
+analysed: wire_only 25/25   overlay 25/25   complete pairs 25
+success : wire_only 25/25   overlay 25/25   -> no selection bias; every episode contributes a step count
+
+STEPS TO TARGET
+  wire_only median 41.0  IQR[40.0,43.0]  range [37, 45]
+  overlay   median 56.0  IQR[53.0,59.0]  range [50, 62]
+
+--------------------------------------------------------------------------------
+PAIRED TEST — Wilcoxon signed-rank, two-sided
+--------------------------------------------------------------------------------
+  W = 0.0   n = 25 pairs (25 informative)   method = approx
+  two-sided p = 1.25e-05
+  matched-pairs rank-biserial r = +1.000
+  Hodges-Lehmann (overlay - wire_only) = +14.50 steps  95% CI [+13.00, +16.50]
+  overlay slower on 25/25 seeds, faster on 0, tied on 0
+
+WIN RATIO (hierarchical: success, then steps; 'win' = wire_only better)
+  wins 625  losses 0  ties 0  of 625 pairs
+
+  *** COMPLETE SEPARATION ***
+      wire_only's slowest episode (45 steps) is faster than
+      overlay's fastest (50 steps). Every cross-arm pair is a
+      wire_only win, so losses = 0 and the raw win ratio is INFINITE.
+      A percentile CI on the raw ratio does not exist. This is a property of
+      the data, not a computational failure.
+  raw win ratio = inf
+  Haldane-corrected win ratio = 1251.0   bootstrap 95% CI [1251.0, 1251.0]
+    (0.5 added to each cell; the MAGNITUDE is an artefact of that correction,
+     not an effect-size estimate. 10000/10000 replicates were separated.)
+  win fraction = 1.0000   bootstrap 95% CI [1.0000, 1.0000]
+
+EPISODE LENGTH AND ROTATION
+  wire_only  total steps  1026   total rotate intents    26 (LM phase    0)   episodes with any rotation 18/25
+  overlay    total steps  1400   total rotate intents   214 (LM phase   37)   episodes with any rotation 25/25
+
+================================================================================
+STEP LIMIT AND CENSORING
+================================================================================
+  documented step limit, BOTH arms: 120 steps
+    (run_asoca.py ANATOMY_PARAMS['normal12']; the documented full-run invocation
+     passes no --steps override for either mode)
+  episodes not reaching target (i.e. truncated): wire_only 0/25   overlay 0/25
+  longest episode observed: wire_only 45   overlay 62
+
+  Both arms ran under the same limit and nothing was truncated, so no step count is
+  censored and the success counts are directly comparable. An earlier version of this
+  script hardcoded per-arm budgets of 45 and 62 and called the A2 success parity an
+  artefact of unequal budgets. Those two numbers are the longest episode in each arm;
+  the claim is withdrawn (CORRECTIONS.md C20). The limit itself was never persisted by
+  the harness, which is a reproducibility gap recorded rather than papered over.

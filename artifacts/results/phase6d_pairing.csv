@@ -1,0 +1,10 @@
+anatomy,wire_only_analysed,overlay_analysed,complete_pairs,seeds_dropped_from_pairing
+A1,25,25,25,
+A2,25,25,25,
+A3,25,23,23,4254;4265
+A1 V2,10,10,10,
+A1 V3,10,5,5,5045;5056;5067;5078;5089
+A1 V4,10,10,10,
+A1 mono120,10,10,10,
+A1 biplane120,10,10,10,
+A1 old-prompt,15,15,15,

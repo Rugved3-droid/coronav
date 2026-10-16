@@ -1,0 +1,10 @@
+stEVE checkout used by the original harness (D:\steve\stEVE), recorded 2026-10-16
+remote: https://github.com/lkarstensen/stEVE.git
+
+d25e5159157af3e100183a67c429d3bcb843d39d 2026-06-28 09:36:59 -0400 feat: coronary nav milestone â€” ostiumâ†’mid-LAD, 0 NaN, 0 tunneling
+053b8cc67c5e4f0561e84b173b1027f2334f3d31 2026-06-22 20:34:47 -0400 feat: Step 3 complete â€” left coronary fixture env (0066_H_CORO_H)
+c36deb580a763559369c49c46eb8c815798094c7 2026-06-22 20:15:52 -0400 feat: coronary fixture Step 0-2 (0066_H_CORO_H verified)
+f909e7122d846a3c2fec91eedddaa0ba88b6391d 2024-12-04 18:41:18 +0100 Update README.md
+
+The three local commits on top of upstream f909e71 add coronary_fixture/ only.
+git diff --stat f909e71 HEAD -- eve  ->  (empty: eve/ is unmodified upstream f909e71)

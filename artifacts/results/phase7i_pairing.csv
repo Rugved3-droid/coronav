@@ -1,0 +1,5 @@
+anatomy,endpoint,n_pairs,pearson_r,pearson_ci_lo,pearson_ci_hi,spearman_r,spearman_p,efficiency_ratio,paired_wilcoxon_p,unpaired_mannwhitney_p,status
+A1,f_rot_LM,25,-0.0725,-0.4546,0.3322,-0.1646,0.4317,0.9416,0.01472,0.0003842,ok
+A1,steps_both_succeed,9,0.2185,-0.5213,0.7708,0.1702,0.6615,1.2764,0.02427,0.005198,ok
+A2,f_rot_LM,25,nan,nan,nan,nan,nan,nan,0.0004824,2.946e-06,degenerate
+A2,steps_both_succeed,25,0.1120,-0.2962,0.4857,0.1585,0.4492,1.1115,1.25e-05,1.313e-09,ok

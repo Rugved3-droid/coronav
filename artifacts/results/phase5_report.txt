@@ -1,0 +1,109 @@
+==============================================================================
+PHASE 5 — MULTIPLICITY TABLE
+seed=20260911  alpha=0.05  two-sided
+Exclusion rule applied to EVERY count (PRESPEC amendment 2026-09-11):
+zero valid operator actions = not an attempt; denominators trace to
+results/denominators.csv. No denominator is inherited.
+==============================================================================
+
+ENDPOINT STATUS: f_rot_LM is a SECONDARY, mechanistic endpoint. The paper's primary
+claim is navigation degradation (worst-rank, win ratio, log-rank on A1; complete
+separation on A2), which none of the choices below affect.
+
+CHECK 1 — seed matching per anatomy (audit; membership of the family is separate)
+  A1: seeds identical across arms = True; complete pairs = 25; unpaired = none   [IN the confirmatory family]
+  A2: seeds identical across arms = True; complete pairs = 25; unpaired = none   [IN the confirmatory family]
+  A3: seeds identical across arms = True; complete pairs = 23; unpaired = [4254, 4265]   [EXCLUDED (C11)]
+  -> the design is seed-matched, and the PAIRED test is primary (C14). Phase 7i
+     measured the within-pair correlation at about zero, but at n = 25 its CI spans
+     roughly [-0.45, +0.33]: that shows pairing is not demonstrably helping, NOT that
+     pairing is unjustified. The conservative matched test is retained; the unpaired
+     test is reported alongside with rho and its CI.
+
+------------------------------------------------------------------------------
+CONFIRMATORY FAMILY — f_rot_LM, wire_only vs overlay, 2 MEMBERS: A1, A2
+PRIMARY TEST = PAIRED WILCOXON SIGNED-RANK (CORRECTIONS C14, superseding C13).
+A3 is NOT a member: it is excluded from Results on physical-validity grounds (C11),
+and a family is the set of tests we draw inferences from. Declaring three while
+reporting two would overstate the correction burden in our own favour.
+Holm and Bonferroni both adjust over TWO. The unpaired Mann-Whitney is reported
+alongside and is never adjusted over.
+------------------------------------------------------------------------------
+  A1: median 0.1452 -> 0.1749  (diff +0.0297)
+      PRIMARY  Wilcoxon signed-rank W=73.0  n=25 pairs  exact  raw p=0.0147  Holm p=0.0147  Bonferroni p=0.0294
+               matched-pairs rank-biserial=+0.551  HL=+0.0285 [+0.0068, +0.0440]  SIGNIFICANT after Holm
+      alongside Mann-Whitney U=496.0  n=25v25  p=0.000384  rank-biserial=0.587  (NOT Holm-adjusted)
+      within-pair correlation rho = -0.072  95% CI [-0.455, +0.332]
+      conclusion unchanged under either test: True
+  A2: median 0.0000 -> 0.0454  (diff +0.0454)
+      PRIMARY  Wilcoxon signed-rank W=0.0  n=25 (16 informative) pairs  approx  raw p=0.000482  Holm p=0.000965  Bonferroni p=0.000965
+               matched-pairs rank-biserial=+1.000  HL=+0.0498 [+0.0227, +0.0722]  SIGNIFICANT after Holm
+      alongside Mann-Whitney U=512.5  n=25v25  p=2.95e-06  rank-biserial=0.640  (NOT Holm-adjusted)
+      within-pair correlation rho = undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+      conclusion unchanged under either test: True
+      *** 9 pair(s) have a difference of exactly zero and are DROPPED by the signed-rank test;
+          the effective sample is 16, not 25.
+
+  All 2 members significant after Holm: True
+  Worst adjusted p in the family: 0.0147
+
+  STRUCTURAL CAVEAT — A2 IS A FLOOR EFFECT, NOT A MAGNITUDE SHIFT
+    Every one of the 25 A2 wire_only episodes has f_rot_LM of exactly
+    0.0000 — the arm never rotates during the LM phase at all (Phase 6c
+    confirms zero rotate INTENTS, so this is behavioural, not a metric
+    artefact). In overlay, 16/25 episodes rotate.
+    The signed-rank test reduces to a sign test on the 16 informative
+    pairs (all positive, hence W=0 and rank-biserial=+1.000).
+    Report A2 as a presence/absence induction result, not a '+0.045 shift'.
+    This is also why rho is undefined on A2: a constant arm has no shared
+    variance, so pairing there is definitionally useless - which is an argument
+    about A2 specifically, not a general licence to drop the matched test.
+
+------------------------------------------------------------------------------
+EXCLUDED GEOMETRY — NOT IN ANY INFERENCE FAMILY (CORRECTIONS C11)
+------------------------------------------------------------------------------
+Reported here and in Section V prose so the number is auditable. It carries NO
+adjusted p: we do not adjust a test we are not inferring from.
+
+  A3: median 0.1460 -> 0.2318
+      paired Wilcoxon W=6.0  n=23 pairs  exact  raw p=3.34e-06   [NO ADJUSTED p]
+      Mann-Whitney U=498.0  raw p=3.07e-07   [NO ADJUSTED p]
+      within-pair correlation rho = -0.097  95% CI [-0.489, +0.329]
+      unpaired seeds (named, not silent): [4254, 4265]
+      EXCLUSION REASON: the lumen surface is wholly generated as a constant-radius
+      2.5 mm tube along the patient centreline, not a patient surface (C8); the
+      Gauss-Seidel contact solver fails to converge on 97.2% of steps; and an
+      open-loop always-advance policy is shut out at 0/25, indicating the geometry
+      is not navigable rather than merely hard (Phase 7a).
+      NOTE THE DIRECTION: this was the largest effect available to us. Excluding
+      it costs us the strongest result in the original analysis.
+
+------------------------------------------------------------------------------
+CHECK 2 — success rates per arm, ON CORRECTED DENOMINATORS
+------------------------------------------------------------------------------
+  (attempted -> analysed after removing episodes with zero valid actions)
+  A1: wire_only 20/25 (of 25 attempted)   overlay 13/25 (of 25 attempted)   Fisher two-sided p = 0.0718
+  A2: wire_only 25/25 (of 25 attempted)   overlay 25/25 (of 25 attempted)   Fisher two-sided p = 1
+  A3: wire_only 10/25 (of 25 attempted)   overlay 0/23 (of 25 attempted)   Fisher two-sided p = 0.000675
+
+  A2: success rates are IDENTICAL, so the Phase 3 selection bias does NOT
+      apply. A steps-to-target claim on A2 would be well-founded.
+  A3: the overlay arm has ZERO successes among analysed episodes, so
+      steps-to-target is undefined in that arm. NOT RUN — awaiting instruction.
+
+------------------------------------------------------------------------------
+EXPLORATORY (unadjusted; blank adjusted columns in the CSV)
+------------------------------------------------------------------------------
+  success rate                               A1                     Fisher exact                           OR=3.692 n=25+25                p=0.0718
+  first-bifurcation LCx                      A1                     Fisher exact                           OR=0.837 n=25+25                p=1
+  success rate                               A2                     Fisher exact                             OR=nan n=25+25                p=1
+  first-bifurcation LCx                      A2                     Fisher exact                             OR=nan n=25+25                p=1
+  success rate                               A3                     Fisher exact                             OR=inf n=25+23                p=0.000675
+  first-bifurcation LCx                      A3                     Fisher exact                             OR=inf n=25+23                p=1
+  f_rot_LM prompt variant V2                 A1                     Wilcoxon signed-rank (approx)             W=0.0 n=10 (2 informative)   p=0.371
+  f_rot_LM prompt variant V3                 A1                     Wilcoxon signed-rank (exact)              W=6.0 n=5                    p=0.812
+  f_rot_LM prompt variant V4                 A1                     Wilcoxon signed-rank (exact)             W=17.0 n=10                   p=0.322
+  f_rot_LM biplane vs mono (wire_only)       A1                     Wilcoxon signed-rank (exact)             W=18.0 n=10                   p=0.375
+  f_rot_LM biplane vs mono (overlay)         A1                     Wilcoxon signed-rank (exact)             W=18.0 n=10                   p=0.375
+  f_rot_LM contrast vs wire_only             A1 (old prompt, n=15)  Wilcoxon signed-rank (exact)              W=3.0 n=7                    p=0.0781
+  f_rot_LM contrast vs overlay               A1 (old prompt, n=15)  Wilcoxon signed-rank (exact)             W=13.0 n=7                    p=0.938

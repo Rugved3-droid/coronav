@@ -1,0 +1,6 @@
+endpoint,anatomy,family,prespecified,test,statistic,n,raw_p,holm_p,bonferroni_p,within_pair_rho
+f_rot_LM (wire_only vs overlay),A1,"confirmatory (2 members: A1, A2)",yes,"Wilcoxon signed-rank (exact, primary)",W=73.0,25,0.0147,0.0147,0.0294,"-0.072  95% CI [-0.455, +0.332]"
+"f_rot_LM (wire_only vs overlay) - unpaired, reported alongside",A1,confirmatory (secondary presentation),yes,Mann-Whitney U (unpaired),U=496.0,25v25,0.000384,,,"-0.072  95% CI [-0.455, +0.332]"
+f_rot_LM (wire_only vs overlay),A2,"confirmatory (2 members: A1, A2)",yes,"Wilcoxon signed-rank (approx, primary)",W=0.0,25 (16 informative),0.000482,0.000965,0.000965,undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+"f_rot_LM (wire_only vs overlay) - unpaired, reported alongside",A2,confirmatory (secondary presentation),yes,Mann-Whitney U (unpaired),U=512.5,25v25,2.95e-06,,,undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+f_rot_LM (wire_only vs overlay),A3,EXCLUDED (C11) - not in any inference family,n/a,Wilcoxon signed-rank (exact),W=6.0,23,3.34e-06,,,"-0.097  95% CI [-0.489, +0.329]"

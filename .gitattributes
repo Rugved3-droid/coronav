@@ -1,0 +1,4 @@
+# Original research records are stored byte-for-byte (no end-of-line conversion),
+# so that artifacts/CHECKSUMS.sha256 verifies on every platform.
+artifacts/** -text
+CORRECTIONS.md -text

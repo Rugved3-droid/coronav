@@ -1,0 +1,188 @@
+{
+  "anatomy": "a1",
+  "label": "A1 VMR0066",
+  "speed": 35.0,
+  "rotation": 1.5,
+  "rep": 1,
+  "budget": 60,
+  "n_run": 25,
+  "n_success": 16,
+  "minutes": 2.815966475009918,
+  "episodes": [
+    {
+      "seed": 5001,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0834887085934872,
+      "reset_failed": false
+    },
+    {
+      "seed": 5012,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0436630174861639,
+      "reset_failed": false
+    },
+    {
+      "seed": 5023,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0130650205843426,
+      "reset_failed": false
+    },
+    {
+      "seed": 5034,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0469759735621955,
+      "reset_failed": false
+    },
+    {
+      "seed": 5045,
+      "success": false,
+      "steps": 60,
+      "final_dist": 298.61003226566237,
+      "reset_failed": false
+    },
+    {
+      "seed": 5056,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0727597021604136,
+      "reset_failed": false
+    },
+    {
+      "seed": 5067,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0827083055850362,
+      "reset_failed": false
+    },
+    {
+      "seed": 5078,
+      "success": false,
+      "steps": 60,
+      "final_dist": 135.55129376537928,
+      "reset_failed": false
+    },
+    {
+      "seed": 5089,
+      "success": false,
+      "steps": 60,
+      "final_dist": 135.56224366839194,
+      "reset_failed": false
+    },
+    {
+      "seed": 5100,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1019034745806364,
+      "reset_failed": false
+    },
+    {
+      "seed": 5111,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0807787765293317,
+      "reset_failed": false
+    },
+    {
+      "seed": 5122,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.07327135908238,
+      "reset_failed": false
+    },
+    {
+      "seed": 5133,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0738772600210378,
+      "reset_failed": false
+    },
+    {
+      "seed": 5144,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1054545487749976,
+      "reset_failed": false
+    },
+    {
+      "seed": 5155,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0357566463035834,
+      "reset_failed": false
+    },
+    {
+      "seed": 5166,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1018848168493613,
+      "reset_failed": false
+    },
+    {
+      "seed": 5177,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1061746840986841,
+      "reset_failed": false
+    },
+    {
+      "seed": 5188,
+      "success": false,
+      "steps": 60,
+      "final_dist": 298.6109756051552,
+      "reset_failed": false
+    },
+    {
+      "seed": 5199,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0331506044518497,
+      "reset_failed": false
+    },
+    {
+      "seed": 5210,
+      "success": false,
+      "steps": 60,
+      "final_dist": 298.6044670719337,
+      "reset_failed": false
+    },
+    {
+      "seed": 5221,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1054778134738867,
+      "reset_failed": false
+    },
+    {
+      "seed": 5232,
+      "success": false,
+      "steps": 60,
+      "final_dist": 135.65598773207202,
+      "reset_failed": false
+    },
+    {
+      "seed": 5243,
+      "success": false,
+      "steps": 60,
+      "final_dist": 298.56961373981875,
+      "reset_failed": false
+    },
+    {
+      "seed": 5254,
+      "success": false,
+      "steps": 60,
+      "final_dist": 135.6114206931806,
+      "reset_failed": false
+    },
+    {
+      "seed": 5265,
+      "success": false,
+      "steps": 60,
+      "final_dist": 135.5630266759561,
+      "reset_failed": false
+    }
+  ]
+}

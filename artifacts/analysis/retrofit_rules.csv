@@ -1,0 +1,95 @@
+file,pattern,key,note
+*,"\bn = (?P<v>25)\b",cfg.n_seeds,sample size in running prose
+*,"(?P<v>25) seeds per arm",cfg.n_seeds,design statement
+*,"at n = (?P<v>25) with",cfg.n_seeds,power/precision statements
+*,"(?P<v>25) matched pairs",a1.rot.n_pairs,A1 rotation pair count
+*,"(?P<v>25) seed-matched pairs",a1.rot.n_pairs,A1 rotation pair count
+*,"signed-rank, (?P<v>25) pairs",a1.rot.n_pairs,worst-rank table row
+*,"all (?P<v>50) episodes",cfg.n_episodes_a1,A1 both arms
+*,"over \*\*all (?P<v>50) episodes\*\*",cfg.n_episodes_a1,A1 both arms
+*,"analysed over all (?P<v>50) episodes",cfg.n_episodes_a1,A1 both arms
+*,"Holm p = (?P<v>0\.0147)",a1.rot.holm,A1 Holm-adjusted - NOT the raw p
+*,"Holm-adjusted\s*\n?\s*\*\*p = (?P<v>0\.0147)",a1.rot.holm,A1 Holm across a line break
+*,"A1 is (?P<v>0\.0147) either way",a1.rot.holm,invariance statement uses the adjusted value
+*,"A1's adjusted p is\s*\n?\s*(?P<v>0\.0147)",a1.rot.holm,invariance statement
+*,"p = (?P<v>0\.0147)",a1.rot.p_paired,A1 raw paired p - apply AFTER the Holm rules above
+*,"\*\*p = (?P<v>0\.0147)\*\*",a1.rot.p_paired,A1 raw paired p emphasised
+*,"(?P<v>0\.0147) to 0\.000384",a1.rot.p_paired,the 38-fold sentence - from value
+*,"A2 Holm p = (?P<v>0\.000965)",a2.rot.holm,A2 Holm
+*,"A2 (?P<v>0\.000965) either",a2.rot.holm,invariance statement
+*,"A2's (?P<v>0\.000965) under",a2.rot.holm,invariance statement
+*,"and (?P<v>0\.000965)\)",a2.rot.bonferroni,A2 Bonferroni in the parenthetical pair
+*,"\*\*(?P<v>0\.000965)\*\*",a2.rot.holm,A2 Holm in the comparison table
+*,"0\.0147 to (?P<v>0\.000384)",a1.rot.p_unpaired,the 38-fold sentence - to value
+*,"p = (?P<v>0\.000384)",a1.rot.p_unpaired,A1 unpaired alongside
+*,"efficiency ratios of (?P<v>0\.94)",rho.efficiency_frot,both endpoints round to this
+*,"–(?P<v>0\.98) for the other arms",replay.corr_hi,replay correlation upper bound
+*,"W = (?P<v>0\.0), 16 informative",a2.rot.W,A2 statistic in the comparison table
+*,"(?P<v>16) informative",a2.rot.n_informative,A2 informative pairs
+*,"versus 37 across (?P<v>16) of",a2.rot_episodes_lm_ov,A2 episodes rotating in LM
+*,"versus (?P<v>37) across",a2.rot_intents_lm_ov,A2 LM rotate intents
+*,"overlay higher on (?P<v>20) of",a1.rot.n_higher,direction statement
+*,"\((?P<v>20)/25 versus 13/25\)",a1.success_wo,A1 wire_only successes
+*,"\(20/25 versus (?P<v>13)/25\)",a1.success_ov,A1 overlay successes
+*,"clearing A1 at (?P<v>17)/25",base.aa_a1_success,always-advance A1
+*,"and A2\s*\n?\s*at (?P<v>20)/25",base.aa_a2_success,always-advance A2
+*,"shut out at \*\*(?P<v>0)/25\*\*",base.aa_a3_success,always-advance A3
+*,"only \*\*(?P<v>4) of 25 seeds",floor.a1_concordant,A1 concordant seeds
+*,"only (?P<v>4) of 25 seeds",floor.a1_concordant,A1 concordant seeds
+*,"and (?P<v>2) of 25 on A2",floor.a2_concordant,A2 concordant seeds
+*,"operator's (?P<v>48)",a1.steps_median_wo_succ,A1 successes-only median - descriptive
+*,"^and (?P<v>41)\.",a2.steps_median_wo_int,A2 median steps
+*,"\((?P<v>81), 9 and 72",mesh.a1_boundary,boundary edges
+*,"\(81, (?P<v>9) and 72",mesh.a2_boundary,boundary edges
+*,"\(81, 9 and (?P<v>72)",mesh.a3_boundary,boundary edges
+*,"with\s*\n?\s*(?P<v>81) boundary edges",mesh.a1_boundary,boundary edges
+*,"and (?P<v>9) on A2\. Watertight",mesh.a2_boundary,boundary edges
+*,"\*\*(?P<v>6) non-manifold edges\*\*",mesh.a2_nonmanifold,non-manifold edges
+*,"within (?P<v>5) mm of target",cfg.success_mm,success threshold
+*,"cranial (?P<v>40)°",cfg.primary_angle,primary projection
+*,"\(LAO\s*\n?\s*(?P<v>60)° cranial",cfg.biplane_lao,biplane view
+*,"cranial (?P<v>20)°\) are used",cfg.biplane_cranial,biplane view
+*,"\| A1 \| (?P<v>60) \| 60 \|",a1.budget,budget table wire_only
+*,"\| A1 \| \{\{a1\.budget\}\} \| (?P<v>60) \|",a1.budget,budget table overlay
+*,"\*\*(?P<v>38)-fold\*\*",hist.fold_improvement,the C13 improvement factor
+*,"than (?P<v>50)% failed calls",excl.hold_threshold_pct,exclusion sensitivity threshold
+*,"tolerance (?P<v>1)×10",cfg.solver_tol_mantissa,solver tolerance mantissa
+*,"–(?P<v>64)%",floor.a1_max_reps,range upper bound - en dash reads as minus so this needs its own rule
+*,"–(?P<v>68)%",floor.a1_max_all,six-run span upper bound
+*,"–(?P<v>80)%",floor.a2_max,A2 range upper bound
+*,"\b(?P<v>44)–",floor.a1_min,range lower bound not caught by the parenthesised rules
+*,"\b(?P<v>52)–",floor.a2_min,range lower bound
+*,"/(?P<v>25)\b",cfg.n_seeds,denominator in x/25 constructions
+*,"\b(?P<v>25)/\{\{cfg\.n_seeds\}\}",cfg.n_seeds,numerator of 25/25 after the denominator rule has run
+*,"\b(?P<v>25)/25",cfg.n_seeds,numerator of 25/25
+*,"in all (?P<v>25) wire-only episodes",cfg.n_seeds,A2 induction statement
+*,"on (?P<v>25) pairs",a2.rot.n_pairs,A2 pair count
+*,"all (?P<v>25) seeds per anatomy",cfg.n_seeds,oracle pending line
+*,"W = (?P<v>0\.0),",a2.rot.W,A2 statistic in prose
+*,"Holm-adjusted\s*\n?\s*\*\*p = (?P<v>0\.000965)",a2.rot.holm,A2 Holm across a line break
+*,"\| \*\*(?P<v>0\.0147)\*\* \|",a1.rot.holm,Holm column in the comparison table
+*,"to (?P<v>0\.000384) —",a1.rot.p_unpaired,the 38-fold sentence destination
+*,"→ (?P<v>0\.0147)\)",a1.rot.p_paired,concede-then-reverse sentence
+*,"Holm (?P<v>0\.0147)\)",a1.rot.holm,claims-absent list
+*,"p=(?P<v>0\.0147)",a1.rot.p_paired,CSV unspaced form
+*,"Holm (?P<v>0\.0147)\b",a1.rot.holm,CSV unspaced Holm form
+*,"p=(?P<v>0\.000384)",a1.rot.p_unpaired,CSV unspaced form
+*,"p=(?P<v>0\.000965)",a2.rot.holm,CSV unspaced form
+*,"n=(?P<v>25)\b",cfg.n_seeds,CSV unspaced sample size
+*,"Measured (?P<v>81)/9/72",mesh.a1_boundary,CSV mesh triple
+*,"Measured \{\{mesh\.a1_boundary\}\}/(?P<v>9)/72",mesh.a2_boundary,CSV mesh triple
+*,"/(?P<v>72) boundary",mesh.a3_boundary,CSV mesh triple
+*,"A3 (?P<v>6) non-manifold",mesh.a2_nonmanifold,CSV mesh counts
+*,"(?P<v>38)-fold",hist.fold_improvement,CSV fold-change mention
+*,"only (?P<v>4)/25 seeds",floor.a1_concordant,abstract concordance
+*,"and (?P<v>2)/25 \(A2\)",floor.a2_concordant,abstract concordance
+*,"\((?P<v>68)% on A1",floor.a1_max_all,single-draw parenthetical
+*,"(?P<v>80)% on A2\)",floor.a2_max,single-draw parenthetical
+*,"draws \((?P<v>68)%",floor.a1_max_all,single-draw parenthetical
+*,"\{\{floor\.a1_max_all\}\}%, (?P<v>80)%\)",floor.a2_max,single-draw parenthetical
+*,"over \*\*(?P<v>20) pp",floor.a1_range_pp,A1 range in percentage points
+*,"and \*\*(?P<v>28) pp",floor.a2_range_pp,A2 range in percentage points
+*,"over \*\*(?P<v>20) percentage points",floor.a1_range_pp,A1 range spelled out
+*,"and \*\*(?P<v>28) on A2",floor.a2_range_pp,A2 range spelled out
+*,"at (?P<v>80)% power",cfg.power,design sensitivity
+*,"also reaches (?P<v>80)%",op.a1_success_pct,quoting the reviewer's own test

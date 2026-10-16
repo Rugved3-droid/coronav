@@ -1,0 +1,17 @@
+ref,decision,doi,title_sim,matched_title,matched_container,matched_year,reason
+1,verified,10.1016/j.compbiomed.2025.110844,1.0,"Learning-based autonomous navigation, benchmark environments and simulation framework for endovascular interventions",Computers in Biology and Medicine,2025,
+2,verified,10.1109/access.2021.3135277,1.0,Deep Reinforcement Learning for Guidewire Navigation in Coronary Artery Phantom,IEEE Access,2021,
+3,verified,10.1007/s11548-023-02938-7,1.0,Recurrent neural networks for generalization towards the vessel geometry in autonomous endovascular guidewire navigation in the aortic arch,International Journal of Computer Assisted Radiology and Surgery,2023,
+4,no DOI - not applicable,,,,,,"software plugin, cited by URL"
+5,UNRESOLVED - no candidate passed all checks,,0.519,,,,"best hit: 'Lumen diameter of normal human coronary arteries. Influence of age, se' sim=0.519 author_ok=True year=1992"
+6,UNRESOLVED - no candidate passed all checks,,0.565,,,,best hit: 'EP4A: Software and Computer Based Simulator Research: Development and ' sim=0.565 author_ok=True year=2007
+7,verified,10.1109/tmrb.2024.3421256,1.0,CathSim: An Open-Source Simulator for Endovascular Intervention,IEEE Transactions on Medical Robotics and Bionics,2024,
+8,no DOI - not applicable,,,,,,"arXiv preprint, cited by arXiv identifier"
+9,verified,10.1115/1.4025983,1.0,The Vascular Model Repository: A Public Resource of Medical Imaging Data and Blood Flow Simulation Results,Journal of Medical Devices,2013,
+10,verified,10.1038/s41597-023-02016-2,1.0,Annotated computed tomography coronary angiogram images and associated data of normal and diseased arteries,Scientific Data,2023,
+11,no DOI - not applicable,,,,,,"vendor announcement, cited by URL"
+12,verified,10.1002/(sici)1097-0258(19990615)18:11<1341::aid-sim129>3.0.co;2-7,1.0,Combining mortality and longitudinal measures in clinical trials,Statistics in Medicine,1999,
+13,verified,10.1093/eurheartj/ehr352,1.0,The win ratio: a new approach to the analysis of composite endpoints in clinical trials based on clinical priorities,European Heart Journal,2011,
+14,verified,10.1214/aoms/1177704172,1.0,Estimates of Location Based on Rank Tests,The Annals of Mathematical Statistics,1963,
+15,UNRESOLVED - no candidate passed all checks,,0.724,,,,best hit: 'Correction: An Improved Sequentially Rejective Bonferroni Test Procedu' sim=0.724 author_ok=False year=1987
+16,verified,10.1080/01621459.1927.10502953,1.0,"Probable Inference, the Law of Succession, and Statistical Inference",Journal of the American Statistical Association,1927,

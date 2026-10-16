@@ -1,0 +1,68 @@
+============================================================================================
+PHASE 6d — DENOMINATORS AFTER THE EXCLUSION RULE
+============================================================================================
+
+EXCLUDED = zero valid operator actions (total API transmission failure).
+INCLUDED = any valid operator actions, partial transmission failures included.
+Nothing keeps a denominator by inheritance.
+
+anatomy          arm          attempted  excluded  analysed  partial  exclusion reasons
+--------------------------------------------------------------------------------------------
+A1               wire_only           25         0        25        1  none
+A1               overlay             25         0        25        0  none
+A2               wire_only           25         0        25        0  none
+A2               overlay             25         0        25        2  none
+A3               wire_only           25         0        25        6  none
+A3               overlay             25         2        23        4  seed 4254 (ep24, 150 rows): all rows api_ok=False; seed 4265 (ep25, 150 rows): all rows api_ok=False
+A1 V2            wire_only           10         0        10        0  none
+A1 V2            overlay             10         0        10        0  none
+A1 V3            wire_only           10         0        10        1  none
+A1 V3            overlay             10         5         5        1  seed 5045 (ep5, 60 rows): all rows api_ok=False; seed 5056 (ep6, 60 rows): all rows api_ok=False; seed 5067 (ep7, 60 rows): all rows api_ok=False; seed 5078 (ep8, 60 rows): all rows api_ok=False; seed 5089 (ep9, 60 rows): all rows api_ok=False
+A1 V4            wire_only           10         0        10        0  none
+A1 V4            overlay             10         0        10        0  none
+A1 mono120       wire_only           10         0        10        1  none
+A1 mono120       overlay             10         0        10        1  none
+A1 biplane120    wire_only           10         0        10        0  none
+A1 biplane120    overlay             10         0        10        4  none
+A1 old-prompt    wire_only           15         0        15        0  none
+A1 old-prompt    overlay             15         0        15        0  none
+A1 old-prompt    contrast            15         8         7        1  seed 2078 (ep8, 60 rows): all rows api_ok=False; seed 2089 (ep9, 60 rows): all rows api_ok=False; seed 2100 (ep10, 60 rows): all rows api_ok=False; seed 2111 (ep11, 60 rows): all rows api_ok=False; seed 2122 (ep12, 60 rows): all rows api_ok=False; seed 2133 (ep13, 60 rows): all rows api_ok=False; seed 2144 (ep14, 60 rows): all rows api_ok=False; seed 2155 (ep15, 60 rows): all rows api_ok=False
+
+============================================================================================
+PAIRING AFTER EXCLUSION (a seed excluded in one arm is dropped from paired tests)
+============================================================================================
+  A1               wire_only analysed  25   overlay analysed  25   complete pairs  25   dropped from pairing: none
+  A2               wire_only analysed  25   overlay analysed  25   complete pairs  25   dropped from pairing: none
+  A3               wire_only analysed  25   overlay analysed  23   complete pairs  23   dropped from pairing: [4254, 4265]
+  A1 V2            wire_only analysed  10   overlay analysed  10   complete pairs  10   dropped from pairing: none
+  A1 V3            wire_only analysed  10   overlay analysed   5   complete pairs   5   dropped from pairing: [5045, 5056, 5067, 5078, 5089]
+  A1 V4            wire_only analysed  10   overlay analysed  10   complete pairs  10   dropped from pairing: none
+  A1 mono120       wire_only analysed  10   overlay analysed  10   complete pairs  10   dropped from pairing: none
+  A1 biplane120    wire_only analysed  10   overlay analysed  10   complete pairs  10   dropped from pairing: none
+  A1 old-prompt    wire_only analysed  15   overlay analysed  15   complete pairs  15   dropped from pairing: none
+
+============================================================================================
+PARTIAL TRANSMISSION FAILURES (retained; listed for the exclusion audit)
+============================================================================================
+  A1               wire_only   seed 5221: 17 api_ok=False, 17 parse_ok=False of 60 rows -> RETAINED
+  A2               overlay     seed 3210: 1 api_ok=False, 1 parse_ok=False of 57 rows -> RETAINED
+  A2               overlay     seed 3232: 2 api_ok=False, 2 parse_ok=False of 60 rows -> RETAINED
+  A3               wire_only   seed 4012: 1 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               wire_only   seed 4056: 0 api_ok=False, 4 parse_ok=False of 150 rows -> RETAINED
+  A3               wire_only   seed 4067: 0 api_ok=False, 1 parse_ok=False of 120 rows -> RETAINED
+  A3               wire_only   seed 4078: 0 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               wire_only   seed 4100: 0 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               wire_only   seed 4210: 0 api_ok=False, 2 parse_ok=False of 150 rows -> RETAINED
+  A3               overlay     seed 4012: 0 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               overlay     seed 4078: 0 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               overlay     seed 4100: 0 api_ok=False, 1 parse_ok=False of 150 rows -> RETAINED
+  A3               overlay     seed 4243: 4 api_ok=False, 4 parse_ok=False of 150 rows -> RETAINED
+  A1 V3            wire_only   seed 5045: 1 api_ok=False, 1 parse_ok=False of 60 rows -> RETAINED
+  A1 V3            overlay     seed 5034: 53 api_ok=False, 53 parse_ok=False of 60 rows -> RETAINED
+  A1 mono120       wire_only   seed 2078: 12 api_ok=False, 12 parse_ok=False of 120 rows -> RETAINED
+  A1 mono120       overlay     seed 2078: 0 api_ok=False, 1 parse_ok=False of 120 rows -> RETAINED
+  A1 biplane120    overlay     seed 2012: 0 api_ok=False, 1 parse_ok=False of 48 rows -> RETAINED
+  A1 biplane120    overlay     seed 2078: 0 api_ok=False, 1 parse_ok=False of 43 rows -> RETAINED
+  A1 biplane120    overlay     seed 2089: 0 api_ok=False, 1 parse_ok=False of 43 rows -> RETAINED
+  A1 biplane120    overlay     seed 2100: 0 api_ok=False, 1 parse_ok=False of 41 rows -> RETAINED
+  A1 old-prompt    contrast    seed 2067: 4 api_ok=False, 4 parse_ok=False of 60 rows -> RETAINED

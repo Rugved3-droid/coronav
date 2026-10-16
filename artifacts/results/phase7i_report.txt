@@ -1,0 +1,71 @@
+========================================================================================
+PHASE 7i — IS SEED-MATCHING DOING ANY WORK?
+========================================================================================
+
+Correlation is computed FIRST and recorded, then it selects the test. The primary
+test is not chosen by which p-value is smaller.
+
+========================================================================================
+A1
+========================================================================================
+
+  ENDPOINT: f_rot_LM (LM-phase rotation-movement fraction)
+    within-pair correlation: n=25
+      Pearson  r = -0.072  95% CI [-0.455, +0.332]  p = 0.731
+      Spearman r = -0.165  95% CI [-0.534, +0.258]  p = 0.432
+      Var(unpaired contrast) = 0.00334861
+      Var(paired difference) = 0.00355639
+      variance ratio (unpaired/paired) = 0.9416   -> pairing removes -6.2% of the contrast variance
+      NOTE: pairing also costs degrees of freedom (n-1 = 24 vs 2n-2 = 48).
+      -> pairing removes essentially NO shared variance while costing df:
+         the paired test is the LESS efficient choice here.
+      paired Wilcoxon   W=73.0  p=0.01472  (exact, 25/25 informative)
+      unpaired Mann-Whitney U=496.0  p=0.0003842
+
+  ENDPOINT: steps-to-target (seeds where BOTH arms succeeded, n=9)
+    within-pair correlation: n=9
+      Pearson  r = +0.219  95% CI [-0.521, +0.771]  p = 0.572
+      Spearman r = +0.170  95% CI [-0.573, +0.760]  p = 0.662
+      Var(unpaired contrast) = 36.9444
+      Var(paired difference) = 28.9444
+      variance ratio (unpaired/paired) = 1.2764   -> pairing removes +21.7% of the contrast variance
+      NOTE: pairing also costs degrees of freedom (n-1 = 8 vs 2n-2 = 16).
+      paired Wilcoxon   W=3.0  p=0.02427  (approx, 9/9 informative)
+      unpaired Mann-Whitney U=72.5  p=0.005198
+      CAVEAT: conditioning on both arms succeeding is the very selection
+      Reviewer 2 flagged (C1). Reported here only to characterise the
+      correlation, not as an endpoint.
+
+========================================================================================
+A2
+========================================================================================
+
+  ENDPOINT: f_rot_LM (LM-phase rotation-movement fraction)
+    within-pair correlation: UNDEFINED — the wire_only arm is CONSTANT across all 25 seeds
+      (sd_wire_only=0.000e+00, sd_overlay=4.734e-02). A constant variable has no
+      shared variance to remove, so pairing is definitionally useless here.
+      paired Wilcoxon   W=0.0  p=0.0004824  (approx, 16/25 informative)
+      unpaired Mann-Whitney U=512.5  p=2.946e-06
+
+  ENDPOINT: steps-to-target (seeds where BOTH arms succeeded, n=25)
+    within-pair correlation: n=25
+      Pearson  r = +0.112  95% CI [-0.296, +0.486]  p = 0.594
+      Spearman r = +0.158  95% CI [-0.264, +0.530]  p = 0.449
+      Var(unpaired contrast) = 15.79
+      Var(paired difference) = 14.2067
+      variance ratio (unpaired/paired) = 1.1115   -> pairing removes +10.0% of the contrast variance
+      NOTE: pairing also costs degrees of freedom (n-1 = 24 vs 2n-2 = 48).
+      paired Wilcoxon   W=0.0  p=1.25e-05  (approx, 25/25 informative)
+      unpaired Mann-Whitney U=625.0  p=1.313e-09
+      CAVEAT: conditioning on both arms succeeding is the very selection
+      Reviewer 2 flagged (C1). Reported here only to characterise the
+      correlation, not as an endpoint.
+
+========================================================================================
+DECISION RULE, STATED BEFORE THE NUMBERS WERE SEEN
+========================================================================================
+  correlation near zero  -> seed-matching removes no shared variance; pairing is
+                            unjustified; the unpaired Mann-Whitney is primary.
+  correlation positive   -> pairing does real work; the paired result stays primary.
+  Both tests are reported in the paper either way, with the correlation given as the
+  justification for the choice.

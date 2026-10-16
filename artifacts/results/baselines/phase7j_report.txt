@@ -1,0 +1,32 @@
+========================================================================================
+PHASE 7j — ALWAYS-ADVANCE FLOOR AT THE OPERATOR ARMS' TIMESTEP (simulator only)
+dt_simulation = 0.001  (arms 0.001; previous baselines 0.006)
+policy: 35.0 mm/s advance, rotation 0.0; R=3 repetitions
+seeds, budgets, policy and success criterion identical to Phase 7g
+========================================================================================
+
+### A1 VMR0066  budget=60  seeds=25
+  rep 1/3: success 25/25 = 100.0%  (7.5 min)
+  rep 2/3: success 25/25 = 100.0%  (6.8 min)
+  rep 3/3: success 25/25 = 100.0%  (6.8 min)
+
+  POOLED at dt=0.001: 75/75 = 100.0%  Wilson 95% CI [95.1, 100.0]
+  Pooled at dt=0.006 (committed): 56.6%
+  Shift: +43.4 pp against a measured run-to-run range of 20.0 pp for a fixed policy at dt=0.006 (Phase 7g)
+  *** SHIFT EXCEEDS THE MEASURED NOISE BAND. The timestep changes the floor, and every calibration figure that uses it must be re-derived. ***
+  per-seed concordance across the 3 reps: 25/25
+  distinct post-reset tip positions: 1
+  wrote floor_dt001_a1.json
+
+### A2 ASOCA Normal_12  budget=45  seeds=25
+  rep 1/3: success 25/25 = 100.0%  (2.1 min)
+  rep 2/3: success 25/25 = 100.0%  (2.1 min)
+  rep 3/3: success 25/25 = 100.0%  (2.2 min)
+
+  POOLED at dt=0.001: 75/75 = 100.0%  Wilson 95% CI [95.1, 100.0]
+  Pooled at dt=0.006 (committed): 70.9%
+  Shift: +29.1 pp against a measured run-to-run range of 28.0 pp for a fixed policy at dt=0.006 (Phase 7g)
+  *** SHIFT EXCEEDS THE MEASURED NOISE BAND. The timestep changes the floor, and every calibration figure that uses it must be re-derived. ***
+  per-seed concordance across the 3 reps: 25/25
+  distinct post-reset tip positions: 1
+  wrote floor_dt001_a2.json

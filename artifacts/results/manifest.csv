@@ -1,0 +1,313 @@
+key,value,source,description
+a1.rot.W,73.0,results/phase4_tests.csv,A1 f_rot_LM paired Wilcoxon statistic (primary)
+a1.rot.n_pairs,25,results/phase4_tests.csv,A1 complete seed-matched pairs
+a1.rot.p_paired,0.0147,results/phase4_tests.csv,A1 f_rot_LM paired Wilcoxon two-sided p (PRIMARY test C14)
+a1.rot.holm,0.0147,results/multiplicity_table.csv,A1 Holm-adjusted p over the two-member family
+a1.rot.bonferroni,0.0294,results/multiplicity_table.csv,A1 Bonferroni p over the two-member family
+a1.rot.bonferroni_if3,0.0442,results/phase6_report.txt,A1 Bonferroni had A3 been counted (counterfactual only)
+a1.rot.rb_paired,+0.551,results/phase4_tests.csv,A1 matched-pairs rank-biserial
+a1.rot.hl,+0.0285,results/phase4_tests.csv,A1 Hodges-Lehmann paired shift in f_rot_LM
+a1.rot.hl_lo,+0.0068,results/phase4_tests.csv,A1 HL distribution-free 95% CI lower bound
+a1.rot.hl_hi,+0.0440,results/phase4_tests.csv,A1 HL distribution-free 95% CI upper bound
+a1.rot.U,496.0,results/phase4_tests.csv,A1 unpaired Mann-Whitney U (reported alongside)
+a1.rot.p_unpaired,0.000384,results/phase4_tests.csv,A1 unpaired Mann-Whitney two-sided p (alongside; never adjusted over)
+a1.rot.rb_unpaired,0.587,results/phase4_tests.csv,A1 unmatched rank-biserial
+a1.rot.median_wo,0.1452,results/phase4_report.txt,A1 wire_only f_rot_LM median
+a1.rot.median_ov,0.1749,results/phase4_report.txt,A1 overlay f_rot_LM median
+a1.rot.n_higher,20,results/phase4_report.txt,A1 seeds on which overlay f_rot_LM exceeded wire_only
+a1.rot.mde,0.0292,results/phase4_report.txt,A1 simulated minimum detectable paired shift (DEMOTED C15; tie caveat applies)
+a1.rot.mde_ratio,0.98,results/phase4_report.txt,observed HL as a multiple of the simulated MDE (DEMOTED C15)
+a2.rot.W,0.0,results/multiplicity_table.csv,A2 f_rot_LM paired Wilcoxon statistic (primary)
+a2.rot.n_pairs,25,results/multiplicity_table.csv,A2 seed-matched pairs
+a2.rot.n_informative,16,results/multiplicity_table.csv,A2 informative pairs after zero-difference pairs are dropped
+a2.rot.p_paired,0.000482,results/multiplicity_table.csv,A2 f_rot_LM paired Wilcoxon two-sided p (PRIMARY test C14)
+a2.rot.holm,0.000965,results/multiplicity_table.csv,A2 Holm-adjusted p over the two-member family
+a2.rot.bonferroni,0.000965,results/multiplicity_table.csv,A2 Bonferroni p over the two-member family
+a2.rot.bonferroni_if3,0.00145,results/phase6_report.txt,A2 Bonferroni had A3 been counted (counterfactual only)
+a2.rot.U,512.5,results/multiplicity_table.csv,A2 unpaired Mann-Whitney U (reported alongside)
+a2.rot.p_unpaired,2.95e-06,results/multiplicity_table.csv,A2 unpaired Mann-Whitney two-sided p (alongside)
+a2.rot.rb_unpaired,0.640,results/phase5_report.txt,A2 unmatched rank-biserial
+a2.rot.rb_paired,+1.000,results/phase5_report.txt,A2 matched-pairs rank-biserial (sign test on informative pairs)
+a2.rot.hl,+0.0498,results/phase5_report.txt,A2 Hodges-Lehmann paired shift in f_rot_LM
+a2.rot.hl_lo,+0.0227,results/phase5_report.txt,A2 HL 95% CI lower bound
+a2.rot.hl_hi,+0.0722,results/phase5_report.txt,A2 HL 95% CI upper bound
+a2.rot.median_wo,0.0000,results/phase5_report.txt,A2 wire_only f_rot_LM median (arm is identically zero)
+a2.rot.median_ov,0.0454,results/phase5_report.txt,A2 overlay f_rot_LM median
+a2.rot.n_zero_dropped,9,results/phase5_report.txt,A2 zero-difference pairs dropped by the signed-rank test
+a3.rot.W,6.0,results/multiplicity_table.csv,A3 paired Wilcoxon statistic (EXCLUDED geometry; no adjusted p)
+a3.rot.n_pairs,23,results/multiplicity_table.csv,A3 complete pairs after two all-API-failed overlay episodes
+a3.rot.p_paired,3.34e-06,results/multiplicity_table.csv,A3 paired Wilcoxon p - reported raw in Section V only (C11)
+a3.rot.U,498.0,results/multiplicity_table.csv,A3 unpaired Mann-Whitney U (excluded geometry)
+a3.rot.p_unpaired,3.07e-07,results/multiplicity_table.csv,A3 unpaired p (excluded geometry)
+rho.a1.frot,−0.072,results/phase7i_pairing.csv,A1 f_rot_LM within-pair Pearson correlation (artifact -0.0725)
+rho.a1.frot_lo,−0.455,results/phase7i_pairing.csv,A1 f_rot_LM rho 95% CI lower bound (artifact -0.4546)
+rho.a1.frot_hi,+0.332,results/phase7i_pairing.csv,A1 f_rot_LM rho 95% CI upper bound (artifact 0.3322)
+rho.a1.worstrank,−0.074,results/phase7i_worstrank_corr.csv,A1 worst-rank within-pair Pearson correlation (artifact -0.0744)
+rho.a1.worstrank_lo,−0.456,results/phase7i_worstrank_corr.csv,A1 worst-rank rho 95% CI lower bound (artifact -0.4561)
+rho.a1.worstrank_hi,+0.330,results/phase7i_worstrank_corr.csv,A1 worst-rank rho 95% CI upper bound (artifact 0.3305)
+rho.a3.frot,−0.097,results/multiplicity_table.csv,A3 f_rot_LM within-pair Pearson correlation (excluded geometry)
+rho.a3.frot_lo,−0.489,results/multiplicity_table.csv,A3 rho 95% CI lower bound
+rho.a3.frot_hi,+0.329,results/multiplicity_table.csv,A3 rho 95% CI upper bound
+rho.efficiency_frot,0.94,results/phase7i_pairing.csv,A1 f_rot_LM unpaired/paired variance ratio (artifact 0.9416)
+rho.efficiency_worstrank,0.94,results/phase7i_worstrank_corr.csv,A1 worst-rank variance ratio (artifact 0.9368)
+rho.variance_penalty_pct,6,results/phase7i_report.txt,percentage by which pairing increases contrast variance on the primary endpoints
+rho.df_cost,24,results/phase7i_report.txt,degrees of freedom lost to pairing (n-1 = 24 against 2n-2 = 48)
+rho.df_unpaired,48,results/phase7i_report.txt,unpaired degrees of freedom
+nav.worstrank_W,47.5,results/phase3_tests.csv,A1 worst-rank imputation Wilcoxon statistic
+nav.worstrank_p,0.00206,results/phase3_tests.csv,A1 worst-rank imputation two-sided p over all 50 episodes
+nav.worstrank_rb,+0.708,results/phase3_tests.csv,A1 worst-rank matched-pairs rank-biserial
+nav.win_ratio,5.60,results/phase3_tests.csv,A1 Finkelstein-Schoenfeld win ratio (artifact 5.595)
+nav.wr_lo,2.43,results/phase3_tests.csv,A1 win ratio bootstrap 95% CI lower bound (artifact 2.431)
+nav.wr_hi,17.97,results/phase3_tests.csv,A1 win ratio bootstrap 95% CI upper bound (artifact 17.970)
+nav.wr_wins,470,results/phase3_report.txt,A1 win-ratio wins
+nav.wr_losses,84,results/phase3_report.txt,A1 win-ratio losses
+nav.wr_ties,71,results/phase3_report.txt,A1 win-ratio ties
+nav.logrank_chi2,11.705,results/phase3_tests.csv,A1 log-rank chi-square
+nav.logrank_p,0.000623,results/phase3_tests.csv,A1 log-rank p with failures censored at budget
+nav.logrank_p_holddisc,0.000157,results/phase6i_tests.csv,A1 log-rank p under the hold-discount sensitivity
+a1.success_wo,20,results/phase3_report.txt,A1 wire_only successes of 25
+a1.success_ov,13,results/phase3_report.txt,A1 overlay successes of 25
+a1.success_fisher_p,0.0718,results/phase3_tests.csv,A1 success-rate Fisher exact two-sided p
+a1.success_or,3.692,results/phase3_tests.csv,A1 success-rate odds ratio
+a1.steps_median_wo_succ,48,results/phase3_report.txt,A1 wire_only median steps among SUCCESSES ONLY (n=20; descriptive - the biased subset C1 withdrew from testing)
+a1.steps_median_ov_succ,58,results/phase3_report.txt,A1 overlay median steps among successes only (n=13; descriptive)
+a2.steps_W,0.0,results/phase6h_tests.csv,A2 steps-to-target paired Wilcoxon statistic
+a2.steps_p,1.25e-05,results/phase6h_tests.csv,A2 steps-to-target two-sided p
+a2.steps_hl,+14.5,results/phase6h_report.txt,A2 steps-to-target Hodges-Lehmann shift (artifact +14.50)
+a2.steps_hl_lo,+13.0,results/phase6h_tests.csv,A2 steps HL 95% CI lower bound (artifact 13.000)
+a2.steps_hl_hi,+16.5,results/phase6h_tests.csv,A2 steps HL 95% CI upper bound (artifact 16.500)
+a2.steps_median_wo,41.0,results/phase6h_report.txt,A2 wire_only median steps-to-target (all 25 episodes succeed)
+a2.steps_median_ov,56.0,results/phase6h_report.txt,A2 overlay median steps-to-target
+a2.steps_slowest_wo,45,results/phase6h_report.txt,A2 wire_only slowest episode in steps
+a2.steps_fastest_ov,50,results/phase6h_report.txt,A2 overlay fastest episode in steps
+a2.budget_common,120,external:D:/steve/pilot/run_asoca.py,"A2 step limit passed to MaxSteps for BOTH arms: ANATOMY_PARAMS normal12 n_steps=120, and the documented full-run invocation passes no --steps override (C20)"
+repo.github_url,https://github.com/Rugved3-droid/coronav,CITATION.cff,"public repository URL - a location, NOT a persistent identifier; repo.zenodo_doi stays unresolved until the repository is archived and a DOI exists"
+a2.steps_min_wo,37,results/phase6h_report.txt,A2 wire_only shortest episode in steps
+a2.steps_max_ov,62,results/phase6h_report.txt,"A2 overlay longest episode in steps - an observed length, NOT a step budget (C20)"
+a2.rot_intents_lm_ov,37,results/phase6c_lm_profile.csv,A2 overlay rotate intents during the LM phase
+a2.rot_episodes_lm_ov,16,results/phase6c_lm_profile.csv,A2 overlay episodes with at least one LM rotate intent
+a2.rot_intents_lm_wo,0,results/phase6c_lm_profile.csv,A2 wire_only rotate intents during the LM phase (behavioural zero not metric artefact)
+a1.budget,60,external:D:/steve/pilot/run_ablation.py,"A1 step limit both arms (run_ablation.py:82 N_STEPS=60), independently confirmed by the traces: every failed episode stops at exactly 60 and records truncation"
+a1.lm_travelled,28.2,results/phase6c_report.txt,A1 wire_only LM-phase distance travelled median in mm (artifact 28.17)
+a1.lm_distchange,9.7,results/phase6c_report.txt,A1 wire_only LM-phase change in distance-to-target median in mm (artifact 9.72)
+base.aa_a1_success,17,results/baselines/always_advance_a1_summary.json,"always-advance successes on A1 in the single logged run [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_a2_success,20,results/baselines/always_advance_a2_summary.json,"always-advance successes on A2 in the single logged run [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_a3_success,0,results/baselines/always_advance_a3_summary.json,"always-advance successes on A3 (shut out) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_a1_pct,68,results/baselines/always_advance_a1_summary.json,"always-advance A1 success percentage in the single logged run (17/25) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_a2_pct,80,results/baselines/always_advance_a2_summary.json,"always-advance A2 success percentage in the single logged run (20/25) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_steps_a1,27,results/baselines/phase7g_report.txt,"always-advance steps-to-target on A1 (invariant across repetitions) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.aa_steps_a2,11,results/baselines/phase7g_report.txt,"always-advance steps-to-target on A2 (invariant across repetitions) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+base.advance_speed,35,results/baselines/floor_dt001_a1.json,"open-loop baseline advance speed in mm/s, a policy constant chosen in advance - identical in the dt=0.001 re-run, so it is sourced there"
+floor.a1_min,44,results/baselines/phase7g_report.txt,"A1 minimum success rate across five repetitions in percent [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_max_reps,64,results/baselines/phase7g_report.txt,"A1 maximum success rate across the five repetitions in percent [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_max_all,68,results/baselines/phase7g_report.txt,"A1 maximum across all six runs including the earlier single draw [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_range_pp,20,results/baselines/phase7g_report.txt,"A1 success-rate range across repetitions in percentage points [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_min,52,results/baselines/phase7g_report.txt,"A2 minimum success rate across five repetitions in percent [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_max,80,results/baselines/phase7g_report.txt,"A2 maximum success rate across repetitions in percent [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_range_pp,28,results/baselines/phase7g_report.txt,"A2 success-rate range across repetitions in percentage points [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_concordant,4,results/baselines/phase7g_report.txt,"A1 seeds giving the same outcome in all five repetitions [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_concordant,2,results/baselines/phase7g_report.txt,"A2 seeds giving the same outcome in all five repetitions [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.reps,5,results/baselines/phase7g_report.txt,"repetitions per anatomy in the non-determinism measurement [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.tip_positions,1,results/baselines/phase7g_report.txt,"distinct post-reset tip positions across all repetitions and seeds [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_var_obs,4.700,results/phase7h_dispersion.csv,"A1 observed across-repetition variance of successes [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_var_binom,6.182,results/phase7h_dispersion.csv,"A1 variance expected under independent Bernoulli draws (artifact 6.1824) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_var_ratio,0.760,results/phase7h_dispersion.csv,"A1 observed/binomial variance ratio (artifact 0.7602) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_chi2,3.04,results/phase7h_dispersion.csv,"A1 dispersion chi-square on 4 df (artifact 3.0409) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_p,0.55,results/phase7h_dispersion.csv,"A1 dispersion p-value (artifact 0.551) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_conc_obs,4,results/phase7h_dispersion.csv,"A1 concordant seeds observed [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_conc_exp,1.73,results/phase7h_dispersion.csv,"A1 concordant seeds expected under independence [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a1_conc_p,0.09,results/phase7h_dispersion.csv,"A1 concordance p-value (artifact 0.09097) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_var_obs,7.300,results/phase7h_dispersion.csv,"A2 observed across-repetition variance [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_var_binom,5.290,results/phase7h_dispersion.csv,"A2 binomial variance (artifact 5.2896) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_var_ratio,1.380,results/phase7h_dispersion.csv,"A2 variance ratio (artifact 1.3801) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_chi2,5.52,results/phase7h_dispersion.csv,"A2 dispersion chi-square (artifact 5.5203) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_p,0.24,results/phase7h_dispersion.csv,"A2 dispersion p-value (artifact 0.238) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_conc_obs,2,results/phase7h_dispersion.csv,"A2 concordant seeds observed [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_conc_exp,4.15,results/phase7h_dispersion.csv,"A2 concordant seeds expected under independence [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.a2_conc_p,0.42,results/phase7h_dispersion.csv,"A2 concordance p-value (artifact 0.4162) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+disp.df,4,results/phase7h_dispersion.csv,"degrees of freedom for the dispersion test (R-1) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_ov_pct,2.29,results/phase7e_solver_rates.csv,"A2 overlay solver non-convergence share of steps - VLM ARM replay (Phase 7e) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_wo_pct,3.12,results/phase7e_solver_rates.csv,"A2 wire_only solver non-convergence share - VLM ARM replay (Phase 7e) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_range_lo,2.3,results/phase7e_solver_rates.csv,"A2 solver non-convergence range lower bound rounded for the abstract [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_range_hi,3.1,results/phase7e_solver_rates.csv,"A2 solver non-convergence range upper bound rounded for the abstract [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a1_wo_pct,6.26,results/phase7e_solver_rates.csv,"A1 wire_only solver non-convergence share - VLM arm replay [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a1_wo_pct_abs,6.3,results/phase7e_solver_rates.csv,"A1 wire_only non-convergence rounded for the abstract [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_resid_max,6.5,results/phase7e_solver_rates.csv,"A2 maximum solver residual as a multiple of 1e-3 (artifact 6.52e-03) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a1_wo_resid_max,7.1,results/phase7e_solver_rates.csv,"A1 wire_only maximum residual as a multiple of 1e-1 (artifact 7.11e-01) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a1_wo_calls_per_nc,12.8,results/phase7e_solver_rates.csv,"A1 wire_only failed solver calls per non-convergent step (1022/80) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_calls_per_nc,1.4,results/phase7e_solver_rates.csv,"A2 failed solver calls per non-convergent step (44/32) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a3_pct,97.2,results/LOG.md,"A3 solver non-convergence share of steps - ALWAYS-ADVANCE replay (Phase 7a) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a3_nc_steps,3646,results/LOG.md,"A3 non-convergent steps (Phase 7a) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a3_total_steps,3750,results/LOG.md,"A3 total replayed steps (Phase 7a) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a3_resid_max,1.44,results/LOG.md,"A3 maximum solver residual (Phase 7a) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_aa_pct,9.2,results/LOG.md,"A2 solver non-convergence under the ALWAYS-ADVANCE replay (Phase 7a; 41/445) - a different action sequence from the 7e VLM-arm figure [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+solver.a2_aa_resid_max,2.04e-02,results/LOG.md,"A2 maximum residual under the always-advance replay (Phase 7a) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.a1_ov_diverg,48,results/phase7e_report.txt,"A1 overlay replay divergence from the original final position in mm (artifact 47.98) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.a1_ov_corr,0.148,results/phase7e_report.txt,"A1 overlay per-step distance-change correlation (why that arm's rate is withheld) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.corr_lo,0.91,results/phase7e_report.txt,"lowest per-step correlation among the three usable arms (artifact 0.911) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.corr_hi,0.98,results/phase7e_report.txt,"highest per-step correlation among the usable arms (artifact 0.977) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.a1_wo_final,0.90,results/phase7e_report.txt,"A1 wire_only replay-vs-original final position agreement in mm [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.a2_ov_final,0.37,results/phase7e_report.txt,"A2 overlay replay final position agreement in mm [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.a2_wo_final,0.34,results/phase7e_report.txt,"A2 wire_only replay final position agreement in mm [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+assoc.a1_ov_nc_success,2,results/phase7e_outcome_assoc.csv,"A1 overlay median non-convergent steps in successful episodes [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+assoc.a1_ov_nc_failure,13,results/phase7e_outcome_assoc.csv,"A1 overlay median non-convergent steps in failed episodes [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+fail.a1_wo_rate,1.33,results/phase6e_percall_rates.csv,A1 wire_only per-call transmission failure rate in percent (artifact 0.013312)
+fail.a1_ov_rate,0.00,results/phase6e_percall_rates.csv,A1 overlay per-call transmission failure rate in percent
+fail.a1_fisher_p,2.4e-06,results/phase6e_percall_rates.csv,A1 per-call failure Fisher p (artifact 2.39e-06)
+fail.a2_fisher_p,0.268,results/phase6e_percall_rates.csv,A2 per-call failure Fisher p
+mesh.a1_boundary,81,results/phase6f_mesh_provenance.json,A1 boundary edges (open at the ostium by construction)
+mesh.a2_boundary,9,results/phase6f_mesh_provenance.json,A2 boundary edges
+mesh.a3_boundary,72,results/phase6f_mesh_provenance.json,A3 boundary edges
+mesh.a2_nonmanifold,6,results/phase6f_mesh_provenance.json,A2 non-manifold edges
+mesh.a3_nonmanifold,8,results/phase6f_mesh_provenance.json,A3 non-manifold edges
+mesh.tube_radius,2.5,results/phase6f_mesh_provenance.txt,A3 generated tube radius in mm
+cfg.n_seeds,25,analysis/PRESPEC.md,seeds per arm per anatomy
+cfg.n_episodes_a1,50,analysis/PRESPEC.md,A1 episodes across both arms
+cfg.family_size,2,analysis/PRESPEC.md,confirmatory family members (A1 and A2) after C11
+cfg.alpha,0.05,analysis/PRESPEC.md,two-sided significance level
+cfg.power,80,analysis/PRESPEC.md,target power in percent for design-sensitivity statements
+cfg.bootstrap,10000,analysis/PRESPEC.md,bootstrap replicates
+cfg.solver_max_it,2000,coronav/sim/coronary_sim.py,LCPConstraintSolver maxIt (coronary_sim.py:40 default; passed as max_it=2000 at every call site)
+cfg.timestep,0.001,external:D:/steve/pilot/run_ablation.py,"SOFA timestep in seconds used by EVERY VLM arm: run_ablation.py:628 (A1), run_asoca.py:431 (A2), run_coronary.py:419. The class default of 0.006 is overridden at every call site (C21)"
+cfg.friction,0.001,coronav/sim/coronary_sim.py,LCP friction coefficient mu (coronary_sim.py:38 default; passed as friction=0.001 at every call site)
+cfg.contact_dist,0.3,coronav/sim/coronary_sim.py,LocalMinDistance contactDistance in mm (coronary_sim.py:52)
+cfg.alarm_dist,0.5,coronav/sim/coronary_sim.py,LocalMinDistance alarmDistance in mm (coronary_sim.py:53)
+base.dt_baseline,0.006,analysis/phase7_always_advance.py,"SOFA timestep used by every Phase-7 baseline, sweep, probe and replay - NOT the timestep the VLM arms ran at (C21)"
+cfg.tip_radius,1.5,external:D:/steve/pilot/run_coronary.py,BeamAdapter J-tip radius in mm
+cfg.tip_angle,0.2,external:D:/steve/pilot/run_coronary.py,BeamAdapter tip angle as a multiple of pi
+cfg.image_px,512,external:D:/steve/pilot/run_coronary.py,rendered fluoroscopy image edge in pixels
+cfg.primary_angle,40,external:D:/steve/pilot/run_coronary.py,antero-posterior cranial projection angle in degrees
+cfg.biplane_lao,60,external:D:/steve/pilot/run_coronary.py,biplane second view LAO angle in degrees
+cfg.biplane_cranial,20,external:D:/steve/pilot/run_coronary.py,biplane second view cranial angle in degrees
+cfg.success_mm,5,external:D:/steve/pilot/run_coronary.py,success threshold - tip within this many mm of target
+cfg.solver_tol_mantissa,1,coronav/sim/coronary_sim.py,"mantissa of the LCPConstraintSolver tolerance, written as 1x10^-4 (coronary_sim.py:63 tolerance=1e-4)"
+excl.hold_threshold_pct,50,results/phase6j_report.txt,failed-call percentage above which a retained episode is dropped in the threshold sensitivity
+excl.a3_ov_excluded,2,results/denominators.csv,A3 overlay episodes excluded for zero valid operator actions
+excl.a3_ov_analysed,23,results/denominators.csv,A3 overlay episodes analysed after exclusion
+a2.steps_median_wo_int,41,results/phase6h_report.txt,A2 wire_only median steps as written without a decimal in prose
+a2.steps_median_ov_int,56,results/phase6h_report.txt,A2 overlay median steps as written without a decimal in prose
+floor.a1_range_pp_dec,20.0,results/baselines/phase7g_report.txt,"A1 success-rate range in percentage points as written with one decimal [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_range_pp_dec,28.0,results/baselines/phase7g_report.txt,"A2 success-rate range in percentage points as written with one decimal [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+replay.steps_moved_pct,100,results/phase7e_report.txt,"percentage of replayed steps on which the wire moved (all four arms) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+op.a1_success_pct,80,results/phase3_report.txt,operator wire_only success percentage on A1 - a SINGLE DRAW (20/25) not a range; see the open question in the abstract
+op.a2_success_pct,100,results/phase6h_report.txt,operator wire_only success percentage on A2 - a SINGLE DRAW (25/25) not a range; distinct from replay.steps_moved_pct which coincidentally shares this value
+biplane.p,0.375,results/multiplicity_table.csv,biplane vs mono paired Wilcoxon p - identical in both observation modes
+a1.rot.p_v2,0.371,results/multiplicity_table.csv,exploratory prompt-variant V2 paired Wilcoxon p
+a1.rot.p_v3,0.812,results/multiplicity_table.csv,exploratory prompt-variant V3 paired Wilcoxon p
+a1.rot.p_v3_after,0.875,results/phase6j_threshold.csv,V3 p after the 50-percent-failure threshold sensitivity
+hist.submitted_p,0.0004,revision/submitted_manuscript_text.txt,SUPERSEDED - the unmatched p reported in the original submission
+hist.a2_paired_p_uncorrected,0.000438,results/LOG.md,SUPERSEDED - A2 paired p from the non-compliant bare scipy call before the continuity-correction fix
+hist.holm_unpaired_a1,0.000384,results/LOG.md,SUPERSEDED - A1 Holm under the C13 unpaired primary before C14 reverted it
+hist.fold_improvement,38,results/LOG.md,factor by which C13 improved A1's headline p before C14 reverted it (0.0147 to 0.000384)
+floor.a1_pooled_pct,56.6,results/phase7c_pooled_default.csv,"A1 always-advance success pooled over all artifact-backed draws at 35 mm/s (99/175) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_pooled_k,99,results/phase7c_pooled_default.csv,"A1 pooled successes at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_pooled_n,175,results/phase7c_pooled_default.csv,"A1 pooled episodes at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_pooled_lo,49.2,results/phase7c_pooled_default.csv,"A1 pooled floor Wilson 95% CI lower bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_pooled_hi,63.7,results/phase7c_pooled_default.csv,"A1 pooled floor Wilson 95% CI upper bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a1_draws,7,results/phase7c_pooled_default.csv,"A1 artifact-backed draws at 35 mm/s (7a x1, 7g x5, 7c x1) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_pooled_pct,70.9,results/phase7c_pooled_default.csv,"A2 always-advance success pooled over all artifact-backed draws at 35 mm/s (124/175) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_pooled_k,124,results/phase7c_pooled_default.csv,"A2 pooled successes at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_pooled_n,175,results/phase7c_pooled_default.csv,"A2 pooled episodes at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_pooled_lo,63.7,results/phase7c_pooled_default.csv,"A2 pooled floor Wilson 95% CI lower bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_pooled_hi,77.1,results/phase7c_pooled_default.csv,"A2 pooled floor Wilson 95% CI upper bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+floor.a2_draws,7,results/phase7c_pooled_default.csv,"A2 artifact-backed draws at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.speed_lo,15,results/phase7c_speed_sweep.csv,"lowest advance speed in the closed bracketing sweep, mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.speed_hi,55,results/phase7c_speed_sweep.csv,"highest advance speed in the closed bracketing sweep, mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_15_pct,61.3,results/phase7c_speed_sweep.csv,"A1 always-advance success at 15 mm/s pooled over 3 reps (46/75) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_15_lo,50.0,results/phase7c_speed_sweep.csv,"A1 15 mm/s Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_15_hi,71.5,results/phase7c_speed_sweep.csv,"A1 15 mm/s Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_55_pct,20.0,results/phase7c_speed_sweep.csv,"A1 always-advance success at 55 mm/s pooled over 2 reps (10/50) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_55_lo,11.2,results/phase7c_speed_sweep.csv,"A1 55 mm/s Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a1_55_hi,33.0,results/phase7c_speed_sweep.csv,"A1 55 mm/s Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_15_pct,100.0,results/phase7c_speed_sweep.csv,"A2 always-advance success at 15 mm/s pooled over 3 reps (75/75) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_15_lo,95.1,results/phase7c_speed_sweep.csv,"A2 15 mm/s Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_55_pct,94.0,results/phase7c_speed_sweep.csv,"A2 always-advance success at 55 mm/s pooled over 2 reps (47/50) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_55_lo,83.8,results/phase7c_speed_sweep.csv,"A2 55 mm/s Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_55_hi,97.9,results/phase7c_speed_sweep.csv,"A2 55 mm/s Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_best_rot,-1.5,results/phase7d_oracle.csv,"A1 best single constant rotation at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_best_pct,64.0,results/phase7d_oracle.csv,"A1 best single rotation success (DEPLOYABLE figure per PRESPEC) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_best_lo,44.5,results/phase7d_oracle.csv,"A1 best single rotation Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_best_hi,79.8,results/phase7d_oracle.csv,"A1 best single rotation Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_union_pct,100.0,results/phase7d_oracle.csv,"A1 union reachability over 7 rotations - SELECTION-INFLATED upper bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a1_spread_pp,12.0,results/phase7d_report.txt,"A1 spread across 7 rotation rates in pp (below the 20 pp floor) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_best_rot,+0.6,results/phase7d_oracle.csv,"A2 best single constant rotation at 35 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_best_pct,80.0,results/phase7d_oracle.csv,"A2 best single rotation success (DEPLOYABLE figure per PRESPEC) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_best_lo,60.9,results/phase7d_oracle.csv,"A2 best single rotation Wilson lower [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_best_hi,91.1,results/phase7d_oracle.csv,"A2 best single rotation Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_union_pct,100.0,results/phase7d_oracle.csv,"A2 union reachability over 7 rotations - SELECTION-INFLATED upper bound [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.a2_spread_pp,40.0,results/phase7d_report.txt,"A2 spread across 7 rotation rates in pp (range over 7 draws; not comparable to the 5-draw floor range) [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.grid_n,7,results/phase7d_oracle.csv,"rotation values in the oracle grid [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+calibre.lm_d_mm,4.89,results/phase7_calibre_a1_report.txt,A1 left main median equivalent-circle diameter from VMR clinical segmentation contours
+calibre.lm_n,4,results/phase7_calibre_a1_report.txt,A1 left main contours measured
+calibre.lm_lo,4.80,results/phase7_calibre_a1_report.txt,A1 left main diameter range lower
+calibre.lm_hi,5.27,results/phase7_calibre_a1_report.txt,A1 left main diameter range upper
+calibre.dlad_d_mm,1.73,results/phase7_calibre_a1_report.txt,A1 distal-third LAD median equivalent-circle diameter
+calibre.dlad_n,9,results/phase7_calibre_a1_report.txt,A1 distal LAD contours measured
+calibre.dlad_lo,1.36,results/phase7_calibre_a1_report.txt,A1 distal LAD diameter range lower
+calibre.dlad_hi,2.07,results/phase7_calibre_a1_report.txt,A1 distal LAD diameter range upper
+calibre.cited_lm,4.5,revision/submitted_manuscript_text.txt,left main diameter cited from Dodge et al. 1992
+calibre.cited_dlad,1.9,revision/submitted_manuscript_text.txt,distal LAD diameter cited from Dodge et al. 1992
+calibre.tol_pct,25,results/phase7_calibre_a1_report.txt,"pre-stated consistency tolerance around each cited figure, percent"
+op.a1_wo_median_adv,10.0,results/phase7_operator_speed.csv,"A1 wire_only operator median advance speed, mm/s"
+op.a1_ov_median_adv,10.0,results/phase7_operator_speed.csv,"A1 overlay operator median advance speed, mm/s"
+op.a2_wo_median_adv,10.0,results/phase7_operator_speed.csv,"A2 wire_only operator median advance speed, mm/s"
+op.a2_ov_median_adv,5.0,results/phase7_operator_speed.csv,"A2 overlay operator median advance speed, mm/s"
+op.a1_wo_pct_at35,1.3,results/phase7_operator_speed.csv,percent of A1 wire_only steps at exactly 35 mm/s
+op.a1_ov_pct_at35,0.8,results/phase7_operator_speed.csv,percent of A1 overlay steps at exactly 35 mm/s
+op.a2_wo_pct_at35,0.0,results/phase7_operator_speed.csv,percent of A2 wire_only steps at exactly 35 mm/s
+op.a2_ov_pct_at35,0.0,results/phase7_operator_speed.csv,percent of A2 overlay steps at exactly 35 mm/s
+op.a1_wo_pct_10,39.4,results/phase7_operator_speed_distribution.csv,percent of A1 wire_only operator steps at translation 10 mm/s
+op.a1_wo_pct_0,12.6,results/phase7_operator_speed_distribution.csv,percent of A1 wire_only operator steps at translation 0 mm/s
+op.a1_wo_pct_30,13.5,results/phase7_operator_speed_distribution.csv,percent of A1 wire_only operator steps at translation 30 mm/s
+op.a1_wo_pct_40,12.1,results/phase7_operator_speed_distribution.csv,percent of A1 wire_only operator steps at translation 40 mm/s
+op.a1_ov_pct_10,49.2,results/phase7_operator_speed_distribution.csv,percent of A1 overlay operator steps at translation 10 mm/s
+op.a1_ov_pct_0,17.6,results/phase7_operator_speed_distribution.csv,percent of A1 overlay operator steps at translation 0 mm/s
+op.a1_ov_pct_40,11.7,results/phase7_operator_speed_distribution.csv,percent of A1 overlay operator steps at translation 40 mm/s
+op.a2_wo_pct_10,55.9,results/phase7_operator_speed_distribution.csv,percent of A2 wire_only operator steps at translation 10 mm/s
+op.a2_wo_pct_5,35.5,results/phase7_operator_speed_distribution.csv,percent of A2 wire_only operator steps at translation 5 mm/s
+op.a2_ov_pct_5,49.0,results/phase7_operator_speed_distribution.csv,percent of A2 overlay operator steps at translation 5 mm/s
+op.a2_ov_pct_10,28.7,results/phase7_operator_speed_distribution.csv,percent of A2 overlay operator steps at translation 10 mm/s
+op.a2_ov_pct_0,15.5,results/phase7_operator_speed_distribution.csv,percent of A2 overlay operator steps at translation 0 mm/s
+op.a1_wo_mean_adv,18.8,results/phase7_operator_speed.csv,"A1 wire_only operator mean advance on advancing steps, mm/s"
+op.a1_ov_mean_adv,16.0,results/phase7_operator_speed.csv,"A1 overlay operator mean advance on advancing steps, mm/s"
+op.a2_wo_mean_adv,8.0,results/phase7_operator_speed.csv,"A2 wire_only operator mean advance on advancing steps, mm/s"
+op.a2_ov_mean_adv,6.8,results/phase7_operator_speed.csv,"A2 overlay operator mean advance on advancing steps, mm/s"
+op.a2_wo_max_adv,12,results/phase7_operator_speed_distribution.csv,"A2 wire_only operator maximum translation used, mm/s"
+cfg.gate_substitute_mm_s,35,external:D:/steve/pilot/run_coronary.py,PROXIMITY_GATE_ADV_DEFAULT: translation substituted when the proximity gate suppresses a rotate intent (run_coronary.py:708)
+sweep.reps_15,3,results/phase7c_speed_sweep.csv,"repetitions per anatomy at 15 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.reps_55,2,results/phase7c_speed_sweep.csv,"repetitions per anatomy at 55 mm/s [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+sweep.a2_15_hi,100.0,results/phase7c_speed_sweep.csv,"A2 15 mm/s Wilson upper [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+oracle.rot_max,1.5,results/phase7d_oracle.csv,"largest absolute constant rotation in the grid, equal to the operator logged maximum [SUPERSEDED: measured at dt=0.006, the timestep no study arm used (C22). Retained as the record of that measurement; supplies no manuscript number.]"
+cfg.gate_dist_mm,25,external:D:/steve/pilot/run_coronary.py,PROXIMITY_GATE_DIST_MM: gate active when tip closer than this and closing
+cfg.retraction_budget,2,external:D:/steve/pilot/run_coronary.py,RETRACTION_BUDGET per episode
+fail.a1_wo_holds,17,results/phase6e_percall_rates.csv,A1 wire_only failed calls among retained episodes (executed as null holds)
+lit.steve_transfer_success,97/100,revision/submitted_manuscript_text.txt,"sim-to-bench transfer success reported for stEVE aortic-arch tasks in prior work (cited, not measured here)"
+biplane.mono_budget,120,results/esm1_arm_descriptives.csv,"monoplane arms: longest episode, equal to the step budget and confirmed by every failure stopping there"
+biplane.bi_wo_longest,40,results/esm1_arm_descriptives.csv,biplane wire_only: longest episode in the arm
+biplane.bi_ov_longest,48,results/esm1_arm_descriptives.csv,biplane overlay: longest episode in the arm
+biplane.n_below_arm_max,2,results/esm1_nonterminal_episodes.csv,biplane episodes that ended without reaching target AND below their own arm's longest episode
+biplane.early_steps_lo,20,results/esm1_nonterminal_episodes.csv,"shorter of the two biplane early-stop episode lengths, steps"
+biplane.early_steps_hi,30,results/esm1_nonterminal_episodes.csv,"longer of the two biplane early-stop episode lengths, steps"
+biplane.early_dist_lo,81.9,results/esm1_nonterminal_episodes.csv,"final distance to target of the nearer biplane early-stop episode, mm"
+biplane.early_dist_hi,82.8,results/esm1_nonterminal_episodes.csv,"final distance to target of the farther biplane early-stop episode, mm"
+biplane.mono_success_steps_lo,77,results/esm1_arm_descriptives.csv,"monoplane successes: shortest episode length, steps (from the traces via phase5 loader)"
+biplane.mono_success_steps_hi,90,results/esm1_arm_descriptives.csv,"monoplane successes: longest episode length, steps"
+biplane.bi_success_steps_lo,35,results/esm1_arm_descriptives.csv,"biplane successes: shortest episode length, steps"
+biplane.bi_success_steps_hi,47,results/esm1_arm_descriptives.csv,"biplane successes: longest episode length, steps"
+floor.dt001_reps,3,results/baselines/floor_dt001_a1.json,repetitions per anatomy in the dt=0.001 open-loop floor measurement
+floor.dt001_a1_pct,100.0,results/baselines/floor_dt001_a1.json,A1 open-loop always-advance success at the arms' timestep dt=0.001
+floor.dt001_a1_k,75,results/baselines/floor_dt001_a1.json,A1 open-loop successes at dt=0.001
+floor.dt001_a1_n,75,results/baselines/floor_dt001_a1.json,A1 open-loop episodes at dt=0.001 (3 reps x 25 seeds)
+floor.dt001_a1_lo,95.1,results/baselines/floor_dt001_a1.json,A1 open-loop Wilson 95% lower bound at dt=0.001
+floor.dt001_a1_hi,100.0,results/baselines/floor_dt001_a1.json,A1 open-loop Wilson 95% upper bound at dt=0.001
+floor.dt001_a1_steps,26,results/baselines/floor_dt001_a1.json,A1 open-loop steps to target - identical in all 75 episodes
+floor.dt001_a1_dist_lo,4.58,results/baselines/floor_dt001_a1.json,"A1 open-loop final distance to target, minimum over 75 episodes, mm"
+floor.dt001_a1_dist_hi,4.71,results/baselines/floor_dt001_a1.json,"A1 open-loop final distance to target, maximum over 75 episodes, mm"
+floor.dt001_a2_pct,100.0,results/baselines/floor_dt001_a2.json,A2 open-loop always-advance success at the arms' timestep dt=0.001
+floor.dt001_a2_k,75,results/baselines/floor_dt001_a2.json,A2 open-loop successes at dt=0.001
+floor.dt001_a2_n,75,results/baselines/floor_dt001_a2.json,A2 open-loop episodes at dt=0.001 (3 reps x 25 seeds)
+floor.dt001_a2_lo,95.1,results/baselines/floor_dt001_a2.json,A2 open-loop Wilson 95% lower bound at dt=0.001
+floor.dt001_a2_hi,100.0,results/baselines/floor_dt001_a2.json,A2 open-loop Wilson 95% upper bound at dt=0.001
+floor.dt001_a2_steps,11,results/baselines/floor_dt001_a2.json,A2 open-loop steps to target - identical in all 75 episodes
+floor.dt001_a2_dist_lo,1.76,results/baselines/floor_dt001_a2.json,"A2 open-loop final distance to target, minimum over 75 episodes, mm"
+floor.dt001_a2_dist_hi,1.91,results/baselines/floor_dt001_a2.json,"A2 open-loop final distance to target, maximum over 75 episodes, mm"

@@ -1,0 +1,78 @@
+========================================================================================
+PHASE 7h — IS THE VARIABILITY EXCESS, OR BINOMIAL?
+========================================================================================
+
+H0 under test: the seed carries no information and each episode is an independent
+Bernoulli draw. If the data are consistent with that, the correct Methods statement
+is 'the seed does not propagate to outcomes', NOT 'the simulator is unreliable'.
+
+========================================================================================
+A1 VMR0066   R=5 repetitions x n=25 seeds
+========================================================================================
+  success counts per repetition: [16, 15, 15, 11, 12]
+  pooled success rate p = 69/125 = 0.5520
+
+  1. CONCORDANCE ACROSS ALL REPETITIONS
+     P(same outcome in all 5 | independence) = p^5 + (1-p)^5 = 0.0693
+     expected concordant seeds = 1.73 of 25
+     observed concordant seeds = 4 of 25
+     exact binomial test vs independence: p = 0.091
+     -> MORE concordant than independence predicts
+
+  2. DISPERSION OF THE SUCCESS COUNT
+     observed variance across repetitions = 4.700
+     binomial variance n*p*(1-p)          = 6.182
+     variance ratio                       = 0.760
+     dispersion statistic X2 = 3.041 on 4 df
+       P(X2 >= observed) = 0.551   (over-dispersion)
+       P(X2 <= observed) = 0.449   (under-dispersion)
+     -> CONSISTENT WITH BINOMIAL: no evidence of excess variability
+
+  3. STEPS-TO-TARGET VARIANCE COMPONENTS
+     successful episodes: 69   distinct step counts: [27]
+     mean WITHIN-seed variance across repetitions = 0.0000
+     BETWEEN-seed variance of per-seed means      = 0.0000
+     -> DEGENERATE: every successful episode takes an identical number of
+        steps, so the continuous endpoint has ZERO variance both within and
+        across seeds. There is no steps variability to decompose; under a
+        fixed policy ALL variability lives in the binary outcome.
+
+========================================================================================
+A2 ASOCA Normal_12   R=5 repetitions x n=25 seeds
+========================================================================================
+  success counts per repetition: [19, 20, 17, 18, 13]
+  pooled success rate p = 87/125 = 0.6960
+
+  1. CONCORDANCE ACROSS ALL REPETITIONS
+     P(same outcome in all 5 | independence) = p^5 + (1-p)^5 = 0.1659
+     expected concordant seeds = 4.15 of 25
+     observed concordant seeds = 2 of 25
+     exact binomial test vs independence: p = 0.416
+     -> LESS concordant than independence predicts
+
+  2. DISPERSION OF THE SUCCESS COUNT
+     observed variance across repetitions = 7.300
+     binomial variance n*p*(1-p)          = 5.290
+     variance ratio                       = 1.380
+     dispersion statistic X2 = 5.520 on 4 df
+       P(X2 >= observed) = 0.238   (over-dispersion)
+       P(X2 <= observed) = 0.762   (under-dispersion)
+     -> CONSISTENT WITH BINOMIAL: no evidence of excess variability
+
+  3. STEPS-TO-TARGET VARIANCE COMPONENTS
+     successful episodes: 87   distinct step counts: [11]
+     mean WITHIN-seed variance across repetitions = 0.0000
+     BETWEEN-seed variance of per-seed means      = 0.0000
+     -> DEGENERATE: every successful episode takes an identical number of
+        steps, so the continuous endpoint has ZERO variance both within and
+        across seeds. There is no steps variability to decompose; under a
+        fixed policy ALL variability lives in the binary outcome.
+
+========================================================================================
+WHAT THIS MEANS FOR METHODS
+========================================================================================
+  If both anatomies are consistent with binomial, the honest statement is that the
+  simulator seed does not propagate to episode outcomes - episodes behave as
+  independent draws - and NOT that the environment is unreliable. The run-to-run
+  range measured in 7g is then simply sampling variability at n=25, which is what
+  any n=25 binary endpoint carries, and is not evidence of a defect.

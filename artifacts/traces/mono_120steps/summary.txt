@@ -1,0 +1,46 @@
+====================================================================
+CORONARY VLM OPERATOR -- mode: OVERLAY
+Run dir  : D:\steve\pilot\runs\mono_120steps
+Model    : claude-sonnet-4-6
+Scene    : left coronary, clipped_left.vtp/obj, AP Cranial 40 deg
+Target   : mid-LAD (BranchIndex, threshold=5mm)
+Budget   : 2 retractions per episode
+Gate     : suppress rotation when dist < 25mm AND decreasing
+====================================================================
+FRAMING: Each 'episode' is a repetition of a single fixed left-coronary scenario.
+  Anatomy (clipped_left.vtp), target (mid-LAD), and start are IDENTICAL across all
+  episodes. Observed variance reflects VLM sampling stochasticity, NOT anatomical
+  variation. Do not interpret n=15 as 15 distinct navigation problems.
+  The fixed scenario enables clean causal attribution: condition differences
+  (wire_only / overlay / contrast) are not confounded by anatomical variation.
+====================================================================
+
+  Episodes run          : 10
+  Failed resets         : 0
+  Target reached        : 5 / 10
+  Steps total / scored  : 1025 / 1024  (parse failures: 1)
+  API errors            : 0
+  Retraction steps      : 0  (budget enforcements: 0)
+  Rotation steps        : 222  (21.7%)
+  Gate suppressions     : 0
+  Hallucination flags   : 0
+
+  Perception tip OK     : N/A  (0/0 verifiable)
+  Perception target OK  : 100.0%  (2/2 verifiable)
+  Intent appropriate    : 53.6%  (429/800 assessable)
+  Action consistent *** : 100.0%  (1024/1024 assessable)
+  Outcome reduced dist  : 44.0%  (451/1025)
+
+  Per-episode mean tip→target dist (mm):
+    ep01 :   60.9 mm
+    ep02 :  105.1 mm
+    ep03 :   61.1 mm
+    ep04 :   96.8 mm
+    ep05 :  105.2 mm
+    ep06 :   61.1 mm
+    ep07 :   62.1 mm
+    ep08 :   97.8 mm
+    ep09 :   99.2 mm
+    ep10 :   61.4 mm
+
+====================================================================

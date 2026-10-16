@@ -1,0 +1,5 @@
+analysis,test,statistic,n,exact_or_approx,two_sided_p,effect_size,effect_name,ci_low,ci_high
+worst_rank_imputation,Wilcoxon signed-rank,47.5,25,approx,0.00206,0.708,matched-pairs rank-biserial,7.000,23.250
+win_ratio_FS,Finkelstein-Schoenfeld win ratio,5.595,25x25,bootstrap,,5.595,win ratio (wire_only/overlay),2.431,17.970
+time_to_event,log-rank,11.705,50,chi2 approx,0.000623,,,,
+success_rate_reconciliation,Fisher exact,,50,exact,0.0718,3.692,odds ratio,,

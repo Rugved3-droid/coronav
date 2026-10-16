@@ -1,0 +1,122 @@
+====================================================================================
+OPERATOR ADVANCE SPEED, per arm, from the logged traces
+====================================================================================
+35 mm/s is the proximity-gate SUBSTITUTE translation (run_coronary.py:708), not a
+default operating speed. Everything else is chosen by the operator.
+Translation 0 = a step on which the operator did not advance (rotate, hold, retract).
+
+  A1 wire_only  steps=1277  advancing=1116  median advance  10.0 mm/s  mean  18.8  at exactly 35: 17 (1.3%)
+           0 mm/s :   161 steps   12.6%
+           5 mm/s :    51 steps    4.0%
+         5.5 mm/s :     2 steps    0.2%
+           6 mm/s :     8 steps    0.6%
+         6.6 mm/s :     1 steps    0.1%
+         6.8 mm/s :     2 steps    0.2%
+           7 mm/s :     7 steps    0.5%
+         7.4 mm/s :     1 steps    0.1%
+         7.6 mm/s :     1 steps    0.1%
+         7.8 mm/s :     2 steps    0.2%
+         7.9 mm/s :     1 steps    0.1%
+           8 mm/s :     9 steps    0.7%
+         8.1 mm/s :     1 steps    0.1%
+         8.3 mm/s :     1 steps    0.1%
+         8.4 mm/s :     1 steps    0.1%
+         8.6 mm/s :     2 steps    0.2%
+         8.7 mm/s :     1 steps    0.1%
+           9 mm/s :    12 steps    0.9%
+         9.3 mm/s :     1 steps    0.1%
+         9.5 mm/s :     1 steps    0.1%
+         9.8 mm/s :     1 steps    0.1%
+         9.9 mm/s :     1 steps    0.1%
+          10 mm/s :   503 steps   39.4%
+          12 mm/s :     2 steps    0.2%
+          13 mm/s :     5 steps    0.4%
+          14 mm/s :     4 steps    0.3%
+          15 mm/s :    31 steps    2.4%
+          17 mm/s :     1 steps    0.1%
+        17.5 mm/s :     1 steps    0.1%
+          18 mm/s :     3 steps    0.2%
+          19 mm/s :     2 steps    0.2%
+        19.1 mm/s :     1 steps    0.1%
+          20 mm/s :    96 steps    7.5%
+          25 mm/s :     8 steps    0.6%
+          30 mm/s :   173 steps   13.5%
+          35 mm/s :    17 steps    1.3%
+          40 mm/s :   155 steps   12.1%
+          50 mm/s :     7 steps    0.5%
+  A1 overlay    steps=1448  advancing=1193  median advance  10.0 mm/s  mean  16.0  at exactly 35: 12 (0.8%)
+           0 mm/s :   255 steps   17.6%
+           3 mm/s :     1 steps    0.1%
+           5 mm/s :    74 steps    5.1%
+           6 mm/s :     6 steps    0.4%
+         6.4 mm/s :     1 steps    0.1%
+         6.7 mm/s :     1 steps    0.1%
+         6.9 mm/s :     1 steps    0.1%
+           7 mm/s :     2 steps    0.1%
+         7.4 mm/s :     2 steps    0.1%
+         7.5 mm/s :     2 steps    0.1%
+         7.7 mm/s :     2 steps    0.1%
+         7.8 mm/s :     1 steps    0.1%
+           8 mm/s :    10 steps    0.7%
+         8.5 mm/s :     3 steps    0.2%
+         8.8 mm/s :     1 steps    0.1%
+         8.9 mm/s :     2 steps    0.1%
+           9 mm/s :     6 steps    0.4%
+         9.5 mm/s :     1 steps    0.1%
+         9.8 mm/s :     1 steps    0.1%
+          10 mm/s :   712 steps   49.2%
+          12 mm/s :     4 steps    0.3%
+          13 mm/s :     5 steps    0.3%
+        13.5 mm/s :     1 steps    0.1%
+        13.6 mm/s :     1 steps    0.1%
+        13.9 mm/s :     3 steps    0.2%
+          14 mm/s :     1 steps    0.1%
+          15 mm/s :    20 steps    1.4%
+          16 mm/s :     1 steps    0.1%
+          17 mm/s :     1 steps    0.1%
+          18 mm/s :     4 steps    0.3%
+          20 mm/s :    76 steps    5.2%
+          25 mm/s :     8 steps    0.6%
+          30 mm/s :    54 steps    3.7%
+          35 mm/s :    12 steps    0.8%
+          40 mm/s :   169 steps   11.7%
+          50 mm/s :     4 steps    0.3%
+  A2 wire_only  steps=1026  advancing=1000  median advance  10.0 mm/s  mean   8.0  at exactly 35: 0 (0.0%)
+           0 mm/s :    26 steps    2.5%
+           5 mm/s :   364 steps   35.5%
+           6 mm/s :    10 steps    1.0%
+           7 mm/s :    15 steps    1.5%
+         7.2 mm/s :     1 steps    0.1%
+         7.5 mm/s :     2 steps    0.2%
+         7.6 mm/s :     2 steps    0.2%
+         7.7 mm/s :     1 steps    0.1%
+           8 mm/s :    19 steps    1.9%
+         8.2 mm/s :     1 steps    0.1%
+         8.5 mm/s :     3 steps    0.3%
+         8.8 mm/s :     1 steps    0.1%
+           9 mm/s :     5 steps    0.5%
+         9.4 mm/s :     1 steps    0.1%
+          10 mm/s :   574 steps   55.9%
+          12 mm/s :     1 steps    0.1%
+  A2 overlay    steps=1400  advancing=1183  median advance   5.0 mm/s  mean   6.8  at exactly 35: 0 (0.0%)
+           0 mm/s :   217 steps   15.5%
+           3 mm/s :    33 steps    2.4%
+           5 mm/s :   686 steps   49.0%
+           6 mm/s :    11 steps    0.8%
+           7 mm/s :    11 steps    0.8%
+         7.5 mm/s :     4 steps    0.3%
+         7.6 mm/s :     1 steps    0.1%
+         7.7 mm/s :     1 steps    0.1%
+         7.8 mm/s :     2 steps    0.1%
+         7.9 mm/s :     1 steps    0.1%
+           8 mm/s :    17 steps    1.2%
+         8.3 mm/s :     1 steps    0.1%
+         8.5 mm/s :     1 steps    0.1%
+         8.6 mm/s :     1 steps    0.1%
+         8.7 mm/s :     1 steps    0.1%
+         8.8 mm/s :     1 steps    0.1%
+         8.9 mm/s :     1 steps    0.1%
+           9 mm/s :     6 steps    0.4%
+         9.5 mm/s :     1 steps    0.1%
+          10 mm/s :   402 steps   28.7%
+          14 mm/s :     1 steps    0.1%

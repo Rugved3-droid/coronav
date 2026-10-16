@@ -1,0 +1,3 @@
+arm,n_success,n_failure,median_nc_steps_success,median_nc_steps_failure,mannwhitney_p
+a1_overlay,13,12,2.00,13.00,0.01384
+a1_wire_only,20,5,1.00,1.00,0.498

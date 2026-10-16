@@ -1,0 +1,12 @@
+====================================================================================
+A1 CALIBRE CHECK — VMR 0066 clinical lumen segmentation vs Dodge et al. (1992)
+====================================================================================
+branches from the simulator's own loader: ['lad', 'lad_b1', 'lad_b2', 'lad_b3', 'lad_b3_b1', 'lad_b4', 'lad_b5', 'lad_b6', 'lad_b7', 'lad_b8', 'lad_b9', 'lcx', 'lcx_b1', 'lcx_b2', 'lcx_b3', 'lcx_b4', 'lcx_b4_b1', 'lcx_b4_b2', 'lcx_b5', 'lcx_b6', 'lcx_b7', 'left_main']
+
+  left_main     n= 4  equivalent diameter median 4.89 mm  range [4.80, 5.27]   cited 4.5 mm -> CONSISTENT (tolerance +/-25%: 3.4-5.6 mm)
+  proximal_lad  n= 8  equivalent diameter median 2.67 mm  range [2.22, 3.63]
+  distal_lad    n= 9  equivalent diameter median 1.73 mm  range [1.36, 2.07]   cited 1.9 mm -> CONSISTENT (tolerance +/-25%: 1.4-2.4 mm)
+
+VERDICT: A1's clinical segmentation supports the cited calibres. The motivation
+sentence stands; the earlier 1.81 mm mesh figure was a measurement artefact, as
+suspected, and is not quoted.

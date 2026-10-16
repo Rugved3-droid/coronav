@@ -1,0 +1,4 @@
+variant,worstrank_W,worstrank_p,rank_biserial,win_ratio,wr_ci_low,wr_ci_high,logrank_chi2,logrank_p
+as_analysed,47.5,0.00206,0.708,5.595,2.431,17.970,11.705,0.000623
+hold_discounted,47.5,0.00206,0.708,5.595,2.431,17.970,14.292,0.000157
+bound_granted_success,41.5,0.00118,0.745,5.738,2.547,18.101,13.239,0.000274

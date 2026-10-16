@@ -1,0 +1,59 @@
+====================================================================
+CORONARY VLM OPERATOR -- anatomy: asoca_normal12  mode: OVERLAY
+Run dir  : D:\steve\pilot\runs\normal12_overlay
+Model    : claude-sonnet-4-6
+Scene    : asoca_normal12, clipped mesh, AP Cranial 40 deg
+Target   : mid-LAD (BranchIndex, threshold=5mm)
+Budget   : 2 retractions per episode
+Gate     : suppress rotation when dist < 15mm AND decreasing
+====================================================================
+FRAMING: Each 'episode' is a repetition of a single fixed coronary scenario.
+  Anatomy, target, and start are IDENTICAL across all episodes.
+  Observed variance reflects VLM sampling stochasticity, NOT anatomical variation.
+  The fixed scenario enables clean causal attribution.
+====================================================================
+
+  Episodes run          : 25
+  Failed resets         : 0
+  Target reached        : 25 / 25
+  Steps total / scored  : 1400 / 1397  (parse failures: 3)
+  API errors            : 3
+  Retraction steps      : 0  (budget enforcements: 0)
+  Rotation steps        : 214  (15.3%)
+  Gate suppressions     : 0
+  Hallucination flags   : 0
+
+  Perception tip OK     : N/A  (0/0 verifiable)
+  Perception target OK  : N/A  (0/0 verifiable)
+  Intent appropriate    : 98.2%  (1153/1174 assessable)
+  Action consistent *** : 100.0%  (1397/1397 assessable)
+  Outcome reduced dist  : 96.7%  (1354/1400)
+
+  Per-episode mean tip->target dist (mm):
+    ep01 :   21.1 mm
+    ep02 :   21.1 mm
+    ep03 :   21.2 mm
+    ep04 :   21.2 mm
+    ep05 :   21.0 mm
+    ep06 :   21.5 mm
+    ep07 :   21.3 mm
+    ep08 :   21.1 mm
+    ep09 :   21.3 mm
+    ep10 :   20.7 mm
+    ep11 :   21.1 mm
+    ep12 :   21.3 mm
+    ep13 :   21.7 mm
+    ep14 :   21.5 mm
+    ep15 :   21.5 mm
+    ep16 :   21.6 mm
+    ep17 :   21.1 mm
+    ep18 :   21.4 mm
+    ep19 :   21.1 mm
+    ep20 :   21.6 mm
+    ep21 :   21.1 mm
+    ep22 :   21.2 mm
+    ep23 :   21.6 mm
+    ep24 :   21.0 mm
+    ep25 :   21.2 mm
+
+====================================================================

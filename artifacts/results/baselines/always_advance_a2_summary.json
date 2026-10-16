@@ -1,0 +1,241 @@
+{
+  "policy": "always_advance",
+  "anatomy": "a2",
+  "label": "A2 ASOCA Normal_12",
+  "advance_mm_s": 35.0,
+  "budget": 45,
+  "dt_simulation": 0.006,
+  "seeds": [
+    3001,
+    3012,
+    3023,
+    3034,
+    3045,
+    3056,
+    3067,
+    3078,
+    3089,
+    3100,
+    3111,
+    3122,
+    3133,
+    3144,
+    3155,
+    3166,
+    3177,
+    3188,
+    3199,
+    3210,
+    3221,
+    3232,
+    3243,
+    3254,
+    3265
+  ],
+  "mesh": "D:\\steve\\pilot\\clipped_asoca_normal12.obj",
+  "vlm_wire_only": "25/25",
+  "n_success": 20,
+  "n_run": 25,
+  "episodes": [
+    {
+      "episode": 1,
+      "seed": 3001,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3531771830884556,
+      "reset_failed": false
+    },
+    {
+      "episode": 2,
+      "seed": 3012,
+      "success": false,
+      "steps": null,
+      "final_dist": 66.57519607480528,
+      "reset_failed": false
+    },
+    {
+      "episode": 3,
+      "seed": 3023,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3028261537533354,
+      "reset_failed": false
+    },
+    {
+      "episode": 4,
+      "seed": 3034,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3143310913594135,
+      "reset_failed": false
+    },
+    {
+      "episode": 5,
+      "seed": 3045,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3668602546371527,
+      "reset_failed": false
+    },
+    {
+      "episode": 6,
+      "seed": 3056,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.315252399530399,
+      "reset_failed": false
+    },
+    {
+      "episode": 7,
+      "seed": 3067,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.315804588600662,
+      "reset_failed": false
+    },
+    {
+      "episode": 8,
+      "seed": 3078,
+      "success": false,
+      "steps": null,
+      "final_dist": 66.5768412612137,
+      "reset_failed": false
+    },
+    {
+      "episode": 9,
+      "seed": 3089,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.358758913440786,
+      "reset_failed": false
+    },
+    {
+      "episode": 10,
+      "seed": 3100,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3158518232697363,
+      "reset_failed": false
+    },
+    {
+      "episode": 11,
+      "seed": 3111,
+      "success": false,
+      "steps": null,
+      "final_dist": 66.72150334905137,
+      "reset_failed": false
+    },
+    {
+      "episode": 12,
+      "seed": 3122,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3890133145875385,
+      "reset_failed": false
+    },
+    {
+      "episode": 13,
+      "seed": 3133,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3140911917339975,
+      "reset_failed": false
+    },
+    {
+      "episode": 14,
+      "seed": 3144,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3186204161423087,
+      "reset_failed": false
+    },
+    {
+      "episode": 15,
+      "seed": 3155,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2894093770539894,
+      "reset_failed": false
+    },
+    {
+      "episode": 16,
+      "seed": 3166,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.316759029003878,
+      "reset_failed": false
+    },
+    {
+      "episode": 17,
+      "seed": 3177,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2964417170707665,
+      "reset_failed": false
+    },
+    {
+      "episode": 18,
+      "seed": 3188,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3387963689992826,
+      "reset_failed": false
+    },
+    {
+      "episode": 19,
+      "seed": 3199,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2823644190164876,
+      "reset_failed": false
+    },
+    {
+      "episode": 20,
+      "seed": 3210,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3257017323172877,
+      "reset_failed": false
+    },
+    {
+      "episode": 21,
+      "seed": 3221,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.334983511487304,
+      "reset_failed": false
+    },
+    {
+      "episode": 22,
+      "seed": 3232,
+      "success": false,
+      "steps": null,
+      "final_dist": 66.57778982716799,
+      "reset_failed": false
+    },
+    {
+      "episode": 23,
+      "seed": 3243,
+      "success": false,
+      "steps": null,
+      "final_dist": 66.64710952809781,
+      "reset_failed": false
+    },
+    {
+      "episode": 24,
+      "seed": 3254,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.274644767509203,
+      "reset_failed": false
+    },
+    {
+      "episode": 25,
+      "seed": 3265,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.28664298230783,
+      "reset_failed": false
+    }
+  ]
+}
