@@ -1208,6 +1208,108 @@ p = 0.00206; win ratio 5.60, 95% CI 2.43–17.97; log-rank p = 0.000623), comple
 
 ---
 
+## C23 — The A2 proximity gate was 15 mm, not 25 mm
+
+*Recorded 2026-10-16, after submission of CMPB-D-26-07590, while recovering the original records
+into `artifacts/`. To be corrected in the manuscript at revision.*
+
+**Submitted (Methods §2.3).** "When the tip was within 25 mm of target and closing, a rotate
+intent was replaced by an advance of 35 mm/s." One threshold is given for both anatomies.
+
+**What the code does.** The threshold is anatomy-specific. A1 used 25 mm
+(`run_ablation.py:67`, `PROXIMITY_GATE_DIST_MM = 25.0`). A2 used **15 mm**
+(`run_asoca.py:120`, `ANATOMY_PARAMS["normal12"]["proximity_gate_mm"] = 15.0`). This was not a
+drift: it was pre-registered (`PREREGISTRATION.txt:110`, "Normal_12: gate=15mm, LM~17mm"), and
+both A2 run summaries print "suppress rotation when dist < 15mm".
+
+**Why it did not change any action.** The gate never suppressed a rotation in either A2 arm
+(`gate_suppressed_rotation` is false on all 2426 A2 rows). A 25 mm gate could have acted only on
+steps with the tip between 15 and 25 mm and closing. There are 10 such steps (wire-only, 9
+episodes) and 0 (overlay), and **none carries a rotate intent**. So a 25 mm gate would have
+replaced no action.
+
+**What it did change.** The operator saw the threshold. The A2 system prompt states it
+("under 15mm, do NOT rotate", `run_asoca.py:233-235`). The per-step "PROXIMITY GATE ACTIVE"
+line (`run_asoca.py:295-298`) appears only below 15 mm, so under a 25 mm gate it would also
+have appeared on those 10 wire-only steps. The A2 operator therefore saw a slightly different
+prompt from the one the Methods describe. Whether that altered its choices cannot be determined
+from the logs, because decoding is unseeded and no 25 mm A2 arm exists.
+
+**What changes.** At revision, §2.3 should read, e.g., "within 25 mm (A1) or 15 mm (A2) of
+target and closing", with the per-anatomy value sourced to the harness. `benchmarks/protocol.json`
+in the public repository gives 25 mm for A2 and should follow (an author decision, not yet made;
+concordance U14).
+
+**What it does not change.** Every reported number. The gate never fired differently from how
+a 25 mm gate would have.
+
+**Artifacts.** `artifacts/harness/pilot/run_asoca.py:120,233-235,280-298`;
+`artifacts/harness/pilot/run_ablation.py:67`; `artifacts/harness/pilot/PREREGISTRATION.txt:110`;
+both A2 `summary.txt`; the A2 traces (`dist_obs_at_call`, `dist_trend`, `intended_direction`,
+`gate_active`, `gate_suppressed_rotation`).
+
+---
+
+## C24 — The A2 open-loop control did not use the operator arms' step limit
+
+*Recorded 2026-10-16. To be corrected in the manuscript at revision.*
+
+**Submitted (Methods §2.4).** The open-loop policy "was run over the same seeds and the same step
+limits as the operator arms".
+
+**What the code does.** The seeds are the same. The A1 step limit is the same (60). The A2 step
+limit is **45** (`analysis/phase7j_floor_dt001.py:66`; `floor_dt001_a2.json` records
+`"budget": 45`), not the operator arms' 120 (C20). The 45 is the A2 value
+`benchmarks/protocol.json` then declared, which C20 shows to be the longest observed wire-only
+episode rather than a budget. It entered the baselines through Phase 7a
+(`phase7a_always_advance_a2a3.py:11-12,60`) and Phase 7g (`phase7g_nondeterminism_floor.py:62`).
+Phase 7j copied 7g's configuration deliberately, so that the timestep would be the only
+difference ("Identical to Phase 7g. Do not vary these", `phase7j_floor_dt001.py:51`). The 45 was
+therefore kept on purpose, but the §2.4 sentence describing it is wrong.
+
+**Why it does not matter for the result.** All 75 A2 open-loop episodes reached target at step 11
+in every repetition, far inside either limit. Nothing was truncated, so the open-loop result
+(75/75) is the same under 45 and under 120. A re-run of the unedited script in the original
+environment on 2026-10-16 again gave 75/75 at step 11.
+
+**What changes.** At revision, §2.4 should say the A2 open-loop limit was 45 steps and that no
+episode approached it, or the A2 floor should be re-run at 120. The outcome cannot differ.
+
+**Artifacts.** `analysis/phase7j_floor_dt001.py:51,58,66`; `results/baselines/floor_dt001_a2.json`;
+`results/baselines/phase7j_report.txt`.
+
+---
+
+## C25 — Three exploratory prompt-variant episodes that reached target on their final step are counted as failures
+
+*Recorded 2026-10-16. Affects Supplementary Table S1 only.*
+
+**Submitted (Methods §2.5).** Success is "the tip reaching within 5 mm of target within the step
+limit".
+
+**What the analysis does.** The scripts score success as "last row terminal **and not**
+truncated" (`phase3_selection_bias.py:66`, `phase5_multiplicity.py:125`, `phase6h_a2_steps.py:75`).
+stEVE sets both flags when the target is reached on the last allowed step. Such an episode
+met the §2.5 definition but is scored as a failure.
+
+**Where it occurs.** In no confirmatory arm: no A1 or A2 episode has both flags set. It
+occurs three times in the exploratory prompt variant V2, all at step 60 of 60:
+`v2_neutral/wire_only` episode 7 (final distance 4.55 mm), and `v2_neutral/overlay` episodes 7
+(4.37 mm) and 8 (4.58 mm).
+
+**What changes.** Supplementary Table S1 reports V2 success as 3/10 (wire-only) and 2/10
+(overlay). Under §2.5 these are **4/10 and 4/10**. The V2 `f_rot_LM` values and the V2 test
+(p = 0.371) do not use success and are unchanged. At revision, Table S1 should be corrected,
+or its success column defined as "reached target before the final step".
+
+**What it does not change.** Any main-text number. The confirmatory analyses are unaffected
+because the case never arises in them.
+
+**Artifacts.** `artifacts/traces/ablation_prompt_robustness/v2_neutral/{wire_only,overlay}/trace.jsonl`;
+`results/esm1_arm_descriptives.csv`; the three scripts named above.
+
+---
+
 ## Numbering note
 
 There is no C10. The number was never assigned to an entry; the gap is an artefact of drafting

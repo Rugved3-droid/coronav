@@ -5,7 +5,7 @@ vision-language-model guidewire navigation in simulated coronary anatomies*:
 the episode traces the analysis consumed, the analysis scripts as they were
 run, the frozen analysis plan, every result artifact, the number-to-artifact
 manifest, the original operator harness, and the correction record
-(`../CORRECTIONS.md`, C1–C22).
+(`../CORRECTIONS.md`: C1–C22 as recovered, C23–C25 added 2026-10-16).
 
 They were recovered on 2026-10-16 from the machine where the study ran. Two
 sources were used:
@@ -16,6 +16,11 @@ sources were used:
   repository (last commit `20c872c`, 2026-09-18), which was never pushed.
   Analysis scripts, results, the manifest and `CORRECTIONS.md` are taken from
   its committed blobs.
+
+`../CORRECTIONS.md` is the living correction record. As recovered, it ended at C22
+(SHA-256 `646724adc53f4a8ebc0ba547cf6a3f927325c9e12df77e29af440df678d96b9c`). C23–C25 were
+added on 2026-10-16 for discrepancies found while recovering these records, after the
+manuscript was submitted.
 
 `PROVENANCE.tsv` gives the original path and modification date of every file.
 `CHECKSUMS.sha256` holds the SHA-256 of every file as committed. Verify it from

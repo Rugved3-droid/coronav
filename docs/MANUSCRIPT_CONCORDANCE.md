@@ -287,7 +287,7 @@ affect the claims.
 | ID | Severity | Issue | What resolves it |
 |---|---|---|---|
 | U1 | ~~Blocker~~ **Resolved 2026-10-16** | Original **episode traces** were not in the repository. | Added under `artifacts/traces/` (19 arms + run summaries; §9.1). A1 and other VMR arms are byte-identical. A2/A3 are redacted copies without ASOCA coordinates; original hashes are in `artifacts/REDACTIONS.tsv`. |
-| U2 | ~~Blocker~~ **Resolved 2026-10-16** | Analysis scripts, frozen plan, manifest and build check, result artifacts, `CORRECTIONS.md` were absent. | Added: `artifacts/analysis/` (incl. `PRESPEC.md`, `build_manuscript.py`), `artifacts/results/` (incl. `manifest.csv`), `CORRECTIONS.md` (C1–C22). Regenerated with `python artifacts/reproduce.py --check` (§9.2). The build check needs the unreleased manuscript sources. |
+| U2 | ~~Blocker~~ **Resolved 2026-10-16** | Analysis scripts, frozen plan, manifest and build check, result artifacts, `CORRECTIONS.md` were absent. | Added: `artifacts/analysis/` (incl. `PRESPEC.md`, `build_manuscript.py`), `artifacts/results/` (incl. `manifest.csv`), `CORRECTIONS.md` (C1–C22; C23–C25 added 2026-10-16). Regenerated with `python artifacts/reproduce.py --check` (§9.2). The build check needs the unreleased manuscript sources. |
 | U3 | High → **Answered** | A2 step limit: 120 or 45/62? | **120 in both arms.** `artifacts/harness/pilot/run_asoca.py:122` sets `n_steps = 120` for Normal_12, used for both modes; no A2 trace row has `truncation` true; 45 and 62 are the longest observed episodes (`CORRECTIONS.md` C20). Caveat: the harness never wrote the limit to its summary, so 120 is the configured default, not a recorded value. Consistent with the manuscript. |
 | U4 | High → **Answered** | Timestep of the original operator arms. | **0.001 s.** `run_ablation.py:628` (A1 confirmatory arms), `run_asoca.py:431` (A2), `run_coronary.py:419` all build `CoronaryBeamAdapter(..., dt_simulation=0.001, ...)`. Consistent with the manuscript; the 0.006 s value came from the port. |
 | U5 | Medium → **Answered** | Final-step success; verbatim-port claim. | No confirmatory episode has `terminal` and `truncation` both true. The original analysis used the same legacy rule as `lm_metrics()` (`phase3_selection_bias.py:66`, `phase5_multiplicity.py:125`, `phase6h_a2_steps.py:75`), so no confirmatory number is affected. **Three exploratory V2 episodes** reached target on their final step and are counted as failures in Supplementary Table S1 (§9.4). The port is not verbatim (§4). |
@@ -299,8 +299,8 @@ affect the claims.
 | U11 | Low → **Resolved** | Seeds. | The traces' seeds equal `protocol.json`: A1 5001 + 11i, A2 3001 + 11i, 25 each. |
 | U12 | Low | The manuscript says the materials are "archived". There is no archival snapshot (DOI). | Create a GitHub release and a Zenodo DOI once U1/U2 are resolved, and cite it in the manuscript. |
 | U13 | Medium (new) | **Left-main phase boundary differs between the original harness and this repository.** Original: pre-action tip (`run_ablation.py:774`, `run_asoca.py:672`); this repository: post-step tip (`coronav/env.py:322`). | Decide whether `coronav/env.py` should follow the original convention, as `PRESPEC.md` §2.2 locks it. Not changed here. Affects new runs only. |
-| U14 | Medium (new) | **A2 proximity gate was 15 mm, not 25 mm.** Manuscript §2.3 gives one value (< 25 mm). The A2 harness used 15 mm (`run_asoca.py:120`, pre-registered in `PREREGISTRATION.txt:110`; A2 `summary.txt`: "< 15mm"); A1 used 25 mm (`run_ablation.py:67`). `protocol.json` says 25 for A2. The gate never suppressed a rotation in either A2 arm, but the threshold appears in the A2 prompt text (`run_asoca.py:235`). | Author decision: correct manuscript §2.3 (e.g. "25 mm for A1, 15 mm for A2") and `protocol.json`. Not changed here. |
-| U15 | Low (new) | **A2 open-loop control ran with a 45-step limit**, not the operator arms' 120 (`artifacts/analysis/phase7j_floor_dt001.py:66`; `floor_dt001_a2.json` `"budget": 45`). Manuscript §2.4 says "the same step limits as the operator arms". Every open-loop episode reached target at step 11, so the result (75/75) is unaffected. | Author decision: adjust the §2.4 wording, or re-run at 120 (the outcome cannot change). Not changed here. |
+| U14 | Medium (new) | **A2 proximity gate was 15 mm, not 25 mm.** Manuscript §2.3 gives one value (< 25 mm). The A2 harness used 15 mm (`run_asoca.py:120`, pre-registered in `PREREGISTRATION.txt:110`; A2 `summary.txt`: "< 15mm"); A1 used 25 mm (`run_ablation.py:67`). `protocol.json` says 25 for A2. The gate never suppressed a rotation in either A2 arm, but the threshold appears in the A2 prompt text (`run_asoca.py:235`). | Recorded as `CORRECTIONS.md` **C23** (a 25 mm gate would have replaced no A2 action; only the prompt text differed). Correct manuscript §2.3 at revision; `protocol.json` is an author decision. Not changed here. |
+| U15 | Low (new) | **A2 open-loop control ran with a 45-step limit**, not the operator arms' 120 (`artifacts/analysis/phase7j_floor_dt001.py:66`; `floor_dt001_a2.json` `"budget": 45`). Manuscript §2.4 says "the same step limits as the operator arms". Every open-loop episode reached target at step 11, so the result (75/75) is unaffected. | Recorded as `CORRECTIONS.md` **C24**. Adjust the §2.4 wording at revision, or re-run at 120 (the outcome cannot change). |
 
 ## 7. Corrections made in this audit
 
@@ -337,7 +337,7 @@ control-loop logic in `run_episode()`, and the `lm_metrics()` arithmetic.
 | File | Change |
 |---|---|
 | `artifacts/` (new) | original traces, analysis scripts, frozen plan, results, manifest, harness, Supplementary Material, environment record; `CHECKSUMS.sha256`, `PROVENANCE.tsv`, `REDACTIONS.tsv`, `ARMS.tsv`, `README.md`, `reproduce.py` (§9) |
-| `CORRECTIONS.md` (new) | the correction record, C1–C22, as last committed on `revision-cbm` |
+| `CORRECTIONS.md` (new) | the correction record, C1–C22 as last committed on `revision-cbm`, plus C23–C25 (2026-10-16) for the discrepancies in §9.4 |
 | `.gitattributes` (new) | `artifacts/` and `CORRECTIONS.md` stored without end-of-line conversion |
 | `.gitignore` | `!artifacts/results/` (the generic `results/` rule was hiding it) |
 | `README.md`, `RESULTS.md`, this document | reproducibility status, provenance notes, issue status |
@@ -494,7 +494,8 @@ same four confirmatory traces:
 ### 9.4 Findings that the manuscript or the archived pages do not reflect
 
 These are reported, not corrected. Nothing in the manuscript, the code or the
-data was changed to resolve them.
+data was changed to resolve them. Items 1–3 are recorded in `CORRECTIONS.md`
+as C23, C24 and C25, to be corrected in the manuscript at revision.
 
 1. **A2 proximity gate 15 mm (U14).** It differs from manuscript §2.3 and
    from `protocol.json`.
