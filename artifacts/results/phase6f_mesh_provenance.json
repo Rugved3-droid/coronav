@@ -1,0 +1,126 @@
+[
+  {
+    "label": "A1 VMR0066",
+    "path": "D:\\coronav\\data\\anatomy\\a1_vmr0066\\clipped_left.obj",
+    "exists": true,
+    "file_kb": 741.8,
+    "n_points": 7990,
+    "n_cells": 15897,
+    "boundary_edges": 81,
+    "non_manifold_edges": 0,
+    "wall_to_wall": {
+      "n": 2886,
+      "median": 1.8096893203153976,
+      "mean": 2.0666020695672502,
+      "sd": 0.9400049045427168,
+      "cv": 0.454855300101173,
+      "iqr": [
+        1.4192812142044144,
+        2.334771005395719
+      ],
+      "min": 0.618642728651025,
+      "max": 11.497255732091277,
+      "within_5pct_of_median": 0.10048510048510048
+    }
+  },
+  {
+    "label": "A2 ASOCA Normal_12",
+    "path": "D:\\steve\\pilot\\clipped_asoca_normal12.obj",
+    "exists": true,
+    "file_kb": 304.9,
+    "n_points": 3350,
+    "n_cells": 6689,
+    "boundary_edges": 9,
+    "non_manifold_edges": 6,
+    "wall_to_wall": {
+      "n": 2702,
+      "median": 2.827631717129968,
+      "mean": 2.899010020076543,
+      "sd": 1.3409551549048901,
+      "cv": 0.4625562332031831,
+      "iqr": [
+        1.9502679800670197,
+        3.778239521351298
+      ],
+      "min": 0.60014763013922,
+      "max": 22.403452507000868,
+      "within_5pct_of_median": 0.061065877128053295
+    },
+    "tip_to_wall": {
+      "n": 1026,
+      "median": 0.48569377157109567,
+      "mean": 0.542175108264415,
+      "sd": 0.2436012487013825,
+      "cv": 0.4493036382308055,
+      "iqr": [
+        0.38270746855043447,
+        0.5975090633993376
+      ],
+      "min": 0.3022678232878509,
+      "max": 1.5589191205005346,
+      "within_5pct_of_median": 0.1111111111111111
+    }
+  },
+  {
+    "label": "A3 ASOCA Normal_5",
+    "path": "D:\\steve\\pilot\\clipped_asoca_normal5.obj",
+    "exists": true,
+    "file_kb": 29.0,
+    "n_points": 349,
+    "n_cells": 632,
+    "boundary_edges": 72,
+    "non_manifold_edges": 8,
+    "wall_to_wall": {
+      "n": 523,
+      "median": 4.2190532050271035,
+      "mean": 4.206013239912502,
+      "sd": 0.8272332057275561,
+      "cv": 0.19667869750803854,
+      "iqr": [
+        3.8881292583293883,
+        4.536841137127817
+      ],
+      "min": 0.6351369744997422,
+      "max": 11.680074298525511,
+      "within_5pct_of_median": 0.35564053537284895
+    },
+    "tip_to_wall": {
+      "n": 3428,
+      "median": 1.085821979416591,
+      "mean": 1.305635436953961,
+      "sd": 0.6052094440854036,
+      "cv": 0.46353631875782514,
+      "iqr": [
+        0.819769014544858,
+        1.6932170248579
+      ],
+      "min": 0.3158692222057317,
+      "max": 3.4367394108082823,
+      "within_5pct_of_median": 0.07322053675612603
+    }
+  },
+  {
+    "label": "A3 N5 (pre-tube clip)",
+    "path": "D:\\steve\\pilot\\clipped_asoca_normal5_oldorient.obj",
+    "exists": true,
+    "file_kb": 167.1,
+    "n_points": 1861,
+    "n_cells": 3718,
+    "boundary_edges": 0,
+    "non_manifold_edges": 9,
+    "wall_to_wall": {
+      "n": 2696,
+      "median": 1.7329559845921865,
+      "mean": 1.8727102082753189,
+      "sd": 0.912870212188376,
+      "cv": 0.4874594094454625,
+      "iqr": [
+        1.1165427249968178,
+        2.591079426545651
+      ],
+      "min": 0.6016810453822765,
+      "max": 17.274839485950633,
+      "within_5pct_of_median": 0.03301186943620178
+    }
+  }
+]

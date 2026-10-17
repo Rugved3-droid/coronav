@@ -1,0 +1,3 @@
+anatomy,draws,successes,episodes,pooled_rate,wilson_lo,wilson_hi,min_draw_rate,max_draw_rate,draws_k_over_n
+A1 VMR0066,7,99,175,0.5657,0.4916,0.6370,0.4400,0.6800,17/25 16/25 15/25 15/25 11/25 12/25 13/25
+A2 ASOCA Normal_12,7,124,175,0.7086,0.6373,0.7708,0.5200,0.8000,20/25 19/25 20/25 17/25 18/25 13/25 17/25

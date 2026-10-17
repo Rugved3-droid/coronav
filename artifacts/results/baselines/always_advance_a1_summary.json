@@ -1,0 +1,238 @@
+{
+  "policy": "always_advance",
+  "anatomy": "A1",
+  "advance_mm_s": 35.0,
+  "budget": 60,
+  "dt_simulation": 0.006,
+  "seeds": [
+    5001,
+    5012,
+    5023,
+    5034,
+    5045,
+    5056,
+    5067,
+    5078,
+    5089,
+    5100,
+    5111,
+    5122,
+    5133,
+    5144,
+    5155,
+    5166,
+    5177,
+    5188,
+    5199,
+    5210,
+    5221,
+    5232,
+    5243,
+    5254,
+    5265
+  ],
+  "n_success": 17,
+  "n_run": 25,
+  "episodes": [
+    {
+      "episode": 1,
+      "seed": 5001,
+      "success": false,
+      "steps": null,
+      "final_dist": 135.6798352836429,
+      "reset_failed": false
+    },
+    {
+      "episode": 2,
+      "seed": 5012,
+      "success": false,
+      "steps": null,
+      "final_dist": 135.50254717426688,
+      "reset_failed": false
+    },
+    {
+      "episode": 3,
+      "seed": 5023,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0339913327966292,
+      "reset_failed": false
+    },
+    {
+      "episode": 4,
+      "seed": 5034,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0345845839160621,
+      "reset_failed": false
+    },
+    {
+      "episode": 5,
+      "seed": 5045,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.9943935076644427,
+      "reset_failed": false
+    },
+    {
+      "episode": 6,
+      "seed": 5056,
+      "success": false,
+      "steps": null,
+      "final_dist": 298.4725609566433,
+      "reset_failed": false
+    },
+    {
+      "episode": 7,
+      "seed": 5067,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0664399631627586,
+      "reset_failed": false
+    },
+    {
+      "episode": 8,
+      "seed": 5078,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.109520668881997,
+      "reset_failed": false
+    },
+    {
+      "episode": 9,
+      "seed": 5089,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0735320180395187,
+      "reset_failed": false
+    },
+    {
+      "episode": 10,
+      "seed": 5100,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0417742034869404,
+      "reset_failed": false
+    },
+    {
+      "episode": 11,
+      "seed": 5111,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.9943959597754142,
+      "reset_failed": false
+    },
+    {
+      "episode": 12,
+      "seed": 5122,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.099121922390687,
+      "reset_failed": false
+    },
+    {
+      "episode": 13,
+      "seed": 5133,
+      "success": false,
+      "steps": null,
+      "final_dist": 135.50665591364557,
+      "reset_failed": false
+    },
+    {
+      "episode": 14,
+      "seed": 5144,
+      "success": false,
+      "steps": null,
+      "final_dist": 135.52066327040797,
+      "reset_failed": false
+    },
+    {
+      "episode": 15,
+      "seed": 5155,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.03142825437973,
+      "reset_failed": false
+    },
+    {
+      "episode": 16,
+      "seed": 5166,
+      "success": false,
+      "steps": null,
+      "final_dist": 298.47252048742814,
+      "reset_failed": false
+    },
+    {
+      "episode": 17,
+      "seed": 5177,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1042552133098997,
+      "reset_failed": false
+    },
+    {
+      "episode": 18,
+      "seed": 5188,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.0325326683920475,
+      "reset_failed": false
+    },
+    {
+      "episode": 19,
+      "seed": 5199,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.997440894657064,
+      "reset_failed": false
+    },
+    {
+      "episode": 20,
+      "seed": 5210,
+      "success": false,
+      "steps": null,
+      "final_dist": 298.5782042162462,
+      "reset_failed": false
+    },
+    {
+      "episode": 21,
+      "seed": 5221,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.9943886739382146,
+      "reset_failed": false
+    },
+    {
+      "episode": 22,
+      "seed": 5232,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.9973948999381532,
+      "reset_failed": false
+    },
+    {
+      "episode": 23,
+      "seed": 5243,
+      "success": true,
+      "steps": 27,
+      "final_dist": 1.1003673434777241,
+      "reset_failed": false
+    },
+    {
+      "episode": 24,
+      "seed": 5254,
+      "success": false,
+      "steps": null,
+      "final_dist": 135.666770232593,
+      "reset_failed": false
+    },
+    {
+      "episode": 25,
+      "seed": 5265,
+      "success": true,
+      "steps": 27,
+      "final_dist": 0.9984427719175634,
+      "reset_failed": false
+    }
+  ]
+}

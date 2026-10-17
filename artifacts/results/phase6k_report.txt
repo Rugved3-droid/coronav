@@ -1,0 +1,36 @@
+====================================================================================
+PHASE 6k — A3 STALL ZONE (discussion material; phantom, not a gate)
+====================================================================================
+
+Tip path used as an axis proxy: the wire leans on the wall, so absolute arc lengths
+carry that error. The arm comparison and the band's position are what this supports.
+Stall band: distance-to-target in [33, 38] mm.
+
+--- A3 wire_only  (n=25 episodes entering the band) --------------------
+  arc length at stall locus : median 34.289  IQR [33.987, 34.968]  n=25 mm
+  fraction of path traversed: median 0.497  IQR [0.434, 0.632]  n=25
+  curvature at stall locus  : median 0.509  IQR [0.371, 0.644]  n=25 1/mm
+  curvature, whole path     : median 0.365  IQR [0.250, 0.512]  n=25 1/mm
+  steps spent inside band   : median 60.000  IQR [40.000, 82.000]  n=25
+
+--- A3 overlay  (n=22 episodes entering the band) --------------------
+  arc length at stall locus : median 34.991  IQR [34.546, 35.842]  n=22 mm
+  fraction of path traversed: median 0.755  IQR [0.712, 0.802]  n=22
+  curvature at stall locus  : median 0.697  IQR [0.645, 0.774]  n=22 1/mm
+  curvature, whole path     : median 0.661  IQR [0.550, 0.786]  n=22 1/mm
+  steps spent inside band   : median 31.000  IQR [15.000, 57.250]  n=22
+
+====================================================================================
+ONE-PARAGRAPH SUMMARY
+====================================================================================
+  Both A3 arms enter the 33-38 mm band at a similar point along the traversed
+  path: median arc length 34.3 mm (wire-only) vs 35.0 mm (overlay),
+  i.e. 50% vs 76% of the path each episode ultimately travels.
+  Local path curvature at that locus is 0.509 1/mm (wire-only) and
+  0.697 1/mm (overlay), against a whole-path median of 0.365 1/mm,
+  so the band is not a locally sharp bend relative to the rest of the course.
+  What separates the arms is dwell, not location: a median of 60 steps
+  inside the band for wire-only against 31 for overlay. The stall is
+  therefore better described as time spent in a region both arms reach than as a
+  geometric obstacle only one arm encounters. Because A3's wall is a generated
+  constant-radius tube, no calibre narrowing exists there by construction.

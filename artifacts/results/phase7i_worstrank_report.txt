@@ -1,0 +1,31 @@
+========================================================================================
+PHASE 7i ADDENDUM — within-pair correlation on the WORST-RANK endpoint (A1)
+========================================================================================
+
+This is the promoted PRIMARY navigation endpoint. The win ratio and log-rank are
+unpaired by construction; only this one is tested paired.
+
+  n = 25 seed pairs, ranks over all 50 episodes
+  Pearson  r = -0.074  95% CI [-0.456, +0.330]  p = 0.724
+  Spearman r = -0.043  95% CI [-0.441, +0.369]  p = 0.838
+
+  Var(unpaired contrast) = 325.9883
+  Var(paired difference) = 347.9767
+  variance ratio         = 0.9368  -> pairing removes -6.7% of the contrast variance
+  degrees of freedom: paired n-1 = 24, unpaired 2n-2 = 48
+
+  paired Wilcoxon on ranks      W = 47.5  p = 0.00206  (approx, 25/25 informative)
+  unpaired Mann-Whitney on ranks U = 491.5  p = 0.000525
+
+  NOTE: the unpaired test on worst-ranks is reported for completeness only. Ranks
+  are constructed JOINTLY across both arms, so an unpaired test on them is not the
+  same object as an unpaired test on a raw endpoint; the win ratio and log-rank are
+  the proper unpaired analyses of this endpoint and already exist.
+
+========================================================================================
+VERDICT FOR THIS ENDPOINT
+========================================================================================
+  Correlation is near zero and its CI spans zero: seed-matching removes no shared
+  variance on this endpoint either. The paired worst-rank Wilcoxon is not
+  justified by blocking, and the unpaired win ratio and log-rank - which were
+  always part of this analysis - carry it.

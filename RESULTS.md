@@ -10,14 +10,19 @@ This page has three parts that must not be mixed up:
    final revision. They are kept, labelled, and explained, and they are not
    manuscript findings.
 
-> **Provenance, read first.** Every number in Part 1 is transcribed from the
-> final manuscript. The original episode traces, analysis scripts, the
-> number-to-artifact manifest and `CORRECTIONS.md` that produced them are
-> **not in this repository** (see
-> [`docs/MANUSCRIPT_CONCORDANCE.md`](docs/MANUSCRIPT_CONCORDANCE.md)). So
-> none of these numbers can currently be regenerated or checked from this
-> repository. Nothing on this page comes from running the code in this
-> repository, except where it says so explicitly.
+> **Provenance, read first.** Every number in Part 1 is stated as in the
+> final manuscript. Since 2026-10-16 the original episode traces, analysis
+> scripts, frozen analysis plan, number-to-artifact manifest
+> (`artifacts/results/manifest.csv`) and `CORRECTIONS.md` that produced them
+> are in this repository ([`artifacts/`](artifacts/README.md)). The original
+> scripts were re-run on the original traces on 2026-10-16. **Every Part 1
+> number was regenerated exactly; no mismatch was found.** The
+> number-by-number comparison is in
+> [`docs/MANUSCRIPT_CONCORDANCE.md`](docs/MANUSCRIPT_CONCORDANCE.md) §9.2.
+> To repeat it: `python artifacts/reproduce.py --check`. The A2/A3 traces
+> are committed without their ASOCA patient-space coordinates; no Part 1
+> number depends on those. Nothing on this page comes from a new operator
+> run.
 
 ---
 
@@ -108,8 +113,10 @@ primary, and the unpaired Mann–Whitney test is a sensitivity analysis.
   record.
 - Prompt-variant and contrast arms were also collected. They are
   exploratory, unadjusted, and reported in the manuscript's Supplementary
-  Material, which is not in this repository. No main-text claim rests on
-  them.
+  Material (`artifacts/supplementary/`; its tables are
+  `artifacts/results/esm1_*`). No main-text claim rests on them. In the
+  prompt-variant V2 arms, three episodes reached target on their final
+  allowed step and are counted as failures there (concordance §9.4).
 
 ### Limitations (from the manuscript)
 
@@ -160,8 +167,9 @@ reasons, stated together:
 Everything below was published on this page before the final revision. The
 original wording and numbers are kept so the record is complete. They are
 **superseded** by Part 1 and must not be cited as the study's findings. Like
-Part 1, they come from the original research runs and cannot be regenerated
-from this repository.
+Part 1, they come from the original research runs. The analyses that
+produced them are not among the scripts in `artifacts/analysis/`, which
+produce Part 1.
 
 ### 3.1 Earlier "primary result": `lm_rot_mm` by Mann–Whitney U, three anatomies
 
@@ -211,10 +219,13 @@ How this relates to the final manuscript:
 | V4 | Rephrased scaffold | 10 | 0.1398 | 0.1476 | +0.0078 | 0.2413 | same direction, n.s. |
 
 The manuscript treats prompt-variant arms as exploratory and unadjusted, and
-reports them in the Supplementary Material. That file is not in this
-repository, so these figures **have not been checked** against the final
-Supplementary Material. The V1 row repeats the archived unpaired A1 test
-(§3.1).
+reports them in the Supplementary Material (now in
+`artifacts/supplementary/`, Table S1). **Checked 2026-10-16, these archived
+figures differ from Table S1:** the V3 overlay median is 0.0428 here and
+0.1050 there, because Table S1 excludes the 5 V3-overlay episodes with zero
+valid actions. The p-values here are from an unpaired test; Table S1 gives
+paired Wilcoxon p = 0.371 / 0.812 / 0.322 for V2 / V3 / V4. Cite Table S1,
+not this table. The V1 row repeats the archived unpaired A1 test (§3.1).
 
 ### 3.3 Earlier success-conditioned navigation analysis (A1)
 
@@ -244,8 +255,8 @@ coarser than the operator arms' 0.001 s. At that timestep the open-loop
 policy appeared to solve roughly half to two-thirds of episodes, which led to
 the conclusion that success rate was a weak but informative discriminator.
 Re-measured at 0.001 s, it solves every episode. **The 0.006 s figures and
-that conclusion are withdrawn** (manuscript §2.1 and §4; `CORRECTIONS.md`
-C21–C22, which is not in this repository). A speed-sensitivity check run at
+that conclusion are withdrawn** (manuscript §2.1 and §4; [`CORRECTIONS.md`](CORRECTIONS.md)
+C21–C22). A speed-sensitivity check run at
 0.006 s is likewise not carried forward.
 
 ### 3.5 Container smoke-run (n = 9): not a reproduction, superseded physics

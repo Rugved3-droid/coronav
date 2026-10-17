@@ -1,0 +1,133 @@
+==============================================================================
+PHASE 6c — INTEGRITY CHECKS
+==============================================================================
+
+==============================================================================
+CHECK 1 — IS A2's ZERO ROTATION TRIVIAL? (LM-phase size, all anatomies)
+==============================================================================
+
+LM phase = rows where tip_branch_obs == 'left_main' (valid rows only).
+'travelled' = summed Euclidean tip displacement per step (gt_tip_obs -> gt_tip_pos).
+'dist-change' = summed |dist_delta|, i.e. the DENOMINATOR of f_rot_LM.
+
+--- A1 ------------------------------------------------------------------------
+  wire_only
+    LM steps       : median 16.00  IQR[15.00,18.00]  min 13.00  max 23.00
+    LM travelled   : median 28.17 mm  IQR[27.33,29.23]  min 26.29  max 97.10
+    LM dist-change : median 9.72 mm  IQR[9.20,10.64]  min 8.45  max 43.08
+    episodes with >=1 rotate intent in LM: 25/25
+    total rotate intents in LM           : 104
+  overlay
+    LM steps       : median 27.00  IQR[24.00,28.00]  min 16.00  max 33.00
+    LM travelled   : median 27.78 mm  IQR[27.25,28.47]  min 26.19  max 30.27
+    LM dist-change : median 9.55 mm  IQR[9.25,9.97]  min 8.23  max 11.57
+    episodes with >=1 rotate intent in LM: 25/25
+    total rotate intents in LM           : 195
+
+--- A2 ------------------------------------------------------------------------
+  wire_only
+    LM steps       : median 15.00  IQR[14.00,15.00]  min 14.00  max 18.00
+    LM travelled   : median 18.67 mm  IQR[18.45,18.79]  min 17.95  max 19.33
+    LM dist-change : median 11.42 mm  IQR[11.25,11.55]  min 11.06  max 11.75
+    episodes with >=1 rotate intent in LM: 0/25
+    total rotate intents in LM           : 0
+  overlay
+    LM steps       : median 19.00  IQR[19.00,20.00]  min 15.00  max 23.00
+    LM travelled   : median 18.55 mm  IQR[18.44,18.77]  min 17.67  max 18.96
+    LM dist-change : median 11.26 mm  IQR[11.11,11.38]  min 10.62  max 11.54
+    episodes with >=1 rotate intent in LM: 16/25
+    total rotate intents in LM           : 37
+
+--- A3 ------------------------------------------------------------------------
+  wire_only
+    LM steps       : median 52.00  IQR[42.00,67.00]  min 36.00  max 150.00
+    LM travelled   : median 34.63 mm  IQR[34.10,35.62]  min 33.30  max 46.96
+    LM dist-change : median 20.65 mm  IQR[20.52,20.91]  min 20.11  max 29.37
+    episodes with >=1 rotate intent in LM: 25/25
+    total rotate intents in LM           : 748
+  overlay
+    LM steps       : median 112.00  IQR[88.00,132.00]  min 0.00  max 150.00
+    LM travelled   : median 38.90 mm  IQR[36.26,39.52]  min 0.00  max 42.11
+    LM dist-change : median 21.81 mm  IQR[20.50,23.63]  min 0.00  max 26.39
+    episodes with >=1 rotate intent in LM: 23/25
+    total rotate intents in LM           : 1835
+
+------------------------------------------------------------------------------
+A2 wire_only — DID THE OPERATOR ROTATE, OR DID THE METRIC ZERO IT?
+------------------------------------------------------------------------------
+  episodes with >=1 rotate intent during LM : 0/25
+  total rotate intents during LM            : 0
+  tip actually travelled on those steps     : 0.000 mm
+  |dist_delta| accrued on those steps       : 0.000000 mm  <- f_rot_LM numerator
+  |dist_delta| accrued on all LM steps      : 285.041 mm  <- f_rot_LM denominator
+
+  VERDICT: the operator issued NO rotate action at all during the LM phase.
+  f_rot_LM = 0 is a true behavioural zero, not a metric artefact.
+
+==============================================================================
+CHECK 2 — A3 OVERLAY 0/25: STRONG EFFECT OR DEGENERATE CONDITION?
+==============================================================================
+
+--- A3 overlay (n=25) ----------------------------------------
+   seed  ok  steps    final      min  leftLM   LCx  closing  NaN  jump  rst
+   4001   n    150     39.9     37.3       Y     n        Y    0     0    1
+   4012   n    150     38.6     35.9       Y     n        Y    0     0    1
+   4023   n    150     35.2     35.2       Y     n        n    0     0    1
+   4034   n    150     35.2     35.2       Y     n        n    0     0    1
+   4045   n    150     37.8     37.8       Y     n        n    0     0    1
+   4056   n    150     39.1     35.6       Y     n        n    0     0    1
+   4067   n    150     36.4     36.2       Y     n        n    0     0    1
+   4078   n    150     35.2     35.2       Y     n        n    0     0    1
+   4089   n    150     37.7     35.2       Y     n        Y    0     0    1
+   4100   n    150     34.2     34.2       Y     n        Y    0     0    1
+   4111   n    150     39.1     35.9       Y     n        n    0     0    1
+   4122   n    150     38.0     37.9       Y     n        n    0     0    1
+   4133   n    150     35.2     35.2       Y     n        n    0     0    1
+   4144   n    150     39.0     36.7       Y     n        n    0     0    1
+   4155   n    150     36.4     35.2       Y     n        n    0     0    1
+   4166   n    150     33.7     33.4       Y     n        n    0     0    1
+   4177   n    150     35.5     35.2       Y     n        n    0     0    1
+   4188   n    150     38.7     38.6       n     n        n    0     0    1
+   4199   n    150     39.0     37.5       Y     n        n    0     0    1
+   4210   n    150     40.6     35.6       Y     n        n    0     0    1
+   4221   n    150     37.7     37.7       Y     n        n    0     0    1
+   4232   n    150     37.3     37.1       Y     n        n    0     0    1
+   4243   n    150     39.0     35.4       Y     n        n    0     0    1
+   4254   n    150     56.7     56.7       n     n        n    0     0    1
+   4265   n    150     56.7     56.7       n     n        n    0     0    1
+  final dist : median 37.76 mm  IQR[35.55,39.04]  min 33.70  max 56.70
+  min dist   : median 35.90 mm  IQR[35.16,37.47]  min 33.38  max 56.69
+  left LM: 22/25   entered LCx: 0/25   still closing at budget: 4/25
+  NaN tip rows: 0   discontinuous jumps >20mm: 0   episodes all-API-failed: 2
+
+--- A3 wire_only (n=25) ----------------------------------------
+   seed  ok  steps    final      min  leftLM   LCx  closing  NaN  jump  rst
+   4001   n    150     34.9     34.9       Y     Y        Y    0     0    1
+   4012   n    150     35.2     35.2       Y     n        n    0     0    1
+   4023   n    150     35.2     35.2       Y     n        Y    0     0    1
+   4034   n    150     14.7     14.7       Y     n        Y    0     0    1
+   4045   Y    105      4.9      4.9       Y     n        Y    0     0    1
+   4056   n    150     34.1     33.3       Y     n        n    0     0    1
+   4067   Y    120      5.0      5.0       Y     n        Y    0     0    1
+   4078   n    150     33.6     33.1       Y     n        n    0     0    1
+   4089   n    150     32.8     32.8       Y     n        Y    0     0    1
+   4100   n    150     33.0     33.0       Y     n        n    0     0    1
+   4111   Y     97      5.0      5.0       Y     n        Y    0     0    1
+   4122   Y    106      4.9      4.9       Y     n        Y    0     0    1
+   4133   n    150     43.3     37.8       n     n        n    0     0    1
+   4144   n    150     33.2     32.8       Y     n        Y    0     0    1
+   4155   n    150     35.2     33.0       Y     n        n    0     0    1
+   4166   Y    103      4.9      4.9       Y     n        Y    0     0    1
+   4177   Y    127      4.8      4.8       Y     n        Y    0     0    1
+   4188   n    150     35.2     35.2       Y     n        n    0     0    1
+   4199   Y    148      4.9      4.9       Y     n        Y    0     0    1
+   4210   n    150     34.1     33.3       Y     n        n    0     0    1
+   4221   Y    148      4.9      4.9       Y     n        Y    0     0    1
+   4232   n    150     15.6     15.6       Y     n        Y    0     0    1
+   4243   Y    112      5.0      5.0       Y     n        Y    0     0    1
+   4254   Y    122      5.0      5.0       Y     n        Y    0     0    1
+   4265   n    150     33.0     33.0       Y     n        n    0     0    1
+  final dist : median 32.85 mm  IQR[4.95,34.13]  min 4.79  max 43.26
+  min dist   : median 32.84 mm  IQR[4.95,33.31]  min 4.79  max 37.76
+  left LM: 24/25   entered LCx: 1/25   still closing at budget: 16/25
+  NaN tip rows: 0   discontinuous jumps >20mm: 0   episodes all-API-failed: 0

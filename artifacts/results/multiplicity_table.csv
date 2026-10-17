@@ -1,0 +1,19 @@
+endpoint,anatomy,family,prespecified,test,statistic,n,raw_p,holm_p,bonferroni_p,within_pair_rho
+f_rot_LM (wire_only vs overlay),A1,confirmatory,yes,"Wilcoxon signed-rank (exact, primary)",W=73.0,25,0.0147,0.0147,0.0294,"-0.072  95% CI [-0.455, +0.332]"
+"f_rot_LM (wire_only vs overlay) - unpaired, reported alongside",A1,confirmatory (secondary presentation),yes,Mann-Whitney U (unpaired),U=496.0,25v25,0.000384,,,"-0.072  95% CI [-0.455, +0.332]"
+f_rot_LM (wire_only vs overlay),A2,confirmatory,yes,"Wilcoxon signed-rank (approx, primary)",W=0.0,25 (16 informative),0.000482,0.000965,0.000965,undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+"f_rot_LM (wire_only vs overlay) - unpaired, reported alongside",A2,confirmatory (secondary presentation),yes,Mann-Whitney U (unpaired),U=512.5,25v25,2.95e-06,,,undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+f_rot_LM (wire_only vs overlay),A3,EXCLUDED (C11) - not in any inference family; Section V prose only,n/a,Wilcoxon signed-rank (exact),W=6.0,23,3.34e-06,,,"-0.097  95% CI [-0.489, +0.329]"
+success rate,A1,exploratory,no,Fisher exact,OR=3.692,25+25,0.0718,,,
+first-bifurcation LCx,A1,exploratory,no,Fisher exact,OR=0.837,25+25,1,,,
+success rate,A2,exploratory,no,Fisher exact,OR=nan,25+25,1,,,
+first-bifurcation LCx,A2,exploratory,no,Fisher exact,OR=nan,25+25,1,,,
+success rate,A3,exploratory,no,Fisher exact,OR=inf,25+23,0.000675,,,
+first-bifurcation LCx,A3,exploratory,no,Fisher exact,OR=inf,25+23,1,,,
+f_rot_LM prompt variant V2,A1,exploratory,no,Wilcoxon signed-rank (approx),W=0.0,10 (2 informative),0.371,,,
+f_rot_LM prompt variant V3,A1,exploratory,no,Wilcoxon signed-rank (exact),W=6.0,5,0.812,,,
+f_rot_LM prompt variant V4,A1,exploratory,no,Wilcoxon signed-rank (exact),W=17.0,10,0.322,,,
+f_rot_LM biplane vs mono (wire_only),A1,exploratory,no,Wilcoxon signed-rank (exact),W=18.0,10,0.375,,,
+f_rot_LM biplane vs mono (overlay),A1,exploratory,no,Wilcoxon signed-rank (exact),W=18.0,10,0.375,,,
+f_rot_LM contrast vs wire_only,"A1 (old prompt, n=15)",exploratory,no,Wilcoxon signed-rank (exact),W=3.0,7,0.0781,,,
+f_rot_LM contrast vs overlay,"A1 (old prompt, n=15)",exploratory,no,Wilcoxon signed-rank (exact),W=13.0,7,0.938,,,

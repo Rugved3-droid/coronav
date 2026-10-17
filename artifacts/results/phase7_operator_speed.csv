@@ -1,0 +1,5 @@
+anatomy,arm,steps,advancing_steps,median_advance_mm_s,mean_advance_mm_s,steps_at_35,pct_steps_at_35
+A1,wire_only,1277,1116,10.0,18.8,17,1.3
+A1,overlay,1448,1193,10.0,16.0,12,0.8
+A2,wire_only,1026,1000,10.0,8.0,0,0.0
+A2,overlay,1400,1183,5.0,6.8,0,0.0

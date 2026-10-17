@@ -1,0 +1,154 @@
+{
+  "headline_speed": 35.0,
+  "speeds": [
+    15.0,
+    35.0,
+    55.0
+  ],
+  "complete": true,
+  "missing_cells": [],
+  "anatomies": {
+    "a1": {
+      "label": "A1 VMR0066",
+      "budget": 60,
+      "floor_pp": 20.0,
+      "separated_pairs": [
+        [
+          15.0,
+          55.0
+        ],
+        [
+          35.0,
+          55.0
+        ]
+      ],
+      "speeds": {
+        "15.0": {
+          "k": 46,
+          "n": 75,
+          "rate": 0.6133333333333333,
+          "lo": 0.5001726873212743,
+          "hi": 0.7154495222736602,
+          "per_rep": [
+            0.56,
+            0.64,
+            0.64
+          ],
+          "reps": 3,
+          "median_steps": 59.0,
+          "fail_at_cap": 29,
+          "fail_near": 0,
+          "fail_dist_median": 150.2725863225148,
+          "fail_dist_min": 21.67449559508033,
+          "fail_dist_max": 171.2195943235202
+        },
+        "35.0": {
+          "k": 13,
+          "n": 25,
+          "rate": 0.52,
+          "lo": 0.334982179531473,
+          "hi": 0.6996899607103998,
+          "per_rep": [
+            0.52
+          ],
+          "reps": 1,
+          "median_steps": 27.0,
+          "fail_at_cap": 12,
+          "fail_near": 0,
+          "fail_dist_median": 298.4739599552196,
+          "fail_dist_min": 135.50707230599568,
+          "fail_dist_max": 298.51968489769996
+        },
+        "55.0": {
+          "k": 10,
+          "n": 50,
+          "rate": 0.2,
+          "lo": 0.11243629945973886,
+          "hi": 0.3303737210448524,
+          "per_rep": [
+            0.16,
+            0.24
+          ],
+          "reps": 2,
+          "median_steps": 19.0,
+          "fail_at_cap": 40,
+          "fail_near": 0,
+          "fail_dist_median": 209.66933536230664,
+          "fail_dist_min": 209.557251257961,
+          "fail_dist_max": 431.8418030141696
+        }
+      }
+    },
+    "a2": {
+      "label": "A2 ASOCA Normal_12",
+      "budget": 45,
+      "floor_pp": 28.0,
+      "separated_pairs": [
+        [
+          15.0,
+          35.0
+        ],
+        [
+          35.0,
+          55.0
+        ]
+      ],
+      "speeds": {
+        "15.0": {
+          "k": 75,
+          "n": 75,
+          "rate": 1.0,
+          "lo": 0.9512744540953,
+          "hi": 1.0,
+          "per_rep": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "reps": 3,
+          "median_steps": 23.0,
+          "fail_at_cap": 0,
+          "fail_near": 0,
+          "fail_dist_median": null,
+          "fail_dist_min": null,
+          "fail_dist_max": null
+        },
+        "35.0": {
+          "k": 17,
+          "n": 25,
+          "rate": 0.68,
+          "lo": 0.48409913734576715,
+          "hi": 0.8279501248310887,
+          "per_rep": [
+            0.68
+          ],
+          "reps": 1,
+          "median_steps": 11.0,
+          "fail_at_cap": 8,
+          "fail_near": 0,
+          "fail_dist_median": 66.67807809928772,
+          "fail_dist_min": 66.56741545076345,
+          "fail_dist_max": 66.72167164022218
+        },
+        "55.0": {
+          "k": 47,
+          "n": 50,
+          "rate": 0.94,
+          "lo": 0.8378265662912299,
+          "hi": 0.9793854036353695,
+          "per_rep": [
+            0.96,
+            0.92
+          ],
+          "reps": 2,
+          "median_steps": 8.0,
+          "fail_at_cap": 3,
+          "fail_near": 0,
+          "fail_dist_median": 73.50478757744511,
+          "fail_dist_min": 73.35296529132866,
+          "fail_dist_max": 73.51252817954318
+        }
+      }
+    }
+  }
+}

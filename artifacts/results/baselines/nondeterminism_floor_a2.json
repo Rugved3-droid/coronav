@@ -1,0 +1,921 @@
+{
+  "anatomy": "a2",
+  "label": "A2 ASOCA Normal_12",
+  "reps": 5,
+  "budget": 45,
+  "seeds": [
+    3001,
+    3012,
+    3023,
+    3034,
+    3045,
+    3056,
+    3067,
+    3078,
+    3089,
+    3100,
+    3111,
+    3122,
+    3133,
+    3144,
+    3155,
+    3166,
+    3177,
+    3188,
+    3199,
+    3210,
+    3221,
+    3232,
+    3243,
+    3254,
+    3265
+  ],
+  "advance_mm_s": 35.0,
+  "passes": [
+    [
+      {
+        "seed": 3001,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3186152851091295,
+        "reset_failed": false
+      },
+      {
+        "seed": 3012,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.359665052024167,
+        "reset_failed": false
+      },
+      {
+        "seed": 3023,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3158998015738606,
+        "reset_failed": false
+      },
+      {
+        "seed": 3034,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2867864536264935,
+        "reset_failed": false
+      },
+      {
+        "seed": 3045,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.25528530719545,
+        "reset_failed": false
+      },
+      {
+        "seed": 3056,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3038610120844276,
+        "reset_failed": false
+      },
+      {
+        "seed": 3067,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3180146777463984,
+        "reset_failed": false
+      },
+      {
+        "seed": 3078,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3434555458834856,
+        "reset_failed": false
+      },
+      {
+        "seed": 3089,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72167461950448,
+        "reset_failed": false
+      },
+      {
+        "seed": 3100,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.34258927724064,
+        "reset_failed": false
+      },
+      {
+        "seed": 3111,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3376682677668574,
+        "reset_failed": false
+      },
+      {
+        "seed": 3122,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.55738798628147,
+        "reset_failed": false
+      },
+      {
+        "seed": 3133,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3589703511312847,
+        "reset_failed": false
+      },
+      {
+        "seed": 3144,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.62032366190051,
+        "reset_failed": false
+      },
+      {
+        "seed": 3155,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.221251220788554,
+        "reset_failed": false
+      },
+      {
+        "seed": 3166,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.62490505448355,
+        "reset_failed": false
+      },
+      {
+        "seed": 3177,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3325794359173235,
+        "reset_failed": false
+      },
+      {
+        "seed": 3188,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.276440697519876,
+        "reset_failed": false
+      },
+      {
+        "seed": 3199,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3013812311840183,
+        "reset_failed": false
+      },
+      {
+        "seed": 3210,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.315199979734587,
+        "reset_failed": false
+      },
+      {
+        "seed": 3221,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.328487776216413,
+        "reset_failed": false
+      },
+      {
+        "seed": 3232,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2902419963315936,
+        "reset_failed": false
+      },
+      {
+        "seed": 3243,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.56598126988958,
+        "reset_failed": false
+      },
+      {
+        "seed": 3254,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2965862960748766,
+        "reset_failed": false
+      },
+      {
+        "seed": 3265,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.71225332782232,
+        "reset_failed": false
+      }
+    ],
+    [
+      {
+        "seed": 3001,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.258884609726271,
+        "reset_failed": false
+      },
+      {
+        "seed": 3012,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3438662463135764,
+        "reset_failed": false
+      },
+      {
+        "seed": 3023,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.302771421445075,
+        "reset_failed": false
+      },
+      {
+        "seed": 3034,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3185733102034902,
+        "reset_failed": false
+      },
+      {
+        "seed": 3045,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.327636888760415,
+        "reset_failed": false
+      },
+      {
+        "seed": 3056,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.65280868149219,
+        "reset_failed": false
+      },
+      {
+        "seed": 3067,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.265153354773975,
+        "reset_failed": false
+      },
+      {
+        "seed": 3078,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.71976196800827,
+        "reset_failed": false
+      },
+      {
+        "seed": 3089,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.359913324093152,
+        "reset_failed": false
+      },
+      {
+        "seed": 3100,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3546253489067728,
+        "reset_failed": false
+      },
+      {
+        "seed": 3111,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.56688011522597,
+        "reset_failed": false
+      },
+      {
+        "seed": 3122,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.335133290947401,
+        "reset_failed": false
+      },
+      {
+        "seed": 3133,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.63009639332216,
+        "reset_failed": false
+      },
+      {
+        "seed": 3144,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.325754545406384,
+        "reset_failed": false
+      },
+      {
+        "seed": 3155,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2824502517330902,
+        "reset_failed": false
+      },
+      {
+        "seed": 3166,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3218160413556297,
+        "reset_failed": false
+      },
+      {
+        "seed": 3177,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2990735920350387,
+        "reset_failed": false
+      },
+      {
+        "seed": 3188,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3522665224609898,
+        "reset_failed": false
+      },
+      {
+        "seed": 3199,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3211212323459947,
+        "reset_failed": false
+      },
+      {
+        "seed": 3210,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.61209881327818,
+        "reset_failed": false
+      },
+      {
+        "seed": 3221,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3242680424710587,
+        "reset_failed": false
+      },
+      {
+        "seed": 3232,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3102789262936967,
+        "reset_failed": false
+      },
+      {
+        "seed": 3243,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.29039811897325,
+        "reset_failed": false
+      },
+      {
+        "seed": 3254,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3273558621412795,
+        "reset_failed": false
+      },
+      {
+        "seed": 3265,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.290861246969656,
+        "reset_failed": false
+      }
+    ],
+    [
+      {
+        "seed": 3001,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.306833454795055,
+        "reset_failed": false
+      },
+      {
+        "seed": 3012,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.67292232978765,
+        "reset_failed": false
+      },
+      {
+        "seed": 3023,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.62115228049483,
+        "reset_failed": false
+      },
+      {
+        "seed": 3034,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.27680762378531,
+        "reset_failed": false
+      },
+      {
+        "seed": 3045,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.71593665806232,
+        "reset_failed": false
+      },
+      {
+        "seed": 3056,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3129732682551603,
+        "reset_failed": false
+      },
+      {
+        "seed": 3067,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.70767474674163,
+        "reset_failed": false
+      },
+      {
+        "seed": 3078,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.352144403346413,
+        "reset_failed": false
+      },
+      {
+        "seed": 3089,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.67580543340243,
+        "reset_failed": false
+      },
+      {
+        "seed": 3100,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.336975264440386,
+        "reset_failed": false
+      },
+      {
+        "seed": 3111,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.67965426558501,
+        "reset_failed": false
+      },
+      {
+        "seed": 3122,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3008776923109213,
+        "reset_failed": false
+      },
+      {
+        "seed": 3133,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3198954735880903,
+        "reset_failed": false
+      },
+      {
+        "seed": 3144,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3332656283378843,
+        "reset_failed": false
+      },
+      {
+        "seed": 3155,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.7169624365066,
+        "reset_failed": false
+      },
+      {
+        "seed": 3166,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72082517756951,
+        "reset_failed": false
+      },
+      {
+        "seed": 3177,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.315680472650066,
+        "reset_failed": false
+      },
+      {
+        "seed": 3188,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3134371117344457,
+        "reset_failed": false
+      },
+      {
+        "seed": 3199,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.334850135461308,
+        "reset_failed": false
+      },
+      {
+        "seed": 3210,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3036199963368778,
+        "reset_failed": false
+      },
+      {
+        "seed": 3221,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2849179359157237,
+        "reset_failed": false
+      },
+      {
+        "seed": 3232,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3205626132715977,
+        "reset_failed": false
+      },
+      {
+        "seed": 3243,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.278625278938284,
+        "reset_failed": false
+      },
+      {
+        "seed": 3254,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.338951994836341,
+        "reset_failed": false
+      },
+      {
+        "seed": 3265,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3114026228457822,
+        "reset_failed": false
+      }
+    ],
+    [
+      {
+        "seed": 3001,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.290397002498389,
+        "reset_failed": false
+      },
+      {
+        "seed": 3012,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.62267974024387,
+        "reset_failed": false
+      },
+      {
+        "seed": 3023,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.253503052231835,
+        "reset_failed": false
+      },
+      {
+        "seed": 3034,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.70572878357949,
+        "reset_failed": false
+      },
+      {
+        "seed": 3045,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3129074391031272,
+        "reset_failed": false
+      },
+      {
+        "seed": 3056,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.308617262150883,
+        "reset_failed": false
+      },
+      {
+        "seed": 3067,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3972149753728975,
+        "reset_failed": false
+      },
+      {
+        "seed": 3078,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.316332833120801,
+        "reset_failed": false
+      },
+      {
+        "seed": 3089,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3597993743970216,
+        "reset_failed": false
+      },
+      {
+        "seed": 3100,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.312290981804432,
+        "reset_failed": false
+      },
+      {
+        "seed": 3111,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.56367042090713,
+        "reset_failed": false
+      },
+      {
+        "seed": 3122,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.314477082061186,
+        "reset_failed": false
+      },
+      {
+        "seed": 3133,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.353483153227312,
+        "reset_failed": false
+      },
+      {
+        "seed": 3144,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.361294929133303,
+        "reset_failed": false
+      },
+      {
+        "seed": 3155,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2342568847155997,
+        "reset_failed": false
+      },
+      {
+        "seed": 3166,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.352961096328987,
+        "reset_failed": false
+      },
+      {
+        "seed": 3177,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3026099950181895,
+        "reset_failed": false
+      },
+      {
+        "seed": 3188,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.348260795277257,
+        "reset_failed": false
+      },
+      {
+        "seed": 3199,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2930002618539813,
+        "reset_failed": false
+      },
+      {
+        "seed": 3210,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.343958156740867,
+        "reset_failed": false
+      },
+      {
+        "seed": 3221,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.60185614350468,
+        "reset_failed": false
+      },
+      {
+        "seed": 3232,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.6470279528136,
+        "reset_failed": false
+      },
+      {
+        "seed": 3243,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.64451663339506,
+        "reset_failed": false
+      },
+      {
+        "seed": 3254,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.7074503487376,
+        "reset_failed": false
+      },
+      {
+        "seed": 3265,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.268144122310279,
+        "reset_failed": false
+      }
+    ],
+    [
+      {
+        "seed": 3001,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.307377038302896,
+        "reset_failed": false
+      },
+      {
+        "seed": 3012,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.68304780023706,
+        "reset_failed": false
+      },
+      {
+        "seed": 3023,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.275639060604151,
+        "reset_failed": false
+      },
+      {
+        "seed": 3034,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.31382523090817,
+        "reset_failed": false
+      },
+      {
+        "seed": 3045,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2676284449012547,
+        "reset_failed": false
+      },
+      {
+        "seed": 3056,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3423555472845745,
+        "reset_failed": false
+      },
+      {
+        "seed": 3067,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.284880440685849,
+        "reset_failed": false
+      },
+      {
+        "seed": 3078,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72112868666764,
+        "reset_failed": false
+      },
+      {
+        "seed": 3089,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.2563853903445574,
+        "reset_failed": false
+      },
+      {
+        "seed": 3100,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72107104954135,
+        "reset_failed": false
+      },
+      {
+        "seed": 3111,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.64345193012784,
+        "reset_failed": false
+      },
+      {
+        "seed": 3122,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72166182215389,
+        "reset_failed": false
+      },
+      {
+        "seed": 3133,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3271149557619113,
+        "reset_failed": false
+      },
+      {
+        "seed": 3144,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3544140611740456,
+        "reset_failed": false
+      },
+      {
+        "seed": 3155,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.6354057394771,
+        "reset_failed": false
+      },
+      {
+        "seed": 3166,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.319364984019859,
+        "reset_failed": false
+      },
+      {
+        "seed": 3177,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.71328641417549,
+        "reset_failed": false
+      },
+      {
+        "seed": 3188,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.58475702952306,
+        "reset_failed": false
+      },
+      {
+        "seed": 3199,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3571593660873393,
+        "reset_failed": false
+      },
+      {
+        "seed": 3210,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.58287322887608,
+        "reset_failed": false
+      },
+      {
+        "seed": 3221,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.72153999361058,
+        "reset_failed": false
+      },
+      {
+        "seed": 3232,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3319981576302853,
+        "reset_failed": false
+      },
+      {
+        "seed": 3243,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.56061389045614,
+        "reset_failed": false
+      },
+      {
+        "seed": 3254,
+        "success": true,
+        "steps": 11,
+        "final_dist": 2.3576001378592157,
+        "reset_failed": false
+      },
+      {
+        "seed": 3265,
+        "success": false,
+        "steps": 45,
+        "final_dist": 66.57950004251455,
+        "reset_failed": false
+      }
+    ]
+  ]
+}

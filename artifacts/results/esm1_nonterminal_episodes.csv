@@ -1,0 +1,13 @@
+group,arm,seed,steps,arm_longest_episode,ended_below_arm_longest
+"A1 monoplane arms (120-step budget, verified)",wire_only,2001,120,120,no
+"A1 monoplane arms (120-step budget, verified)",wire_only,2045,120,120,no
+"A1 monoplane arms (120-step budget, verified)",wire_only,2078,120,120,no
+"A1 monoplane arms (120-step budget, verified)",wire_only,2089,120,120,no
+"A1 monoplane arms (120-step budget, verified)",overlay,2012,120,120,no
+"A1 monoplane arms (120-step budget, verified)",overlay,2034,120,120,no
+"A1 monoplane arms (120-step budget, verified)",overlay,2045,120,120,no
+"A1 monoplane arms (120-step budget, verified)",overlay,2078,120,120,no
+"A1 monoplane arms (120-step budget, verified)",overlay,2089,120,120,no
+A1 biplane arms (budget not established; see C19),wire_only,2012,30,40,yes
+A1 biplane arms (budget not established; see C19),wire_only,2056,20,40,yes
+A1 biplane arms (budget not established; see C19),overlay,2012,48,48,no

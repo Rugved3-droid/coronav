@@ -1,0 +1,76 @@
+==============================================================================
+PHASE 3 — STEPS-TO-TARGET SELECTION BIAS (A1, all 50 episodes)
+seed=20260911  bootstrap=10000  alpha=0.05  budget=60
+==============================================================================
+
+STATUS OF THE SUPERSEDED ANALYSIS
+  The manuscript's steps-to-target comparison was restricted to successful
+  episodes. Success is an outcome of the condition, and the arms contribute
+  unequal subsets (20 vs 13), so that comparison is INVALID and is REPLACED
+  by the three analyses below. It is not re-weighted, and no claim is made
+  that the replacement is 'stronger' or 'weaker' than it: the two estimate
+  different quantities on different samples under different designs, and are
+  therefore not placed on a common scale anywhere in this report.
+
+success            wire_only 20/25      overlay 13/25
+steps (successes)  wire_only median=48.0 IQR[46.0,50.0] n=20
+                   overlay   median=58.0 IQR[55.0,59.0] n=13
+  (descriptive only — the successes-only contrast is not tested here)
+
+------------------------------------------------------------------------------
+1. WORST-RANK IMPUTATION  (failures rank below all successes;
+   failures ordered among themselves by final distance, closer = better)
+------------------------------------------------------------------------------
+  mean rank   wire_only  18.34   overlay  32.66   (lower = better)
+  median rank wire_only  13.00   overlay  31.50
+  Wilcoxon signed-rank  W=47.5  n=25  (approx)
+  two-sided p = 0.00206
+  rank-biserial r = +0.708   HL(overlay-wire_only) = +15.50 ranks [+7.00, +23.25]
+  overlay worse on 19/25 seeds, better on 6, tied on 0
+  NOTE: the failure-ordering rule favours overlay (its failures end closer to
+  target), and the conclusion is unchanged under it.
+
+------------------------------------------------------------------------------
+2. WIN RATIO / FINKELSTEIN-SCHOENFELD  (hierarchical: success, then steps)
+   orientation: 'win' = wire_only better than overlay
+------------------------------------------------------------------------------
+  pairs = 625 (25 x 25)
+  wins 470   losses 84   ties 71
+  win ratio = 5.595   bootstrap 95% CI [2.431, 17.970]  (10000 resamples, 0 undefined)
+  win fraction (wins / informative pairs) = 0.848
+
+  >> ABSTRACT-FACING NUMBER FOR PHASE 3: win ratio 5.60, 95% CI [2.43, 17.97].
+     Chosen because it is hierarchical — it carries both success and speed in
+     one figure without conditioning on success.
+
+------------------------------------------------------------------------------
+3. TIME-TO-EVENT  (steps as time; failures administratively censored at 60)
+------------------------------------------------------------------------------
+  events  wire_only 20/25   overlay 13/25
+  log-rank chi2 = 11.705  df=1  two-sided p = 0.000623
+
+  cumulative incidence of target reached:
+    step    wire_only      overlay
+      40        0.000        0.000
+      45        0.160        0.000
+      50        0.640        0.080
+      55        0.720        0.160
+      60        0.800        0.520
+  (all censoring occurs at step 60, after every event, so the Kaplan-Meier
+   estimator reduces exactly to the empirical CDF here.)
+
+------------------------------------------------------------------------------
+4. RECONCILIATION: log-rank vs Fisher on the SAME 50 episodes
+------------------------------------------------------------------------------
+  Fisher exact on terminal success (20/25 vs 13/25): two-sided p = 0.0718, OR = 3.692
+  Log-rank on step-to-target with censoring: p = 0.000623
+
+  Both are correct, and they do not conflict: Fisher uses ONLY the terminal
+  success proportion at the budget, discarding when each episode succeeded,
+  whereas the log-rank uses the step at which every episode either reached
+  target or was censored — so it detects the overlay arm's systematically
+  later successes that Fisher is blind to.
+
+  The manuscript's success-rate claim REMAINS DECLINED (Fisher p = 0.0718, n.s.). The log-rank is a statement about TIME TO TARGET,
+  not about the terminal proportion, and must not be reported as reviving
+  the abandoned success-rate claim.

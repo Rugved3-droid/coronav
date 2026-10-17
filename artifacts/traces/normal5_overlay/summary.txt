@@ -1,0 +1,59 @@
+====================================================================
+CORONARY VLM OPERATOR -- anatomy: asoca_normal5  mode: OVERLAY
+Run dir  : D:\steve\pilot\runs\normal5_overlay
+Model    : claude-sonnet-4-6
+Scene    : asoca_normal5, clipped mesh, AP Cranial 40 deg
+Target   : mid-LAD (BranchIndex, threshold=5mm)
+Budget   : 2 retractions per episode
+Gate     : suppress rotation when dist < 25mm AND decreasing
+====================================================================
+FRAMING: Each 'episode' is a repetition of a single fixed coronary scenario.
+  Anatomy, target, and start are IDENTICAL across all episodes.
+  Observed variance reflects VLM sampling stochasticity, NOT anatomical variation.
+  The fixed scenario enables clean causal attribution.
+====================================================================
+
+  Episodes run          : 25
+  Failed resets         : 0
+  Target reached        : 0 / 25
+  Steps total / scored  : 3750 / 3443  (parse failures: 307)
+  API errors            : 304
+  Retraction steps      : 36  (budget enforcements: 0)
+  Rotation steps        : 2614  (69.7%)
+  Gate suppressions     : 0
+  Hallucination flags   : 0
+
+  Perception tip OK     : N/A  (0/0 verifiable)
+  Perception target OK  : 100.0%  (11/11 verifiable)
+  Intent appropriate    : 70.0%  (573/818 assessable)
+  Action consistent *** : 100.0%  (3443/3443 assessable)
+  Outcome reduced dist  : 64.2%  (2408/3750)
+
+  Per-episode mean tip->target dist (mm):
+    ep01 :   43.1 mm
+    ep02 :   42.2 mm
+    ep03 :   40.6 mm
+    ep04 :   40.7 mm
+    ep05 :   41.3 mm
+    ep06 :   41.8 mm
+    ep07 :   40.9 mm
+    ep08 :   40.1 mm
+    ep09 :   41.5 mm
+    ep10 :   40.7 mm
+    ep11 :   42.0 mm
+    ep12 :   41.9 mm
+    ep13 :   40.1 mm
+    ep14 :   42.1 mm
+    ep15 :   41.7 mm
+    ep16 :   40.6 mm
+    ep17 :   41.3 mm
+    ep18 :   41.9 mm
+    ep19 :   42.3 mm
+    ep20 :   42.3 mm
+    ep21 :   41.4 mm
+    ep22 :   41.8 mm
+    ep23 :   42.5 mm
+    ep24 :   56.7 mm
+    ep25 :   56.7 mm
+
+====================================================================

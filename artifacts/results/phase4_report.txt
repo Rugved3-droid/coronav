@@ -1,0 +1,59 @@
+==============================================================================
+PHASE 4 — PRIMARY ENDPOINT f_rot_LM, MATCHED DESIGN (A1)
+seed=20260911  alpha=0.05  two-sided
+==============================================================================
+
+PAIRING AUDIT
+  wire_only episodes with defined metric : 25
+  overlay   episodes with defined metric : 25
+  seeds identical across arms            : True
+  COMPLETE PAIRS                         : 25
+  seeds only in wire_only                : none
+  seeds only in overlay                  : none
+  -> pairing complete; no seed dropped
+
+DESCRIPTIVE (per-episode f_rot_LM)
+  wire_only  median=0.1452  IQR[0.1344,0.1608]  mean=0.1575  n=25
+  overlay    median=0.1749  IQR[0.1584,0.1985]  mean=0.1779  n=25
+  median difference (overlay - wire_only) = +0.0297
+
+------------------------------------------------------------------------------
+PRIMARY — Wilcoxon signed-rank, 25 seed-matched pairs, two-sided
+------------------------------------------------------------------------------
+  W = 73.0   n = 25 pairs   method = exact
+  two-sided p = 0.0147
+  matched-pairs rank-biserial r = +0.551
+  Hodges-Lehmann (overlay - wire_only) = +0.0285  95% CI [+0.0068, +0.0440]
+  overlay higher on 20/25 seeds, lower on 5, tied on 0
+  DIRECTION: overlay > wire_only   SIGNIFICANT at alpha=0.05
+
+SECONDARY SENSITIVITY ONLY — Mann-Whitney U (unmatched; NOT the primary test)
+  U = 496.0  two-sided p = 0.000384  rank-biserial = 0.587
+  Reported because the manuscript used it. It ignores the matched structure
+  and is not comparable to the primary effect size above.
+
+SENSITIVITY — excluding the extreme wire_only episode
+  excluded seed 5155 (f_rot_LM = 0.3709)
+  W = 48.0  n = 24 pairs  method = exact  two-sided p = 0.00252
+  rank-biserial r = +0.680   HL = +0.0305 [+0.0147, +0.0461]
+  NOTE: the paired test ranks within-seed differences, so a single extreme
+  VALUE has bounded influence by construction. Full sample stays primary.
+
+------------------------------------------------------------------------------
+DESIGN SENSITIVITY  (n = 25 pairs, 80% power, alpha 0.05 two-sided)
+------------------------------------------------------------------------------
+  SD of paired differences = 0.0596
+  parametric reference (paired t): smallest detectable d = 0.5840
+    -> raw units: +0.0348 f_rot_LM
+  simulated for the Wilcoxon signed-rank actually used, resampling the
+    observed difference distribution centred at zero (4000 sims/step):
+    -> smallest detectable paired shift = 0.0292 f_rot_LM
+  observed HL shift = +0.0285, i.e. 0.98x the smallest detectable shift
+
+  METHOD MIX: 100.0% of simulated samples fell to the normal
+    approximation with continuity correction; the rest used the exact test. The test
+    actually run on the observed data used the EXACT method.
+    Resampling with replacement induces tied absolute differences that the observed
+    sample need not have, so a mix is expected. This simulation now applies the SAME
+    exact/approx rule as the analysis (PRESPEC); it previously called scipy bare with
+    correction=False, which understated p and so understated the detectable shift.

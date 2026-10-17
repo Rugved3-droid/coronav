@@ -1,0 +1,26 @@
+====================================================================================
+POOLED OPEN-LOOP FLOOR AT THE HARNESS DEFAULT, 35 mm/s
+====================================================================================
+
+A1 VMR0066: 7 artifact-backed draws
+   7a     17/25   68.0%
+   7g r1  16/25   64.0%
+   7g r2  15/25   60.0%
+   7g r3  15/25   60.0%
+   7g r4  11/25   44.0%
+   7g r5  12/25   48.0%
+   7c     13/25   52.0%
+   POOLED 99/175 = 56.6%   Wilson 95% CI [49.2, 63.7]
+   RANGE across draws 44-68%
+
+A2 ASOCA Normal_12: 7 artifact-backed draws
+   7a     20/25   80.0%
+   7g r1  19/25   76.0%
+   7g r2  20/25   80.0%
+   7g r3  17/25   68.0%
+   7g r4  18/25   72.0%
+   7g r5  13/25   52.0%
+   7c     17/25   68.0%
+   POOLED 124/175 = 70.9%   Wilson 95% CI [63.7, 77.1]
+   RANGE across draws 52-80%
+   sensitivity: adding 2 artifact-less smoke draws ['15/25', '17/25'] would give 156/225 = 69.3%. Excluded: no artifact.

@@ -1,0 +1,32 @@
+==================================================================================================
+PHASE 6f-rev — MESH PROVENANCE AUDIT
+==================================================================================================
+
+Wall-to-wall crossings, cast from face centres along the face normal, accepted
+only when the struck face is antiparallel (a genuine opposite wall).
+A generated constant-radius tube -> tight spike at 2R. A patient lumen -> broad.
+
+mesh                          KB   verts   faces   bnd  nonmani
+--------------------------------------------------------------------------------------------------
+A1 VMR0066                 741.8    7990   15897    81        0
+A2 ASOCA Normal_12         304.9    3350    6689     9        6
+A3 ASOCA Normal_5           29.0     349     632    72        8
+A3 N5 (pre-tube clip)      167.1    1861    3718     0        9
+
+WALL-TO-WALL LUMEN DIAMETER
+mesh                         n   median              IQR      sd      CV  within 5% of med
+--------------------------------------------------------------------------------------------------
+A1 VMR0066                2886    1.810 [  1.42,  2.33]   0.940   0.455             10.0%
+A2 ASOCA Normal_12        2702    2.828 [  1.95,  3.78]   1.341   0.463              6.1%
+A3 ASOCA Normal_5          523    4.219 [  3.89,  4.54]   0.827   0.197             35.6%
+A3 N5 (pre-tube clip)     2696    1.733 [  1.12,  2.59]   0.913   0.487              3.3%
+
+TIP-TO-WALL (corroboration; understates radius, spread is the signal)
+  A2 ASOCA Normal_12       n=1026   median 0.486 mm  IQR [0.38, 0.60]  sd 0.244  max 1.559
+  A3 ASOCA Normal_5        n=3428   median 1.086 mm  IQR [0.82, 1.69]  sd 0.605  max 3.437
+
+VERDICT (measurement; cross-check against the generating source)
+  A1 VMR0066               median 1.81 mm  CV 0.455  -> calibre varies -> consistent with a clipped patient lumen surface
+  A2 ASOCA Normal_12       median 2.83 mm  CV 0.463  -> calibre varies -> consistent with a clipped patient lumen surface
+  A3 ASOCA Normal_5        median 4.22 mm  CV 0.197  -> narrow spread -> inspect before calling it patient-derived
+  A3 N5 (pre-tube clip)    median 1.73 mm  CV 0.487  -> calibre varies -> consistent with a clipped patient lumen surface

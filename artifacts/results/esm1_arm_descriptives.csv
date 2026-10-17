@@ -1,0 +1,18 @@
+group,role,arm,attempted,analysed,successes,success_pct,frot_defined_n,frot_median,frot_q1,frot_q3,longest_episode_steps,failures_all_at_longest
+A1 VMR 0066,Confirmatory,wire_only,25,25,20,80.0,25,0.1452,0.1344,0.1608,60,yes
+A1 VMR 0066,Confirmatory,overlay,25,25,13,52.0,25,0.1749,0.1584,0.1985,60,yes
+A2 ASOCA Normal_12,Confirmatory,wire_only,25,25,25,100.0,25,0.0000,0.0000,0.0000,45,no failures
+A2 ASOCA Normal_12,Confirmatory,overlay,25,25,25,100.0,25,0.0454,0.0000,0.0827,62,no failures
+"A1 monoplane arms (120-step budget, verified)","Exploratory: biplane study, monoplane arms",wire_only,10,10,6,60.0,10,0.1535,0.1483,0.1630,120,yes
+"A1 monoplane arms (120-step budget, verified)","Exploratory: biplane study, monoplane arms",overlay,10,10,5,50.0,10,0.1437,0.1324,0.1499,120,yes
+A1 biplane arms (budget not established; see C19),"Exploratory: biplane study, biplane arms",wire_only,10,10,8,80.0,10,0.1566,0.1315,0.2100,40,no
+A1 biplane arms (budget not established; see C19),"Exploratory: biplane study, biplane arms",overlay,10,10,9,90.0,10,0.1557,0.1433,0.1748,48,yes
+A1 prompt V2,Exploratory: prompt variant V2 (A1),wire_only,10,10,3,30.0,10,0.0000,0.0000,0.0000,60,yes
+A1 prompt V2,Exploratory: prompt variant V2 (A1),overlay,10,10,2,20.0,10,0.0000,0.0000,0.0000,60,yes
+A1 prompt V3,Exploratory: prompt variant V3 (A1),wire_only,10,10,0,0.0,10,0.0970,0.0957,0.1018,60,yes
+A1 prompt V3,Exploratory: prompt variant V3 (A1),overlay,10,5,0,0.0,5,0.1050,0.0865,0.1144,60,yes
+A1 prompt V4,Exploratory: prompt variant V4 (A1),wire_only,10,10,0,0.0,10,0.1398,0.1351,0.1429,60,yes
+A1 prompt V4,Exploratory: prompt variant V4 (A1),overlay,10,10,0,0.0,10,0.1476,0.1303,0.1564,60,yes
+A1 original prompt,Exploratory: original prompt with contrast condition (A1),wire_only,15,15,0,0.0,15,0.1436,0.1412,0.1463,60,yes
+A1 original prompt,Exploratory: original prompt with contrast condition (A1),overlay,15,15,0,0.0,15,0.1549,0.1450,0.1602,60,yes
+A1 original prompt,Exploratory: original prompt with contrast condition (A1),contrast,15,7,0,0.0,7,0.1597,0.1553,0.1615,60,yes

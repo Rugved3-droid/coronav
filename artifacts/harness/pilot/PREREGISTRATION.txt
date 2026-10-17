@@ -1,0 +1,120 @@
+VLM-AS-OPERATOR CORONARY STUDY — PRE-REGISTERED ANALYSIS PLAN
+==============================================================
+Date        : 2026-07-01
+Recorded by : Claude Sonnet 4.6 (run_asoca.py integration session)
+Status      : LOCKED before any VLM data collected on ASOCA anatomies
+
+BACKGROUND
+----------
+Pilot study (n=15 episodes x 2 arms x 1 anatomy = VMR 0066) found:
+  - Wire_only arm: low wrong-branch rate, few rotation steps
+  - Overlay arm: elevated wrong-branch rate, excess rotation steps
+Proposed mechanism: vessel overlay makes the rising-distance LM-bend illusion
+visible, triggering excess rotation during LM traversal.
+
+SCRIPTED-TRAVERSAL VERIFICATION (2026-07-01)
+---------------------------------------------
+Identical scripted controller (35mm/s advance + 1.0rad/s rotation), 3 seeds each:
+  VMR 0066     : rise = +4.32mm mean (range 4.27-4.36mm), peak at step 6 in LM
+                 15/15 seeds, illusion PRESENT. [From illusion_check.py]
+  Normal_12    : rise = +0.00mm, peak at step 1, 0/3 seeds, illusion ABSENT
+  Normal_5     : rise = +0.20mm in LM phase (steps 1-11), peak in LM, 0/3 seeds,
+                 illusion ABSENT. (Post-LM rise is wrong-branch entry, not LM geometry.)
+
+STUDY DESIGN — DISSOCIATION, NOT BLIND REPLICATION
+----------------------------------------------------
+The three anatomies are NOT equivalent replication instances.
+They differ on a mechanistically critical variable: LM-bend illusion present/absent.
+
+  Group A (illusion PRESENT) : VMR 0066
+  Group B (illusion ABSENT)  : ASOCA Normal_12, ASOCA Normal_5
+
+This is a DISSOCIATION design: the same overlay manipulation is applied across
+both groups. If the mechanism is specific to the illusion, the effect should
+track illusion status, not anatomy.
+
+PRE-DECLARED PREDICTION (locked here before any VLM data on ASOCA anatomies)
+------------------------------------------------------------------------------
+PRIMARY:
+  The overlay-arm excess rotation and elevated wrong-branch rate will appear in
+  VMR 0066 (illusion present) and will be ATTENUATED OR ABSENT in Normal_12 and
+  Normal_5 (illusion absent).
+
+  Operationally: within-anatomy (wire_only vs overlay) OR(wrong_branch) difference
+  will be positive and significant for VMR 0066, and near-zero or non-significant
+  for Normal_12 and Normal_5.
+
+ALTERNATIVE (disconfirmation):
+  If overlay-arm excess rotation appears in ASOCA despite no LM-bend illusion,
+  the mechanism is incomplete — bifurcation visibility alone drives rotation
+  independent of the distance signal. This would change the paper's central claim.
+
+ANALYSIS PLAN
+-------------
+Unit of analysis:   episode (single run from ostium insertion)
+Primary outcome:    wrong_branch (binary: tip entered LCX at any step)
+Secondary outcome:  excess_rotation_steps (count of rotate_cw/ccw actions per episode)
+
+Per-anatomy analysis (main analysis):
+  For each anatomy separately:
+    Fisher's exact test: wrong_branch ~ arm (wire_only vs overlay)
+  Report OR and 95% CI per anatomy.
+
+Cross-anatomy dissociation analysis:
+  The confirmatory pattern is:
+    VMR 0066:   OR(overlay/wire_only) substantially > 1
+    Normal_12:  OR(overlay/wire_only) near 1
+    Normal_5:   OR(overlay/wire_only) near 1
+  Formal test: Breslow-Day heterogeneity test on the 3-anatomy table
+  (tests whether effect size is the same across anatomies; expect significant
+  heterogeneity if the dissociation prediction is correct).
+
+DO NOT:
+  - Pool VMR 0066 with ASOCA anatomies into a single Mantel-Haenszel statistic
+    for the wrong-branch outcome. They test different things.
+  - Run post-hoc sub-analyses of ASOCA anatomies based on observed data before
+    the cross-anatomy comparison is complete.
+  - Tune system-prompt geometry parameters after seeing VLM outcomes
+    (geometry params are fixed and derived from scripted-traversal diagnostics).
+
+ACCEPTED POWER TRADE
+---------------------
+The dissociation framing sacrifices the pooled n≈75 power for wrong-branch
+in exchange for mechanistic specificity. The wrong-branch PATTERN across
+anatomies (present-with-illusion, absent-without) is the evidence, not a
+single pooled significance test. This trade is deliberate and accepted.
+
+EPISODE COUNTS
+--------------
+  VMR 0066:     15 episodes (existing) + 10 top-up = 25 per arm x 2 arms = 50 total
+  Normal_12:    25 per arm x 2 arms = 50 total
+  Normal_5:     25 per arm x 2 arms = 50 total (pending mesh stability check)
+  Total:        150 episodes (plus smoke tests)
+
+SEEDS (locked, no overlap):
+  VMR 0066:     [2001 + i*11 for i in range(25)]  = 2001, 2012, ..., 2265
+  Normal_12:    [3001 + i*11 for i in range(25)]  = 3001, 3012, ..., 3265
+  Normal_5:     [4001 + i*11 for i in range(25)]  = 4001, 4012, ..., 4265
+
+CONFIG LOCK (identical across all anatomies unless noted):
+  Model:              claude-sonnet-4-6
+  max_tokens:         600
+  Image size:         512 x 512
+  Image rotation:     AP Cranial 40 deg [0, -40]
+  Retraction budget:  2 per episode
+  Gate ADV default:   35 mm/s
+  Arms:               wire_only, overlay (no contrast in replication block)
+  Geometry params:    per-anatomy (LM length, directions, gate threshold) —
+                      derived from scripted traversal, NOT tuned to outcomes
+    VMR 0066:    gate=25mm, LM~15-20mm, LAD leftward-upward
+    Normal_12:   gate=15mm, LM~17mm, LAD rightward
+    Normal_5:    gate=25mm, LM~30mm, LAD downward-leftward
+
+BIPLANE ARM
+-----------
+VMR 0066 only. Run AFTER cross-anatomy replication data is in hand.
+Not in this pre-registration block.
+
+CONTACT
+-------
+Study PI: [redacted for anonymous review]

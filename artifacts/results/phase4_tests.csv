@@ -1,0 +1,4 @@
+analysis,test,statistic,n,exact_or_approx,two_sided_p,effect_size,effect_name,ci_low,ci_high
+primary_f_rot_LM_A1,Wilcoxon signed-rank,73.0,25,exact,0.0147,0.551,matched-pairs rank-biserial,0.0068,0.0440
+secondary_sensitivity_MW,Mann-Whitney U,496.0,25v25,approx,0.000384,0.587,rank-biserial (unmatched),,
+sensitivity_excl_outlier,Wilcoxon signed-rank,48.0,24,exact,0.00252,0.680,matched-pairs rank-biserial,0.0147,0.0461

@@ -1,0 +1,51 @@
+====================================================================
+CORONARY VLM OPERATOR -- mode: OVERLAY
+Run dir  : D:\steve\pilot\runs\2026-06-28_19-29-24
+Model    : claude-sonnet-4-6
+Scene    : left coronary, clipped_left.vtp/obj, AP Cranial 40 deg
+Target   : mid-LAD (BranchIndex, threshold=5mm)
+Budget   : 2 retractions per episode
+Gate     : suppress rotation when dist < 25mm AND decreasing
+====================================================================
+FRAMING: Each 'episode' is a repetition of a single fixed left-coronary scenario.
+  Anatomy (clipped_left.vtp), target (mid-LAD), and start are IDENTICAL across all
+  episodes. Observed variance reflects VLM sampling stochasticity, NOT anatomical
+  variation. Do not interpret n=15 as 15 distinct navigation problems.
+  The fixed scenario enables clean causal attribution: condition differences
+  (wire_only / overlay / contrast) are not confounded by anatomical variation.
+====================================================================
+
+  Episodes run          : 15
+  Failed resets         : 0
+  Target reached        : 0 / 15
+  Steps total / scored  : 900 / 900  (parse failures: 0)
+  API errors            : 0
+  Retraction steps      : 0  (budget enforcements: 0)
+  Rotation steps        : 140  (15.6%)
+  Gate suppressions     : 0
+  Hallucination flags   : 0
+
+  Perception tip OK     : N/A  (0/0 verifiable)
+  Perception target OK  : 100.0%  (6/6 verifiable)
+  Intent appropriate    : 69.5%  (525/755 assessable)
+  Action consistent *** : 100.0%  (900/900 assessable)
+  Outcome reduced dist  : 60.0%  (540/900)
+
+  Per-episode mean tip→target dist (mm):
+    ep01 :   76.5 mm
+    ep02 :   77.0 mm
+    ep03 :   74.1 mm
+    ep04 :   78.3 mm
+    ep05 :   85.2 mm
+    ep06 :   78.8 mm
+    ep07 :   77.2 mm
+    ep08 :   76.5 mm
+    ep09 :   77.7 mm
+    ep10 :   76.8 mm
+    ep11 :   73.1 mm
+    ep12 :   85.1 mm
+    ep13 :   75.9 mm
+    ep14 :   76.2 mm
+    ep15 :   77.0 mm
+
+====================================================================

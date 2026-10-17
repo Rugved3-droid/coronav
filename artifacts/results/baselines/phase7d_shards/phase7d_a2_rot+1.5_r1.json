@@ -1,0 +1,188 @@
+{
+  "anatomy": "a2",
+  "label": "A2 ASOCA Normal_12",
+  "speed": 35.0,
+  "rotation": 1.5,
+  "rep": 1,
+  "budget": 45,
+  "n_run": 25,
+  "n_success": 17,
+  "minutes": 1.2821375687917074,
+  "episodes": [
+    {
+      "seed": 3001,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.250148028671692,
+      "reset_failed": false
+    },
+    {
+      "seed": 3012,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3023203786738144,
+      "reset_failed": false
+    },
+    {
+      "seed": 3023,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.69760619143649,
+      "reset_failed": false
+    },
+    {
+      "seed": 3034,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.326043308896166,
+      "reset_failed": false
+    },
+    {
+      "seed": 3045,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.58204072115097,
+      "reset_failed": false
+    },
+    {
+      "seed": 3056,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3247987202961364,
+      "reset_failed": false
+    },
+    {
+      "seed": 3067,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2747375715319373,
+      "reset_failed": false
+    },
+    {
+      "seed": 3078,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.57011532735902,
+      "reset_failed": false
+    },
+    {
+      "seed": 3089,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3427347832903838,
+      "reset_failed": false
+    },
+    {
+      "seed": 3100,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2943584961730763,
+      "reset_failed": false
+    },
+    {
+      "seed": 3111,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.71321706668996,
+      "reset_failed": false
+    },
+    {
+      "seed": 3122,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.342833663065577,
+      "reset_failed": false
+    },
+    {
+      "seed": 3133,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.70705778877452,
+      "reset_failed": false
+    },
+    {
+      "seed": 3144,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.342232081990666,
+      "reset_failed": false
+    },
+    {
+      "seed": 3155,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3128221836856575,
+      "reset_failed": false
+    },
+    {
+      "seed": 3166,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2629626188177796,
+      "reset_failed": false
+    },
+    {
+      "seed": 3177,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.58443966610221,
+      "reset_failed": false
+    },
+    {
+      "seed": 3188,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.348554401893813,
+      "reset_failed": false
+    },
+    {
+      "seed": 3199,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.340985777378209,
+      "reset_failed": false
+    },
+    {
+      "seed": 3210,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2628815751795335,
+      "reset_failed": false
+    },
+    {
+      "seed": 3221,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.70123078023398,
+      "reset_failed": false
+    },
+    {
+      "seed": 3232,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.31308974669979,
+      "reset_failed": false
+    },
+    {
+      "seed": 3243,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.2144575987794233,
+      "reset_failed": false
+    },
+    {
+      "seed": 3254,
+      "success": true,
+      "steps": 11,
+      "final_dist": 2.3117559012256756,
+      "reset_failed": false
+    },
+    {
+      "seed": 3265,
+      "success": false,
+      "steps": 45,
+      "final_dist": 66.72257389065282,
+      "reset_failed": false
+    }
+  ]
+}

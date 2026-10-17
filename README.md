@@ -73,9 +73,9 @@ Three separate questions, three separate answers:
 
 | Question | Status |
 |---|---|
-| **Original-results traceability:** can the manuscript's statistics be regenerated from the original experimental records? | **No, not from this repository.** The original episode traces, analysis scripts, the number-to-artifact manifest and `CORRECTIONS.md` are not in this repository yet. The numbers above are transcribed from the manuscript. |
-| **Environment reproducibility:** can another investigator install and run the simulation and operator? | **Yes for A1**, via Docker. Verified on 2026-10-14: the image builds and `scripts/check_install.py` passes. The open-loop control ran in the container (see `docs/MANUSCRIPT_CONCORDANCE.md`). **A2 is not yet reproducible from this repository**, because the conversion of the ASOCA case into the required mesh and centerline layout is not included. |
-| **Independent result reproduction:** has this code reproduced the manuscript's quantitative results? | **Partly.** The A1 open-loop control was re-run in the container at 0.001 s: 75/75 reached target, 26 steps each, final distance 4.582–4.707 mm, matching the manuscript (75/75, 26, 4.58–4.71 mm). **The VLM arms and everything on A2 have not been reproduced.** No n = 25 operator run has been made with this repository. Details: `docs/MANUSCRIPT_CONCORDANCE.md` §5. |
+| **Original-results traceability:** can the manuscript's statistics be regenerated from the original experimental records? | **Yes.** The original episode traces, analysis scripts, frozen analysis plan, result artifacts, number-to-artifact manifest and `CORRECTIONS.md` are in [`artifacts/`](artifacts/README.md) and at the root. `python artifacts/reproduce.py --check` re-runs the original scripts and compares every output with the committed one. Re-run on 2026-10-16, they reproduced every confirmatory statistic above exactly. The A2/A3 traces are committed without their ASOCA patient-space coordinates (licence); the four outputs that use those coordinates are documented in `artifacts/README.md`, and no manuscript number depends on them. |
+| **Environment reproducibility:** can another investigator install and run the simulation and operator? | **Yes for A1**, via Docker. Verified on 2026-10-14: the image builds and `scripts/check_install.py` passes. The open-loop control ran in the container (see `docs/MANUSCRIPT_CONCORDANCE.md`). **A2:** the original preparation script (`artifacts/harness/pilot/clip_asoca_left.py`) reproduces the A2 mesh exactly from the ASOCA archive. It runs with the original harness; this package's runner still needs a converter to its `paths/*.pth` layout (concordance U6). |
+| **Independent result reproduction:** has this code reproduced the manuscript's quantitative results? | **Partly.** The A1 open-loop control was re-run in the container at 0.001 s: 75/75 reached target, 26 steps each, final distance 4.582–4.707 mm, matching the manuscript (75/75, 26, 4.58–4.71 mm). `coronav.metrics` applied to the original traces gives the manuscript's success counts and `f_rot_LM` medians. **No new VLM operator run has been made**; because decoding is unseeded, one would be a new sample, not a replay. Details: `docs/MANUSCRIPT_CONCORDANCE.md` §5 and §9. |
 
 Other points that affect reproduction:
 
@@ -166,7 +166,9 @@ the timestep, step limit, seeds, operator, git commit, and a statement that
 it is a new run rather than a reproduction. `report.py` gives descriptive
 statistics and an unpaired sensitivity test only. The manuscript's
 confirmatory analyses (worst-rank, win ratio, log-rank, Hodges–Lehmann,
-paired Wilcoxon with Holm) are not in this repository.
+paired Wilcoxon with Holm) are the original scripts in `artifacts/analysis/`;
+they read the original trace layout (see `artifacts/README.md`), not
+`run_benchmark.py` output.
 
 The timestep is 0.001 s (133 SOFA sub-steps per operator step), so episodes
 run about 6× slower than the superseded 0.006 s setting did.

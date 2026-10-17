@@ -1,0 +1,67 @@
+==================================================================================
+PHASE 6 — THE DECLARED CONFIRMATORY FAMILY, AND THE COST OF EXCLUDING A3
+==================================================================================
+
+Primary test: PAIRED Wilcoxon signed-rank (C14). Holm and Bonferroni adjust over the
+2 declared members (A1, A2). The unpaired Mann-Whitney is
+reported alongside and is never adjusted over.
+
+f_rot_LM is a SECONDARY endpoint. The paper's primary claim is navigation
+degradation, which none of this touches.
+
+DECLARED FAMILY — 2 MEMBERS, both patient-derived
+
+  A1
+    PRIMARY  Wilcoxon signed-rank W=73.0  n=25 pairs  exact
+             raw p=0.0147   Holm p=0.0147   Bonferroni p=0.0294   SIGNIFICANT
+             matched-pairs rank-biserial=+0.551  HL=+0.0285 [+0.0068, +0.0440]
+    alongside Mann-Whitney U=496.0  n=25v25  p=0.000384  (not Holm-adjusted)
+    within-pair correlation rho = -0.072  95% CI [-0.455, +0.332]
+    conclusion unchanged under either test: True
+    median 0.1452 -> 0.1749
+
+  A2
+    PRIMARY  Wilcoxon signed-rank W=0.0  n=25 (16 informative) pairs  approx
+             raw p=0.000482   Holm p=0.000965   Bonferroni p=0.000965   SIGNIFICANT
+             matched-pairs rank-biserial=+1.000  HL=+0.0498 [+0.0227, +0.0722]
+    alongside Mann-Whitney U=512.5  n=25v25  p=2.95e-06  (not Holm-adjusted)
+    within-pair correlation rho = undefined (wire_only arm constant at 0.0000; no shared variance to remove)
+    conclusion unchanged under either test: True
+    median 0.0000 -> 0.0454
+    *** the signed-rank test drops 9 zero-difference pair(s): its effective sample is 16, not 25.
+
+  DIRECTION preserved in both: True (overlay > wire_only)
+  ALL MEMBERS SIGNIFICANT AFTER HOLM: True
+  worst adjusted p in the family = 0.0147
+
+DID EXCLUDING A3 EASE THE MULTIPLICITY CORRECTION?
+  The question matters because A3 supplied the largest effect available to us, so its
+  removal has to be shown not to have been self-serving. Below, each declared member's
+  adjusted p under the family as declared, against what it WOULD have been had the
+  excluded geometry been counted. A3's own adjusted p is not computed for reporting
+  and appears nowhere: it is not in a family.
+
+  anatomy         raw p   Holm (declared, 2)   Holm (if 3)    Bonf (2)   Bonf (if 3)
+  A1             0.0147               0.0147        0.0147      0.0294        0.0442
+  A2           0.000482             0.000965      0.000965    0.000965       0.00145
+
+  NO. Every declared member's Holm-adjusted p is IDENTICAL under either family
+  size. Holm leaves the largest p in a family unmultiplied, so A1 is unadjusted
+  either way; A2 is the middle of three and the smaller of two, taking the same
+  multiplier in both. The exclusion bought us nothing on the primary adjustment.
+  Only Bonferroni is sensitive to the family size, and Bonferroni is not the
+  primary adjustment.
+
+EXCLUDED GEOMETRY — REPORTED RAW, IN NO FAMILY
+  A3: paired Wilcoxon W=6.0  n=23 pairs  exact  raw p=3.34e-06   [NO ADJUSTED p — not in any inference family]
+      Mann-Whitney U=498.0  raw p=3.07e-07
+      within-pair correlation rho = -0.097  95% CI [-0.489, +0.329]
+  Grounds: wholly generated lumen surface (C8), 97.2% solver non-convergence, and an
+  open-loop policy shut out at 0/25 (Phase 7a). Reported in Section V prose.
+
+  WHAT CARRIES THE TWO-MEMBER CLAIM. Of the two, A2 is a floor effect:
+  all 25 A2 wire_only episodes sit at exactly 0.0000 LM rotation, so A2
+  evidences presence-versus-absence of rotation rather than a magnitude shift. A1 is
+  the only member contributing a graded effect, and it is also the weakest member
+  (Holm p = 0.0147 for A1). The claim survives, but
+  it does not rest on two equivalent replications, and the paper says so.

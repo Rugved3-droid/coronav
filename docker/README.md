@@ -84,7 +84,8 @@ docker-compose -f docker/docker-compose.yml run --rm check
 ASOCA data is not bundled (license-gated). After registering, preparing the
 A2 directory (`scripts/download_asoca.py` extracts the case and reports
 whether the required `clipped_left.obj/.vtp` + `paths/*.pth` layout is
-present; the original preparation pipeline is not in this repository), mount
+present; the original preparation script is `artifacts/harness/pilot/clip_asoca_left.py`,
+which writes the original harness's layout, not `paths/*.pth`), mount
 the anatomy directory:
 
 ```bash

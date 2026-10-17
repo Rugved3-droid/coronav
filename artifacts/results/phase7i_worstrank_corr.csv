@@ -1,0 +1,2 @@
+anatomy,endpoint,n_pairs,pearson_r,pearson_ci_lo,pearson_ci_hi,pearson_p,spearman_r,spearman_p,var_unpaired,var_paired,efficiency_ratio,paired_wilcoxon_p,unpaired_mw_p
+A1,worst_rank,25,-0.0744,-0.4561,0.3305,0.7239,-0.0430,0.8384,325.9883,347.9767,0.9368,0.00206,0.000525

@@ -160,7 +160,7 @@ excludes episodes with more than 50% failed calls.
 | Open-loop control | `--operator open_loop` (re-implementation) |
 | `f_rot_LM` | `coronav.metrics.lm_metrics` |
 | Navigation outcome over all episodes | `coronav.metrics.episode_outcome` |
-| Confirmatory statistics (worst-rank, win ratio, log-rank, HL, paired Wilcoxon + Holm) | **not in this repository**: the original analysis scripts are missing |
+| Confirmatory statistics (worst-rank, win ratio, log-rank, HL, paired Wilcoxon + Holm) | original scripts in `artifacts/analysis/`, run with `python artifacts/reproduce.py` against `artifacts/traces/` |
 
 ## Reporting checklist for a new run
 

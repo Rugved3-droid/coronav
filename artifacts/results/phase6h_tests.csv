@@ -1,0 +1,5 @@
+analysis,test,statistic,n,exact_or_approx,two_sided_p,effect_size,effect_name,ci_low,ci_high
+A2_steps_to_target,Wilcoxon signed-rank,0.0,25,approx,1.25e-05,1.000,matched-pairs rank-biserial,13.000,16.500
+A2_win_ratio,Finkelstein-Schoenfeld win ratio,inf (complete separation),25x25,bootstrap,,1251.0 (Haldane-corrected),win ratio (wire_only/overlay),1251.0,1251.0
+A2_win_fraction,bootstrap percentile,1.0000,25x25,bootstrap,,1.0000,wins / informative pairs,1.0000,1.0000
+A2_step_limit_and_censoring,descriptive,truncated 0/25 vs 0/25,25,n/a,,"documented limit 120 steps, both arms",episodes truncated at the step limit (none; nothing censored),,

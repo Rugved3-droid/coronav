@@ -1,0 +1,28 @@
+========================================================================================
+PHASE 6j — MINIMUM-VALIDITY THRESHOLD SENSITIVITY
+threshold: exclude retained episodes with more than 50% failed calls
+========================================================================================
+
+EPISODES CAUGHT BY THE THRESHOLD (retained under the 6d rule, dropped here)
+  V3        overlay    seed 5034: 53/60 calls failed (88.3%) -> dropped in sensitivity
+
+----------------------------------------------------------------------------------------
+CONFIRMATORY FAMILY (A1 + A2) UNDER THE THRESHOLD
+----------------------------------------------------------------------------------------
+  A1: W=73.0  n=25 pairs  exact  raw p=0.0147  Holm p=0.0147   (episodes dropped by threshold: 0)
+  A2: W=0.0  n=25 (16 informative) pairs  approx  raw p=0.000482  Holm p=0.000965   (episodes dropped by threshold: 0)
+
+  Reference, as committed in Phase 5 / the A1+A2 family:
+    A1  W=73.0  n=25  exact   raw p=0.0147     Holm p=0.0147
+    A2  W=0.0   n=25 (16 informative)  approx  raw p=0.000482  Holm p=0.000965
+
+  CONFIRMATORY FAMILY UNCHANGED BY THE THRESHOLD: True
+
+----------------------------------------------------------------------------------------
+EXPLORATORY ARMS AFFECTED
+----------------------------------------------------------------------------------------
+  V2: no episodes caught; unchanged
+  V3: dropped [5034]
+      before threshold: W=6.0  n=5  p=0.812
+      after  threshold: W=4.0  n=4  p=0.875
+  V4: no episodes caught; unchanged

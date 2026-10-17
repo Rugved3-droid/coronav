@@ -1,0 +1,128 @@
+====================================================================================================
+PHASE 6e — API FAILURE AUDIT (selection-bias test, not bookkeeping)
+====================================================================================================
+
+A failed call is NOT skipped: run_coronary.py executes [[0.0, 0.0]] — a null HOLD —
+and continues. Every failure inside a retained episode therefore consumes one step
+of that episode's budget. That is the bias-relevant quantity.
+
+Whole-run outages (every call failed) are removed by the Phase 6d exclusion rule and
+cannot bias the analysed data; they dominate the RAW per-call counts, so raw rates
+are reported but are NOT the basis for the arm comparison.
+
+----------------------------------------------------------------------------------------------------
+RAW (all episodes) vs RETAINED-ONLY (analysed episodes)
+----------------------------------------------------------------------------------------------------
+arm                       raw fails/calls  raw rate | excl eps    ret fails/calls  ret rate  holds/ep
+----------------------------------------------------------------------------------------------------
+A1 wire_only                      17/1277   1.331% |        0            17/1277   1.331%      0.68
+A1 overlay                         0/1448   0.000% |        0             0/1448   0.000%      0.00
+A2 wire_only                       0/1026   0.000% |        0             0/1026   0.000%      0.00
+A2 overlay                         3/1400   0.214% |        0             3/1400   0.214%      0.12
+A3 wire_only                       1/3438   0.029% |        0             1/3438   0.029%      0.40
+A3 overlay                       304/3750   8.107% |        2             4/3450   0.116%      0.30
+V2 wire_only                        0/596   0.000% |        0              0/596   0.000%      0.00
+V2 overlay                          0/598   0.000% |        0              0/598   0.000%      0.00
+V3 wire_only                        1/600   0.167% |        0              1/600   0.167%      0.10
+V3 overlay                        353/600  58.833% |        5             53/300  17.667%     10.60
+V4 wire_only                        0/600   0.000% |        0              0/600   0.000%      0.00
+V4 overlay                          0/600   0.000% |        0              0/600   0.000%      0.00
+MONO120 wire_only                  12/960   1.250% |        0             12/960   1.250%      1.20
+MONO120 overlay                    0/1025   0.000% |        0             0/1025   0.000%      0.10
+BI120 wire_only                     0/342   0.000% |        0              0/342   0.000%      0.00
+BI120 overlay                       0/436   0.000% |        0              0/436   0.000%      0.40
+OLD15 wire_only                     0/900   0.000% |        0              0/900   0.000%      0.00
+OLD15 overlay                       0/900   0.000% |        0              0/900   0.000%      0.00
+OLD15 contrast                    484/900  53.778% |        8              4/420   0.952%      0.57
+
+====================================================================================================
+BIAS-RELEVANT TEST: per-call failure rate among RETAINED episodes, by arm
+====================================================================================================
+
+  A1:  [DIFFERS among retained episodes]
+    wire_only retained   17/1277   = 1.3312%   holds/episode 0.68
+    overlay   retained    0/1448   = 0.0000%   holds/episode 0.00
+    Fisher (retained only): OR = inf, two-sided p = 2.39e-06
+    Fisher (raw, for contrast): two-sided p = 2.39e-06   [excluded eps: wire_only 0, overlay 0]
+
+  A2:  [no difference among retained episodes]
+    wire_only retained    0/1026   = 0.0000%   holds/episode 0.00
+    overlay   retained    3/1400   = 0.2143%   holds/episode 0.12
+    Fisher (retained only): OR = 0, two-sided p = 0.268
+    Fisher (raw, for contrast): two-sided p = 0.268   [excluded eps: wire_only 0, overlay 0]
+
+  A3:  [no difference among retained episodes]
+    wire_only retained    1/3438   = 0.0291%   holds/episode 0.40
+    overlay   retained    4/3450   = 0.1159%   holds/episode 0.30
+    Fisher (retained only): OR = 0.2507, two-sided p = 0.375
+    Fisher (raw, for contrast): two-sided p = 6.25e-87   [excluded eps: wire_only 0, overlay 2]
+
+  V2:  [no difference among retained episodes]
+    wire_only retained    0/596    = 0.0000%   holds/episode 0.00
+    overlay   retained    0/598    = 0.0000%   holds/episode 0.00
+    Fisher (retained only): OR = nan, two-sided p = 1
+    Fisher (raw, for contrast): two-sided p = 1   [excluded eps: wire_only 0, overlay 0]
+
+  V3:  [DIFFERS among retained episodes]
+    wire_only retained    1/600    = 0.1667%   holds/episode 0.10
+    overlay   retained   53/300    = 17.6667%   holds/episode 10.60
+    Fisher (retained only): OR = 0.00778, two-sided p = 7.15e-26
+    Fisher (raw, for contrast): two-sided p = 4.09e-137   [excluded eps: wire_only 0, overlay 5]
+
+  V4:  [no difference among retained episodes]
+    wire_only retained    0/600    = 0.0000%   holds/episode 0.00
+    overlay   retained    0/600    = 0.0000%   holds/episode 0.00
+    Fisher (retained only): OR = nan, two-sided p = 1
+    Fisher (raw, for contrast): two-sided p = 1   [excluded eps: wire_only 0, overlay 0]
+
+  MONO120:  [DIFFERS among retained episodes]
+    wire_only retained   12/960    = 1.2500%   holds/episode 1.20
+    overlay   retained    0/1025   = 0.0000%   holds/episode 0.10
+    Fisher (retained only): OR = inf, two-sided p = 0.000158
+    Fisher (raw, for contrast): two-sided p = 0.000158   [excluded eps: wire_only 0, overlay 0]
+
+  BI120:  [no difference among retained episodes]
+    wire_only retained    0/342    = 0.0000%   holds/episode 0.00
+    overlay   retained    0/436    = 0.0000%   holds/episode 0.40
+    Fisher (retained only): OR = nan, two-sided p = 1
+    Fisher (raw, for contrast): two-sided p = 1   [excluded eps: wire_only 0, overlay 0]
+
+  OLD15:  [no difference among retained episodes]
+    wire_only retained    0/900    = 0.0000%   holds/episode 0.00
+    overlay   retained    0/900    = 0.0000%   holds/episode 0.00
+    Fisher (retained only): OR = nan, two-sided p = 1
+    Fisher (raw, for contrast): two-sided p = 1   [excluded eps: wire_only 0, overlay 0]
+
+====================================================================================================
+BUDGET CONSUMED BY INJECTED HOLDS, among retained episodes
+====================================================================================================
+  A1 wire_only: 17 holds over 1277 steps (1.33% of the action budget), in 1/25 retained episodes
+  A2 overlay: 3 holds over 1400 steps (0.21% of the action budget), in 2/25 retained episodes
+  A3 wire_only: 10 holds over 3438 steps (0.29% of the action budget), in 6/25 retained episodes
+  A3 overlay: 7 holds over 3450 steps (0.20% of the action budget), in 4/23 retained episodes
+  V3 wire_only: 1 holds over 600 steps (0.17% of the action budget), in 1/10 retained episodes
+  V3 overlay: 53 holds over 300 steps (17.67% of the action budget), in 1/5 retained episodes
+  MONO120 wire_only: 12 holds over 960 steps (1.25% of the action budget), in 1/10 retained episodes
+  MONO120 overlay: 1 holds over 1025 steps (0.10% of the action budget), in 1/10 retained episodes
+  BI120 overlay: 4 holds over 436 steps (0.92% of the action budget), in 4/10 retained episodes
+  OLD15 contrast: 4 holds over 420 steps (0.95% of the action budget), in 1/7 retained episodes
+
+====================================================================================================
+STEP INDEX AT WHICH API FAILURES OCCURRED (all episodes)
+====================================================================================================
+  A1 wire_only: n=17  step median 30 [22, 38]   position-in-episode median 0.50
+      step-decade histogram: 20-29:8  30-39:9
+  A2 overlay: n=3  step median 39 [10, 42]   position-in-episode median 0.68
+      step-decade histogram: 10-19:1  30-39:1  40-49:1
+  A3 wire_only: n=1  step median 31 [31, 31]   position-in-episode median 0.21
+      step-decade histogram: 30-39:1
+  A3 overlay: n=4  step median 148 [147, 150]   position-in-episode median 0.99
+      step-decade histogram: 140-149:3  150-159:1
+  V3 wire_only: n=1  step median 32 [32, 32]   position-in-episode median 0.53
+      step-decade histogram: 30-39:1
+  V3 overlay: n=53  step median 34 [8, 60]   position-in-episode median 0.57
+      step-decade histogram: 0-9:2  10-19:10  20-29:10  30-39:10  40-49:10  50-59:10  60-69:1
+  MONO120 wire_only: n=12  step median 48 [42, 53]   position-in-episode median 0.40
+      step-decade histogram: 40-49:8  50-59:4
+  OLD15 contrast: n=4  step median 58 [57, 60]   position-in-episode median 0.97
+      step-decade histogram: 50-59:3  60-69:1

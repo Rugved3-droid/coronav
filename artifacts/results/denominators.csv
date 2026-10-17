@@ -1,0 +1,20 @@
+anatomy,arm,attempted,excluded,analysed,exclusion_reasons
+A1,wire_only,25,0,25,none
+A1,overlay,25,0,25,none
+A2,wire_only,25,0,25,none
+A2,overlay,25,0,25,none
+A3,wire_only,25,0,25,none
+A3,overlay,25,2,23,"seed 4254 (ep24, 150 rows): all rows api_ok=False; seed 4265 (ep25, 150 rows): all rows api_ok=False"
+A1 V2,wire_only,10,0,10,none
+A1 V2,overlay,10,0,10,none
+A1 V3,wire_only,10,0,10,none
+A1 V3,overlay,10,5,5,"seed 5045 (ep5, 60 rows): all rows api_ok=False; seed 5056 (ep6, 60 rows): all rows api_ok=False; seed 5067 (ep7, 60 rows): all rows api_ok=False; seed 5078 (ep8, 60 rows): all rows api_ok=False; seed 5089 (ep9, 60 rows): all rows api_ok=False"
+A1 V4,wire_only,10,0,10,none
+A1 V4,overlay,10,0,10,none
+A1 mono120,wire_only,10,0,10,none
+A1 mono120,overlay,10,0,10,none
+A1 biplane120,wire_only,10,0,10,none
+A1 biplane120,overlay,10,0,10,none
+A1 old-prompt,wire_only,15,0,15,none
+A1 old-prompt,overlay,15,0,15,none
+A1 old-prompt,contrast,15,8,7,"seed 2078 (ep8, 60 rows): all rows api_ok=False; seed 2089 (ep9, 60 rows): all rows api_ok=False; seed 2100 (ep10, 60 rows): all rows api_ok=False; seed 2111 (ep11, 60 rows): all rows api_ok=False; seed 2122 (ep12, 60 rows): all rows api_ok=False; seed 2133 (ep13, 60 rows): all rows api_ok=False; seed 2144 (ep14, 60 rows): all rows api_ok=False; seed 2155 (ep15, 60 rows): all rows api_ok=False"

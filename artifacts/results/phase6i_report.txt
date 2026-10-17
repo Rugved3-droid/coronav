@@ -1,0 +1,60 @@
+====================================================================================
+PHASE 6i — API-HOLD SENSITIVITY ON THE A1 PRIMARY
+seed=20260911  bootstrap=10000  budget=60
+====================================================================================
+
+HOLDS INJECTED (a failed call executes [[0,0]] and consumes a step)
+  wire_only: 17 holds over 1277 steps, in 1/25 episodes
+  overlay  : 0 holds over 1448 steps, in 0/25 episodes
+    wire_only  seed 5221: 17 holds of 60 steps  success=False  final_dist=88.0 mm
+
+  successful episodes affected by holds: 0
+  -> no success step count changes under the discount; only the censoring
+     time of the affected FAILED episode(s) moves.
+
+------------------------------------------------------------------------------------
+AS ANALYSED (Phase 3, no discount)
+------------------------------------------------------------------------------------
+  as-analysed
+    worst-rank Wilcoxon : W=47.5  n=25  approx  p=0.00206  rb=+0.708  HL=+15.50 [+7.00, +23.25]
+    win ratio           : 470W/84L/71T  WR=5.595  95% CI [2.431, 17.970]
+    log-rank            : chi2=11.705  p=0.000623
+
+------------------------------------------------------------------------------------
+DISCOUNTED (hold steps removed from the affected wire_only episodes)
+------------------------------------------------------------------------------------
+  hold-discounted
+    worst-rank Wilcoxon : W=47.5  n=25  approx  p=0.00206  rb=+0.708  HL=+15.50 [+7.00, +23.25]
+    win ratio           : 470W/84L/71T  WR=5.595  95% CI [2.431, 17.970]
+    log-rank            : chi2=14.292  p=0.000157
+
+------------------------------------------------------------------------------------
+BOUND (not an estimate): affected FAILED wire_only episodes granted success
+------------------------------------------------------------------------------------
+  The holds cost the affected episode usable actions. We cannot know what it would
+  have done with them, so instead of imputing an outcome we bound the impact by
+  granting it success at the full budget - the most favourable outcome consistent
+  with the budget. This bounds how much the holds could have cost wire_only.
+  seeds granted success for the bound: [5221]
+  upper bound
+    worst-rank Wilcoxon : W=41.5  n=25  approx  p=0.00118  rb=+0.745  HL=+16.00 [+7.25, +23.50]
+    win ratio           : 482W/84L/59T  WR=5.738  95% CI [2.547, 18.101]
+    log-rank            : chi2=13.239  p=0.000274
+
+====================================================================================
+VERDICT
+====================================================================================
+  direction preserved   : True
+  still significant     : True (worst-rank p=0.00206, log-rank p=0.000157)
+  win-ratio intervals   : as-analysed [2.431, 17.970]  vs discounted [2.431, 17.970]
+  bound (granted succ.) : worst-rank p=0.00118, log-rank p=0.000274, WR=5.738
+
+  METHODS SENTENCE:
+  "Transmission failures injected 17 null hold actions into the A1 wire-only
+   arm (17/1277 calls, confined to 1 episode) and 0 into the
+   overlay arm; because a failed call is executed as a null action rather than
+   skipped, each hold consumed one step of that episode's budget, so the loss fell
+   entirely on the faster arm and biases against the reported effect. Discounting
+   the affected steps left the direction, significance and win-ratio interval
+   unchanged (worst-rank p=0.00206, log-rank p=0.000157, win ratio
+   5.60 [2.43, 17.97])."

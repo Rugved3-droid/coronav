@@ -1,0 +1,61 @@
+========================================================================================
+PHASE 7d — ORACLE REACHABILITY PROBE (simulator only, no API calls)
+========================================================================================
+speed fixed at the pre-committed 35.0 mm/s; rotation grid [-1.5, -1.2, -0.6, 0.0, 0.6, 1.2, 1.5]
+Grid bracketed on the operator's OWN logged rotation vocabulary (+/-1.5, +/-1.2, 0.3)
+A3 absent (C11).
+
+TWO FIGURES, REPORTED TOGETHER (PRESPEC, committed before this ran):
+  UNION        - seed counts if ANY rotation reached target. Upper bound INFLATED BY
+                 SELECTION OVER NOISE. Not a runnable policy.
+  BEST SINGLE  - highest rate from one fixed rotation. Deployable. This is the figure
+                 the manuscript uses.
+
+========================================================================================
+A1 VMR0066   budget=60  seeds=25
+========================================================================================
+  rot -1.50 :  16/ 25 =  64.0%  95% CI [ 44.5,  79.8]  reps=1
+  rot -1.20 :  14/ 25 =  56.0%  95% CI [ 37.1,  73.3]  reps=1
+  rot -0.60 :  15/ 25 =  60.0%  95% CI [ 40.7,  76.6]  reps=1
+  rot +0.00 :  13/ 25 =  52.0%  95% CI [ 33.5,  70.0]  reps=1
+  rot +0.60 :  15/ 25 =  60.0%  95% CI [ 40.7,  76.6]  reps=1
+  rot +1.20 :  13/ 25 =  52.0%  95% CI [ 33.5,  70.0]  reps=1
+  rot +1.50 :  16/ 25 =  64.0%  95% CI [ 44.5,  79.8]  reps=1
+
+  BEST SINGLE ROTATION : -1.5 at 64.0% [44.5, 79.8]   <-- the manuscript figure
+  UNION OVER 7 ROTATIONS : 25/25 = 100.0% [86.7, 100.0]
+  gap union - best = +36.0 pp
+  That gap is the size of the selection effect, not a capability. It is what you
+  gain by being told, per seed, which rotation to use - which no policy knows.
+
+  FULL DISTRIBUTION of the 7 rotation rates: ['52%', '52%', '56%', '60%', '60%', '64%', '64%']
+  Reported because BEST SINGLE is itself a maximum - over grid values rather than
+  over seeds. Less inflated than the union, but not unbiased. The spread here is
+  how much of that maximum could be noise.
+  spread across rotations = 12.0 pp against a measured run-to-run floor of 20.0 pp
+  *** THE SPREAD DOES NOT EXCEED THE NOISE FLOOR. On this evidence no
+      rotation is demonstrably better than any other, and BEST SINGLE is
+      indistinguishable from picking one at random. Report it that way.
+
+========================================================================================
+A2 ASOCA Normal_12   budget=45  seeds=25
+========================================================================================
+  rot -1.50 :  13/ 25 =  52.0%  95% CI [ 33.5,  70.0]  reps=1
+  rot -1.20 :  16/ 25 =  64.0%  95% CI [ 44.5,  79.8]  reps=1
+  rot -0.60 :  14/ 25 =  56.0%  95% CI [ 37.1,  73.3]  reps=1
+  rot +0.00 :  16/ 25 =  64.0%  95% CI [ 44.5,  79.8]  reps=1
+  rot +0.60 :  20/ 25 =  80.0%  95% CI [ 60.9,  91.1]  reps=1
+  rot +1.20 :  10/ 25 =  40.0%  95% CI [ 23.4,  59.3]  reps=1
+  rot +1.50 :  17/ 25 =  68.0%  95% CI [ 48.4,  82.8]  reps=1
+
+  BEST SINGLE ROTATION : +0.6 at 80.0% [60.9, 91.1]   <-- the manuscript figure
+  UNION OVER 7 ROTATIONS : 25/25 = 100.0% [86.7, 100.0]
+  gap union - best = +20.0 pp
+  That gap is the size of the selection effect, not a capability. It is what you
+  gain by being told, per seed, which rotation to use - which no policy knows.
+
+  FULL DISTRIBUTION of the 7 rotation rates: ['40%', '52%', '56%', '64%', '64%', '68%', '80%']
+  Reported because BEST SINGLE is itself a maximum - over grid values rather than
+  over seeds. Less inflated than the union, but not unbiased. The spread here is
+  how much of that maximum could be noise.
+  spread across rotations = 40.0 pp against a measured run-to-run floor of 28.0 pp
